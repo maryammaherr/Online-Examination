@@ -1,0 +1,244 @@
+* {
+    font-size: 25px !important;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+html,
+body {
+    height: 100% !important;
+    width: 100% !important;
+    background-color: #182d34 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+}
+
+.MainDiv{
+    background-color: #182d34;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+}
+
+
+/*Details Box */
+.Box {
+    border-bottom:  1px solid #ffff;
+    height: auto;
+    width: 100%;
+    margin-bottom: 25px;
+    color: #ffff;
+    overflow-wrap: break-word;
+
+}
+
+.Box_span {
+    margin-right: 30px;
+}
+
+
+/* Timer */
+.Timer {
+    color: hsl(52, 94%, 94%);
+    text-align: center;
+    width: 60px;
+    margin-left: 85%;
+ 
+
+}
+.Timer_Icon_button{
+    height: 60px;
+    width: 60px;
+    border-radius:50px;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+    overflow:hidden;
+}
+
+.Timer_Icon_button:hover{
+    width: 200px;
+}
+
+#icon{
+    font-size: 30 px !important;
+    color: yellow;
+}
+#icon i{
+    font-size: 25px !important;
+    line-height: 60px !important;
+}
+span{
+    font-size: 25px;
+    font-weight: 50;
+    line-height: 50px;
+    align-items: end;
+}
+
+
+/* Questions Box */
+.Questions_Box {
+    width: 100%;
+    padding: 10px;
+    background-color:#fefae0;
+    height: 450px;
+    border-radius: 10px;
+    padding: 15px 15px;
+
+  }
+  .Questions_Box_h2 {
+    color: #182d34;
+    overflow-wrap: break-word;
+    text-align: center;
+    font-size: 30px !important;
+  }
+  .scroldiv {
+    max-height: 80%;
+    overflow-y: scroll;
+
+  }
+  ::-webkit-scrollbar {
+    width: 7px;
+    
+  }
+  ::-webkit-scrollbar-track {
+    background: none; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+  
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+  
+  
+  ul {
+    list-style-type: circle;
+    display:inline-block;
+    color: #182d34;
+    text-decoration: none;
+    }
+    
+     li a {
+        display:inline-block;
+        color: #182d34;
+        padding: 8px 15px;
+        text-decoration: none;
+      font-size: 20px !important;
+  
+    }
+    
+    /* Change the link color on hover */
+      /* CHANGE THE LI IF IT UN USEDDD */
+  
+    li a:hover {
+      color: #6d6969;
+      transform: scale(1.09);
+      text-decoration: none;
+    }
+    li a:active {
+      color: #6d6969;
+      transform: scale(1.09);
+      text-decoration: none;
+
+  
+    }
+
+    /* Questions */
+    .Question_Area{
+        background-color: #fefae0;
+        flex-grow: 1;
+        display: flex;
+        padding: 0px 10px;
+        font-size: 23px;
+        width: 100%;
+        overflow: auto;
+        margin-top: 25px;
+        height: 90%;
+        font-family: 'Titillium Web', sans-serif;
+        color: #182d34;
+        overflow-wrap: break-word;
+        border-radius: 10px;
+    
+    }
+
+    .Questions{
+        width: 100%;
+    }
+    /* buttons */
+ .btns{
+        width: 100%;
+        margin-top: 4%;
+        margin-bottom: 5%;
+
+    }
+
+#btn-prev{
+    width: 100px;
+    padding: 5px;
+    margin-right: 50px;
+    background-color: #182d34 !important;
+    border-color: #182d34 !important;
+    font-size: 15px !important;
+    border-radius: 10px ;
+}
+#btn-prev:focus{
+    box-shadow: 0 0 0 .2rem #182d34!important;
+}
+#btn-prev:hover{
+    transform: scale(1.05);
+}
+
+#btn-next{
+    width: 100px;
+    padding: 5px;
+    margin-right: 50px;
+    background-color: #182d34 !important;
+    border-color: #182d34 !important;
+    font-size: 15px !important;
+    border-radius: 10px ;
+}
+#btn-next:focus{
+    box-shadow: 0 0 0 .2rem #182d34!important;
+}
+#btn-next:hover{
+    transform: scale(1.05);
+}
+:disabled{
+    cursor: not-allowed;
+}
+
+
+#Submit_button{
+    width: 100px;
+    padding: 5px;
+    background-color: #182d34 !important;
+    border-color: #182d34 !important;
+    font-size: 15px !important;
+    border-radius: 10px ;
+
+
+
+
+}
+
+#Submit_button:focus{
+    box-shadow: 0 0 0 .2rem #182d34 !important;
+}
+#Submit_button:hover{
+    transform: scale(1.05);
+}
+
+/* Answer */
+.answers{
+    padding: 10px;
+}
+
+
+
+
+
+
