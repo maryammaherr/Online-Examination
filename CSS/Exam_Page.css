@@ -152,20 +152,26 @@ span{
         background-color: #fefae0;
         flex-grow: 1;
         display: flex;
-        padding: 0px 10px;
-        font-size: 23px;
         width: 100%;
-        overflow: auto;
+        overflow-y: scroll;
         margin-top: 25px;
-        height: 90%;
-        font-family: 'Titillium Web', sans-serif;
+        height: 400px;
         color: #182d34;
         overflow-wrap: break-word;
         border-radius: 10px;
+
     
     }
 
     .Questions{
+        width: 100%;
+    }
+    .anr_question{
+        width: 100%;
+        padding: 15px 15px;
+
+    }
+    .question_hr{
         width: 100%;
     }
     /* buttons */
@@ -180,13 +186,14 @@ span{
     width: 100px;
     padding: 5px;
     margin-right: 50px;
-    background-color: #182d34 !important;
-    border-color: #182d34 !important;
+    background-color: #fefae0!important;
+    border-color: #fefae0!important;
     font-size: 15px !important;
     border-radius: 10px ;
+    color: black;
 }
 #btn-prev:focus{
-    box-shadow: 0 0 0 .2rem #182d34!important;
+    box-shadow: 0 0 0 .2rem #fefae0!important;
 }
 #btn-prev:hover{
     transform: scale(1.05);
@@ -196,13 +203,15 @@ span{
     width: 100px;
     padding: 5px;
     margin-right: 50px;
-    background-color: #182d34 !important;
-    border-color: #182d34 !important;
+    background-color: #fefae0 !important;
+    border-color: #fefae0 !important;
     font-size: 15px !important;
-    border-radius: 10px ;
+    border-radius: 10px;
+    color: black;
+
 }
 #btn-next:focus{
-    box-shadow: 0 0 0 .2rem #182d34!important;
+    box-shadow: 0 0 0 .2rem #fefae0!important;
 }
 #btn-next:hover{
     transform: scale(1.05);
@@ -215,18 +224,17 @@ span{
 #Submit_button{
     width: 100px;
     padding: 5px;
-    background-color: #182d34 !important;
-    border-color: #182d34 !important;
+    background-color: #fefae0 !important;
+    border-color: #fefae0 !important;
     font-size: 15px !important;
-    border-radius: 10px ;
-
-
-
+    border-radius: 10px;
+    color: black;
+    margin-left: 8%;
 
 }
 
 #Submit_button:focus{
-    box-shadow: 0 0 0 .2rem #182d34 !important;
+    box-shadow: 0 0 0 .2rem #fefae0 !important;
 }
 #Submit_button:hover{
     transform: scale(1.05);
@@ -234,10 +242,11 @@ span{
 
 /* Answer */
 .answers{
-    padding: 10px;
+    padding: 20px;
 }
-
-
+.form-check{
+    padding: 3px;
+}
 
 
 
