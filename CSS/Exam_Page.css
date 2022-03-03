@@ -248,6 +248,8 @@ span{
     padding: 3px;
 }
 
-
+.active_question a{
+    color: red;
+}
 
 

@@ -4,7 +4,9 @@ $(document).ready(function () {
 
     var counter = 0;
     
+    
     var json = [
+
       {
         q: "this is a mcq qqqqsamskaldsksdjclksdnhcjlkndscj kdsncljndsldiojcoidsjcidsjoci",
         answer: { a: "s",b:"er", c: "sgggg", d: "sffffh" },
@@ -25,6 +27,15 @@ $(document).ready(function () {
         type: 4,
       },
     ];
+
+    var nav_questions = Array(json.length).fill(false);
+    var swap_index = 0;
+    const activate_ul = (p_idx, a_idx) => {
+      $(`li:nth-child(${p_idx})`).removeClass( "active_question" );
+      $(`li:nth-child(${a_idx})`).addClass( "active_question" );
+
+    }
+
 
     window.onload = () => {
       for(let i=1;i<json.length+1;i++){
@@ -217,6 +228,7 @@ $(document).ready(function () {
       if (counter < json.length) {
         counter++;
         injectToElement("#target",getComponent(json[counter]));
+        activate_ul(counter-1,counter)
         
       } 
   
@@ -227,6 +239,7 @@ $(document).ready(function () {
       if (counter > 0) {
         counter--;
         injectToElement("#target",getComponent(json[counter]));
+        activate_ul(counter+1,counter)
       } 
   
       flagger(counter,json.length);

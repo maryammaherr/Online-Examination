@@ -1,0 +1,50 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing: border-box;
+}
+
+
+
+.main-container .header-container{
+    width: 100%;
+/*    border:1px solid #333;*/
+    background: #fafafa;
+    margin-top: -10px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+.main-container .header-container .header-content{
+    width: 80%;
+    margin: 10px auto;
+    padding: 20px;  
+}
+
+.main-container .body-container .body-content{
+    margin-top: 200px; 
+}
+
+.main-container .body-container .body-content .logo-container img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #334488; 
+}
+
+.main-container .body-container .body-content .ExamPassed h3{
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.main-container .body-container .body-content .ExamPassed p{
+    color: #666;
+}
+
+.main-container .body-container .body-content .ExamPassed button{
+    padding: 10px 20px 10px 20px;
+    border: 1px solid #44ccdd;
+    background: #fff;
+    color: #44ccdd;
+    
+        
+}

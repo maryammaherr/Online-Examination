@@ -1,0 +1,27 @@
+#buttons{
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#DoctorsDiv{
+    display: none;
+}
+#StudentsDiv{
+    display: none;
+}
+#DemonsDiv{
+    display: none;
+}
+
+
+table.table {
+    table-layout: fixed;
+}
+
+
+table.table th:last-child {
+    width: 100px;
+}
+
+
