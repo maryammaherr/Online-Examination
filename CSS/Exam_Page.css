@@ -1,7 +1,5 @@
 * {
     font-size: 25px !important;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
 }
 html,
 body {
@@ -36,6 +34,7 @@ body {
 
 .Box_span {
     margin-right: 30px;
+    font-weight:400;
 }
 
 
@@ -248,8 +247,14 @@ span{
     padding: 3px;
 }
 
-.active_question a{
+.active_question{
     color: red;
 }
+
+
+.hide-div{
+    display: none;
+}
+
 
 

@@ -1,10 +1,8 @@
-
 $(document).ready(function () {
   
 
     var counter = 0;
-    
-    
+
     var json = [
 
       {
@@ -30,37 +28,52 @@ $(document).ready(function () {
 
     var nav_questions = Array(json.length).fill(false);
     var swap_index = 0;
-    const activate_ul = (p_idx, a_idx) => {
-      $(`li:nth-child(${p_idx})`).removeClass( "active_question" );
-      $(`li:nth-child(${a_idx})`).addClass( "active_question" );
 
+    function anchorClicked(idx){
+    //  injectToElement("#target",getComponent(json[idx]));
+      $('div[id^="q-"]').addClass("hide-div");
+      $(`#q-${idx}`).removeClass("hide-div");
+      $("a").removeClass( "active_question" );
+      $('a').eq(idx).addClass( "active_question" );;
+    }
+
+    for(let i=0;i<json.length;i++){
+      liA = document.createElement("a");
+      liA.setAttribute("href","#");
+      liA.addEventListener("click", function(){
+        anchorClicked(i);
+    }, false);
+      //link go to question
+      list=document.createElement("li");
+      liA.innerHTML = "Question "+ (i+1);
+      list.appendChild(liA);
+      document.getElementById('list-container').appendChild(list);    
+      
+      
+      //init questions
+      const q_ele = document.createElement('div');
+      q_ele.id="q-"+ i
+      q_ele.className="anr_question"
+      q_ele.innerHTML=getComponent(json[i]);
+      document.getElementById("question-area").appendChild(q_ele);
     }
 
 
-    window.onload = () => {
-      for(let i=1;i<json.length+1;i++){
-        liA = document.createElement("a");
-        liA.setAttribute("href","");
-        //link go to question
-        list=document.createElement("li");
-        liA.innerHTML = "Question"+i;
-        list.appendChild(liA);
-        document.getElementById('list-container').appendChild(list);
 
-
-        
-      }
-    }
+    anchorClicked(0);
+    
+    
   
     function injectToElement(id,content){
         $(id).html(content)
     }
   
     function getComponent(obj) {
+      tagger=guidGenerator();
       if (obj.type == 1) {
         return `
 
-<div class='anr_question'>
+    <div class='anr_question'>
 
       <div class='Questions'  >
       <div class='question_hr'>
@@ -73,25 +86,25 @@ $(document).ready(function () {
 
       <div class='answers'>
       <div class="form-check">
-      <input class="form-check-input" type="radio" name="answer" id="flexRadioDefault1">
+      <input class="form-check-input" type="radio" name="answer${tagger}" id="flexRadioDefault1">
       <label class="form-check-label" for="flexRadioDefault1">
       ${obj.answer.a}
       </label>
       </div>
       <div class="form-check">
-          <input class="form-check-input" type="radio" name="answer" id="flexRadioDefault2">
+          <input class="form-check-input" type="radio" name="answer${tagger}" id="flexRadioDefault2">
           <label class="form-check-label" for="flexRadioDefault2">
           ${obj.answer.b}
           </label>
       </div>
       <div class="form-check">
-          <input class="form-check-input" type="radio" name="answer" id="flexRadioDefault3">
+          <input class="form-check-input" type="radio" name="answer${tagger}" id="flexRadioDefault3">
           <label class="form-check-label" for="flexRadioDefault3">
           ${obj.answer.c}
       </label>
       </div>
       <div class="form-check">
-      <input class="form-check-input" type="radio" name="answer" id="flexRadioDefault4">
+      <input class="form-check-input" type="radio" name="answer${tagger}" id="flexRadioDefault4">
       <label class="form-check-label" for="flexRadioDefault4">
       ${obj.answer.d}
       </label>
@@ -117,25 +130,25 @@ $(document).ready(function () {
   
         <div class='answers'>
         <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="answer" id="flexcheckboxefault1">
+        <input class="form-check-input" type="checkbox" name="answer${tagger}" id="flexcheckboxefault1">
         <label class="form-check-label" for="flexcheckboxDefault1">
         ${obj.answer.a}
         </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="answer" id="flexcheckboxDefault2">
+            <input class="form-check-input" type="checkbox" name="answer${tagger}" id="flexcheckboxDefault2">
             <label class="form-check-label" for="flexcheckboxDefault2">
             ${obj.answer.b}
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="answer" id="flexcheckboxDefault3">
+            <input class="form-check-input" type="checkbox" name="answer${tagger}" id="flexcheckboxDefault3">
             <label class="form-check-label" for="flexcheckboxDefault3">
             ${obj.answer.c}
         </label>
         </div>
         <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="answer" id="flexcheckboxDefault4">
+        <input class="form-check-input" type="checkbox" name="answer${tagger}" id="flexcheckboxDefault4">
         <label class="form-check-label" for="flexcheckboxDefault4">
         ${obj.answer.d}
         </label>
@@ -181,14 +194,14 @@ $(document).ready(function () {
   
   
           <div class='answers'>
-          <div class="form-check">
-          <input class="form-check-input" type="radio" name="answer" id="flexRadioDefault1">
+          <div class="form-check" >
+          <input class="form-check-input" type="radio" name="answer${tagger}" id="flexRadioDefault1">
           <label class="form-check-label" for="flexRadioDefault1">
           ${obj.answer.a}
           </label>
           </div>
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="answer" id="flexRadioDefault2">
+              <input class="form-check-input" type="radio" name="answer${tagger}" id="flexRadioDefault2">
               <label class="form-check-label" for="flexRadioDefault2">
               ${obj.answer.b}
               </label>
@@ -223,13 +236,12 @@ $(document).ready(function () {
        
     }
   
-  
+
+
     const next = () => {
       if (counter < json.length) {
         counter++;
-        injectToElement("#target",getComponent(json[counter]));
-        activate_ul(counter-1,counter)
-        
+        anchorClicked(counter) 
       } 
   
       flagger(counter,json.length);
@@ -238,8 +250,7 @@ $(document).ready(function () {
     const prev = () => {
       if (counter > 0) {
         counter--;
-        injectToElement("#target",getComponent(json[counter]));
-        activate_ul(counter+1,counter)
+        anchorClicked(counter)
       } 
   
       flagger(counter,json.length);
@@ -274,7 +285,12 @@ $(document).ready(function () {
       }
     }
    
-  
+    function guidGenerator() {
+      var S4 = function() {
+         return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+      };
+      return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+  }
 
     
 });
@@ -311,6 +327,10 @@ function clock() {
 clock();
 
 
+function casper(){
+  var numberOfCheckedRadio = $('input:radio:checked').length;
+  alert(numberOfCheckedRadio)
+}
 
   /*
   1 -> mcq
