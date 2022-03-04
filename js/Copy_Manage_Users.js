@@ -86,34 +86,21 @@ function demon_Search(){
 
 
 /* Doctors */
-function doc_edit_row(no){
-	document.getElementById("doc_edit_button"+no).style.display="none";
-	document.getElementById("doc_save_button"+no).style.display="block";
 
-	var doc_name = document.getElementById("doc_name_row"+no);
-	var doc_country = document.getElementById("doc_country_row"+no);
 
-	var doc_name_data = doc_name.innerHTML;
-	var doc_country_data = doc_country.innerHTML;
-	doc_name.innerHTML = "<input type='text' id='doc_name_text"+no+"' value='"+doc_name_data+"'>"
-	doc_country.innerHTML = "<input type='text' id='doc_country_text"+no+"' value='"+doc_country_data+"'>"
 
+
+
+function doc_pan_row(no) {
+	document.getElementById("doc_row"+no+"").style.textDecoration="line-through";
+	document.getElementById("doc_pan_button"+no).style.display="none";
+    document.getElementById("doc_un_pan_button"+no).style.display="block";
 }
-
-function doc_save_row(no){
-	var doc_name_val="";
-	var doc_country_val="";
-    doc_name_val = document.getElementById("doc_name_text"+no).value;
-    doc_country_val = document.getElementById("doc_country_text"+no).value;
-	document.getElementById("doc_name_row"+no).innerHTML=doc_name_val;
-	document.getElementById("doc_country_row"+no).innerHTML=doc_country_val;
-	document.getElementById("doc_edit_button"+no).style.display="block";
-	document.getElementById("doc_save_button"+no).style.display="none";
-
+function doc_un_pan_row(no) {
+	document.getElementById("doc_row"+no+"").style.textDecoration="none";
+	document.getElementById("doc_pan_button"+no).style.display="block";
+    document.getElementById("doc_un_pan_button"+no).style.display="none";
 }
-
-function doc_delete_row(no) {document.getElementById("doc_row"+no+"").outerHTML="";}
-
 
 
 
@@ -175,5 +162,3 @@ function demon_save_row(no){
 }
 
 function demon_delete_row(no) {document.getElementById("demon_row"+no+"").outerHTML="";}
-
-

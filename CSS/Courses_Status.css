@@ -1,7 +1,6 @@
 body {
     padding: 0;
     margin: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: grid;
 }
 
@@ -11,25 +10,21 @@ table {
     top: 50%;
     transform: translate(-50%, -50%);
     border-collapse: collapse;
-    width: 800px;
-    height: 400px;
+    width: 70%;
+    height: 70%;
     border: 1px solid #bdbdbd;
-    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 12px #bdbdbd, -1px -1px 8px #bdbdbd;
 }
 
 th {
-    padding: 1rem 2rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
-    font-size: 0.7rem;
-    font-weight: 900;
+    font-size: 0.8rem;
+    font-weight: bold;
 }
+
 
 td {
-    padding: 1rem 2rem;
-}
-
-tr {
     transition: all .2s ease-in;
     cursor: pointer;
 }
