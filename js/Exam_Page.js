@@ -64,11 +64,7 @@ $(document).ready(function () {
     
     
   
-    function injectToElement(id,content){
-        $(id).html(content)
-    }
-  
-    function getComponent(obj) {
+    function getComponent(obj,givenkey) {
       tagger=guidGenerator();
       if (obj.type == 1) {
         return `
@@ -77,7 +73,7 @@ $(document).ready(function () {
 
       <div class='Questions'  >
       <div class='question_hr'>
-      Welcome ${obj.q}
+          ${obj.q}
       <hr ></hr>
 
       </div>
@@ -86,27 +82,27 @@ $(document).ready(function () {
 
       <div class='answers'>
       <div class="form-check">
-      <input class="form-check-input" type="radio" name="answer${tagger}" id="flexRadioDefault1">
+      <input class="form-check-input" type="radio" value="${obj.answer.a}" name="answer${tagger}" id="flexRadioDefault1">
       <label class="form-check-label" for="flexRadioDefault1">
       ${obj.answer.a}
       </label>
       </div>
       <div class="form-check">
-          <input class="form-check-input" type="radio" name="answer${tagger}" id="flexRadioDefault2">
+          <input class="form-check-input" type="radio" value="${obj.answer.b}" name="answer${tagger}" id="flexRadioDefault2">
           <label class="form-check-label" for="flexRadioDefault2">
           ${obj.answer.b}
           </label>
       </div>
       <div class="form-check">
-          <input class="form-check-input" type="radio" name="answer${tagger}" id="flexRadioDefault3">
+          <input class="form-check-input" type="radio" value="${obj.answer.c}" name="answer${tagger}" id="flexRadioDefault3">
           <label class="form-check-label" for="flexRadioDefault3">
           ${obj.answer.c}
       </label>
       </div>
       <div class="form-check">
-      <input class="form-check-input" type="radio" name="answer${tagger}" id="flexRadioDefault4">
+      <input class="form-check-input" type="radio" value="${obj.answer.d}" name="answer${tagger}" id="flexRadioDefault4">
       <label class="form-check-label" for="flexRadioDefault4">
-      ${obj.answer.d}
+           ${obj.answer.d}
       </label>
       </div>
       </div>
@@ -121,7 +117,7 @@ $(document).ready(function () {
 
         <div class='Questions'  >
         <div class='question_hr'>
-        Welcome ${obj.q}
+               ${obj.q}
         <hr ></hr>
   
         </div>
@@ -130,25 +126,25 @@ $(document).ready(function () {
   
         <div class='answers'>
         <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="answer${tagger}" id="flexcheckboxefault1">
+        <input class="form-check-input" type="checkbox" value="${obj.answer.a}" name="answer${tagger}" id="flexcheckboxefault1">
         <label class="form-check-label" for="flexcheckboxDefault1">
         ${obj.answer.a}
         </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="answer${tagger}" id="flexcheckboxDefault2">
+            <input class="form-check-input" type="checkbox" value="${obj.answer.b}" name="answer${tagger}" id="flexcheckboxDefault2">
             <label class="form-check-label" for="flexcheckboxDefault2">
             ${obj.answer.b}
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="answer${tagger}" id="flexcheckboxDefault3">
+            <input class="form-check-input" type="checkbox" value="${obj.answer.c}" name="answer${tagger}" id="flexcheckboxDefault3">
             <label class="form-check-label" for="flexcheckboxDefault3">
             ${obj.answer.c}
         </label>
         </div>
         <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="answer${tagger}" id="flexcheckboxDefault4">
+        <input class="form-check-input" type="checkbox" value="${obj.answer.d}" name="answer${tagger}" id="flexcheckboxDefault4">
         <label class="form-check-label" for="flexcheckboxDefault4">
         ${obj.answer.d}
         </label>
@@ -165,7 +161,7 @@ $(document).ready(function () {
 
         <div class='Questions'  >
         <div class='question_hr'>
-        Welcome ${obj.q}
+         ${obj.q}
         <hr ></hr>
         </div>
         </div>
@@ -173,7 +169,7 @@ $(document).ready(function () {
   
         <div class='answers'>
         <div class="form-group">
-        <textarea class="form-control" id="textarea_answer" rows="4"></textarea>
+        <textarea class="form-control" value="nnn" id="textarea_answer" rows="4"></textarea>
        </div>
        </div>
             
@@ -186,7 +182,7 @@ $(document).ready(function () {
 
         <div class='Questions'  >
         <div class='question_hr'>
-        Welcome ${obj.q}
+           ${obj.q}
         <hr ></hr>
   
         </div>
@@ -195,13 +191,13 @@ $(document).ready(function () {
   
           <div class='answers'>
           <div class="form-check" >
-          <input class="form-check-input" type="radio" name="answer${tagger}" id="flexRadioDefault1">
+          <input class="form-check-input" type="radio" value="${obj.answer.a}" name="answer${tagger}" id="flexRadioDefault1">
           <label class="form-check-label" for="flexRadioDefault1">
           ${obj.answer.a}
           </label>
           </div>
           <div class="form-check">
-              <input class="form-check-input" type="radio" name="answer${tagger}" id="flexRadioDefault2">
+              <input class="form-check-input" type="radio" value="${obj.answer.b}" name="answer${tagger}" id="flexRadioDefault2">
               <label class="form-check-label" for="flexRadioDefault2">
               ${obj.answer.b}
               </label>
@@ -257,7 +253,7 @@ $(document).ready(function () {
     };
   
   
-    injectToElement("#target",getComponent(json[counter]));
+   // injectToElement("#target",getComponent(json[counter]));
     $("#btn-prev").click(prev);
     $("#btn-next").click(next);
   
@@ -292,6 +288,34 @@ $(document).ready(function () {
       return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
   }
 
+  function get_user_data(){
+    arr=[];
+    for(let i=0;i<json.length;i++){
+      let input_group= $("#q-"+i+" :input");
+
+      if(input_group.length==1){
+        arr.push(input_group.val().toString());
+        //console.log($("#q-"+i).find("#textarea_answer").val());
+      }
+      else{
+        let res=[];
+        for (let i in input_group) {
+          if(input_group[i].checked==true)
+          res.push(input_group[i].value);
+        }
+        arr.push(res.join());
+      }
+      
+    }
+  
+    return arr;
+  }
+  
+  function casper(){
+    console.log(get_user_data());
+  }
+
+  $("#Submit_button").click(casper);
     
 });
 
@@ -327,10 +351,7 @@ function clock() {
 clock();
 
 
-function casper(){
-  var numberOfCheckedRadio = $('input:radio:checked').length;
-  alert(numberOfCheckedRadio)
-}
+
 
   /*
   1 -> mcq

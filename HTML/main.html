@@ -9,8 +9,22 @@
 <body>
     
     <h1 >Main Page</h1>
-    <h2>Hello!</h2>
-
+    <div id="demo">
+        <div>
+            <div>
+                Hen<input type="radio" name="dev" value="hen" id="" checked> <br>
+                Cow<input type="radio" name="dev" value="cow" id="" > <br>
+                Snake<input type="radio" name="dev" value="snake" id="" ><br>
+                <textarea name="" id="" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        var len = $("#demo :input"); 
+        console.log(len);
+        console.log(len.length);
+    </script>
     <script src="../js/main.js"></script>
 </body>
 </html>
