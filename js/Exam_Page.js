@@ -23,29 +23,28 @@ $(document).ready(function () {
   ];
 
   $.ajax({
-    url: "http://hemajoo-001-site1.etempurl.com/api/Exam/GetMyExam",
-    type: "POST",
-
-    data: JSON.stringify({
-      course_id: 1,
-    }),
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Headers": "*",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
-    },
-    success: function (data) {
-      console.log(data);
-      json=data;
-      init_body();
-    },
-    error: function (xhr, status, error) {
-      console.log(error);
-      console.log(status);
-      console.log(xhr.responseText);
-      //toastError("Wrong Credentials");
-    },
+      url: "http://localhost:8241/api/Exam/Examinate",
+      type: "GET",
+      data: {
+        course_id: 4,
+      },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
+      },
+      success: function (data) {
+        console.log(data);
+        json=data;
+        init_body();
+      },
+      error: function (xhr, status, error) {
+        console.log(error);
+        console.log(status);
+        console.log(xhr.responseText);
+        //toastError("Wrong Credentials");
+      },
   });
 
   function anchorClicked(idx) {
@@ -103,25 +102,25 @@ $(document).ready(function () {
 
       <div class='answers'>
       <div class="form-check">
-      <input class="form-check-input" type="radio" value="${obj.a}" name="answer${tagger}" id="flexRadioDefault1">
+      <input class="form-check-input" type="radio" value="a" name="answer${tagger}" id="flexRadioDefault1">
           <label class="form-check-label" for="flexRadioDefault1">
           ${obj.a}
           </label>
       </div>
       <div class="form-check">
-          <input class="form-check-input" type="radio" value="${obj.b}" name="answer${tagger}" id="flexRadioDefault2">
+          <input class="form-check-input" type="radio" value="b" name="answer${tagger}" id="flexRadioDefault2">
           <label class="form-check-label" for="flexRadioDefault2">
           ${obj.b}
           </label>
       </div>
       <div class="form-check">
-          <input class="form-check-input" type="radio" value="${obj.c}" name="answer${tagger}" id="flexRadioDefault3">
+          <input class="form-check-input" type="radio" value="c" name="answer${tagger}" id="flexRadioDefault3">
           <label class="form-check-label" for="flexRadioDefault3">
           ${obj.c}
       </label>
       </div>
       <div class="form-check">
-      <input class="form-check-input" type="radio" value="${obj.d}" name="answer${tagger}" id="flexRadioDefault4">
+      <input class="form-check-input" type="radio" value="d" name="answer${tagger}" id="flexRadioDefault4">
       <label class="form-check-label" for="flexRadioDefault4">
            ${obj.d}
       </label>
@@ -147,25 +146,25 @@ $(document).ready(function () {
   
         <div class='answers'>
         <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="${obj.a}" name="answer${tagger}" id="flexcheckboxefault1">
+        <input class="form-check-input" type="checkbox" value="a" name="answer${tagger}" id="flexcheckboxefault1">
         <label class="form-check-label" for="flexcheckboxDefault1">
         ${obj.a}
         </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="${obj.b}" name="answer${tagger}" id="flexcheckboxDefault2">
+            <input class="form-check-input" type="checkbox" value="b" name="answer${tagger}" id="flexcheckboxDefault2">
             <label class="form-check-label" for="flexcheckboxDefault2">
             ${obj.b}
             </label>
         </div>
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="${obj.c}" name="answer${tagger}" id="flexcheckboxDefault3">
+            <input class="form-check-input" type="checkbox" value="c" name="answer${tagger}" id="flexcheckboxDefault3">
             <label class="form-check-label" for="flexcheckboxDefault3">
             ${obj.c}
         </label>
         </div>
         <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="${obj.d}" name="answer${tagger}" id="flexcheckboxDefault4">
+        <input class="form-check-input" type="checkbox" value="d" name="answer${tagger}" id="flexcheckboxDefault4">
         <label class="form-check-label" for="flexcheckboxDefault4">
         ${obj.d}
         </label>
@@ -212,13 +211,13 @@ $(document).ready(function () {
   
           <div class='answers'>
           <div class="form-check" >
-          <input class="form-check-input" type="radio" value="${obj.a}" name="answer${tagger}" id="flexRadioDefault1">
+          <input class="form-check-input" type="radio" value="a" name="answer${tagger}" id="flexRadioDefault1">
           <label class="form-check-label" for="flexRadioDefault1">
           ${obj.a}
           </label>
           </div>
           <div class="form-check">
-              <input class="form-check-input" type="radio" value="${obj.b}" name="answer${tagger}" id="flexRadioDefault2">
+              <input class="form-check-input" type="radio" value="b" name="answer${tagger}" id="flexRadioDefault2">
               <label class="form-check-label" for="flexRadioDefault2">
               ${obj.b}
               </label>
@@ -275,7 +274,7 @@ $(document).ready(function () {
 
   window.onblur = () => {
     Blur_Count--;
-    farcry(Blur_Count);
+    //farcry(Blur_Count);
   };
 
   function farcry(Blur_Count) {
@@ -314,14 +313,24 @@ $(document).ready(function () {
       let input_group = $("#q-" + i + " :input");
 
       if (input_group.length == 1) {
-        arr.push(input_group.val().toString());
+        arr.push(  
+          { "id":json[i].id, 
+            "answer":input_group.val().toString().trim(),
+            "qtype":json[i].qtype
+          }
+        );
         //console.log($("#q-"+i).find("#textarea_answer").val());
       } else {
         let res = [];
         for (let i in input_group) {
           if (input_group[i].checked == true) res.push(input_group[i].value);
         }
-        arr.push(res.join());
+        arr.push(
+          { "id":json[i].id, 
+            "answer":res.join(""),
+            "qtype":json[i].qtype
+          }
+        );
       }
     }
 
@@ -329,7 +338,33 @@ $(document).ready(function () {
   }
 
   function casper() {
+
     console.log(get_user_data());
+        $.ajax({
+          url: "http://localhost:8241/api/Exam/Examinate",
+          type: "POST",
+          data: JSON.stringify({
+            "std_id": 0,
+            "course_id": 4,
+            "answers": get_user_data()
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Headers": "*",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
+          },
+          success: function (data) {
+            console.log(data);
+          },
+          error: function (xhr, status, error) {
+            console.log(error);
+            console.log(status);
+            console.log(xhr.responseText);
+            //toastError("Wrong Credentials");
+          },
+      });
+    //console.log();
   }
 
   $("#Submit_button").click(casper);
