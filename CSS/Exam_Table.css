@@ -50,3 +50,21 @@ td{
 #DENT_DIV{
     display: none;
 }
+
+.error_msg{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+
+}
+
+
+
+li{
+    list-style-type: none;
+    float: left;
+    color: #acadaf;
+    margin-bottom: 20px;
+    margin-left: 33px;
+
+}

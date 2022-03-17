@@ -208,6 +208,54 @@ function DENT_AddDataTable(data){
     }
 
 }
+
+
+var ERROR_json = [
+  {
+    Course_Name: "DENT_1",
+    Date:"22/11/2022",
+    Start: "9:00 AM",
+    End: "10:00 AM",
+  },
+  {
+      Course_Name: "DMM",
+      Date:"23/11/2022",
+      Start: "8:00 AM",
+      End: "9:00 AM",
+    },
+    {
+      Course_Name: "MASS_3",
+      Date:"24/11/2022",
+      Start: "10:30 AM",
+      End: "11:00 AM",
+    },
+    {
+      Course_Name: "PH_4",
+      Date:"25/11/2022",
+      Start: "9:00 AM",
+      End: "10:30 AM",
+    },
+ 
+];
+
+ERROR_AddDataTable(ERROR_json)
+function ERROR_AddDataTable(data){
+    var table = document.getElementById('ERROR_table')
+    for(var i=0;i<data.length;i++){
+        var row = `
+        <div class="error_courses">
+        <ul>
+        <li>${data[i].Course_Name}</li>
+        </ul>
+        <div>
+          `
+          table.innerHTML+=row
+        }
+
+    
+
+}
+
 });
 
 
