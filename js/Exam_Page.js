@@ -368,9 +368,9 @@ $(document).ready(function () {
   }
 
   $("#Submit_button").click(casper);
-});
 
-/*timer*/
+
+  /*timer*/
 
 var myTimer;
 function clock() {
@@ -391,6 +391,9 @@ function clock() {
   }
 }
 clock();
+});
+
+
 
 /*
   1 -> mcq

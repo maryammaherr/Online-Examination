@@ -11,10 +11,14 @@ body{
 }
 
 table{
+    height: 200px !important;
+    width: 900px !important;
+    overflow: scroll;
     border-collapse: collapse;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 5px 10px #e1e5ee;
     text-align: center;
+    margin: 10px;
 
 }
 thead{
@@ -32,4 +36,17 @@ thead{
 }
 td{
     padding: 1rem 2rem;
+}
+
+#PH_DIV{
+    display: none;
+}
+#IT_DIV{
+    display: none;
+}
+#MASS_DIV{
+    display: none;
+}
+#DENT_DIV{
+    display: none;
 }
