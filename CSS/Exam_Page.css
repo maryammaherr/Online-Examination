@@ -5,7 +5,7 @@ html,
 body {
     height: 100% !important;
     width: 100% !important;
-    background-color: #182d34 !important;
+    background-color: #f9fbff !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
@@ -13,7 +13,7 @@ body {
 }
 
 .MainDiv{
-    background-color: #182d34;
+    background-color: #f9fbff;
     width: 100%;
     height: 100%;
     padding: 20px;
@@ -23,12 +23,14 @@ body {
 
 /*Details Box */
 .Box {
-    border-bottom:  1px solid #ffff;
     height: auto;
     width: 100%;
     margin-bottom: 25px;
-    color: #ffff;
+    color: #4f546c(19, 18, 18);
     overflow-wrap: break-word;
+    box-shadow: 0px 5px 10px #e1e5ee;
+    padding: 20px;
+    background-color: rgb(255, 255, 255);
 
 }
 
@@ -40,12 +42,10 @@ body {
 
 /* Timer */
 .Timer {
-    color: hsl(52, 94%, 94%);
+    color:#38d39f;
     text-align: center;
     width: 60px;
     margin-left: 85%;
- 
-
 }
 .Timer_Icon_button{
     height: 60px;
@@ -61,33 +61,37 @@ body {
 }
 
 #icon{
-    font-size: 30 px !important;
-    color: yellow;
+    font-size: 30px !important;
+    color: #38d39f;
 }
 #icon i{
     font-size: 25px !important;
     line-height: 60px !important;
+    
 }
 span{
     font-size: 25px;
     font-weight: 50;
     line-height: 50px;
     align-items: end;
+    color: #4f546c;
 }
+
 
 
 /* Questions Box */
 .Questions_Box {
     width: 100%;
     padding: 10px;
-    background-color:#fefae0;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 5px 10px #e1e5ee;
     height: 450px;
     border-radius: 10px;
     padding: 15px 15px;
 
   }
   .Questions_Box_h2 {
-    color: #182d34;
+    color: #4f546c;
     overflow-wrap: break-word;
     text-align: center;
     font-size: 30px !important;
@@ -105,25 +109,25 @@ span{
     background: none; 
   }
   ::-webkit-scrollbar-thumb {
-    background: #888; 
+    background: #4f546c; 
     border-radius: 10px;
   
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+    background: #4f546c; 
   }
   
   
   ul {
     list-style-type: circle;
     display:inline-block;
-    color: #182d34;
+    color: #4f546c;
     text-decoration: none;
     }
     
      li a {
         display:inline-block;
-        color: #182d34;
+        color: #4f546c;
         padding: 8px 15px;
         text-decoration: none;
       font-size: 20px !important;
@@ -134,12 +138,12 @@ span{
       /* CHANGE THE LI IF IT UN USEDDD */
   
     li a:hover {
-      color: #6d6969;
+      color: #38d39f;
       transform: scale(1.09);
       text-decoration: none;
     }
     li a:active {
-      color: #6d6969;
+      color: #38d39f;
       transform: scale(1.09);
       text-decoration: none;
 
@@ -148,14 +152,14 @@ span{
 
     /* Questions */
     .Question_Area{
-        background-color: #fefae0;
-        flex-grow: 1;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0px 5px 10px #e1e5ee;        flex-grow: 1;
         display: flex;
         width: 100%;
         overflow-y: scroll;
         margin-top: 25px;
         height: 400px;
-        color: #182d34;
+        color: #4f546c;
         overflow-wrap: break-word;
         border-radius: 10px;
 
@@ -185,35 +189,42 @@ span{
     width: 100px;
     padding: 5px;
     margin-right: 50px;
-    background-color: #fefae0!important;
-    border-color: #fefae0!important;
+    background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
+    background-size: 200% !important;
+    border:none !important;
     font-size: 15px !important;
-    border-radius: 10px ;
-    color: black;
+    border-radius: 10px;
+    color: #fff;
 }
 #btn-prev:focus{
-    box-shadow: 0 0 0 .2rem #fefae0!important;
+    box-shadow: none !important;
 }
 #btn-prev:hover{
     transform: scale(1.05);
+    background-position: right;
+
 }
 
 #btn-next{
     width: 100px;
     padding: 5px;
     margin-right: 50px;
-    background-color: #fefae0 !important;
-    border-color: #fefae0 !important;
+    background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
+    background-size: 200% !important;
+    border:none !important;
     font-size: 15px !important;
     border-radius: 10px;
-    color: black;
+    color: #fff;
 
 }
 #btn-next:focus{
-    box-shadow: 0 0 0 .2rem #fefae0!important;
+    box-shadow: none !important;
+
 }
 #btn-next:hover{
     transform: scale(1.05);
+    background-position: right;
+
 }
 :disabled{
     cursor: not-allowed;
@@ -223,20 +234,23 @@ span{
 #Submit_button{
     width: 100px;
     padding: 5px;
-    background-color: #fefae0 !important;
-    border-color: #fefae0 !important;
+   	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
+    background-size: 200% !important;
+    border:none !important;
     font-size: 15px !important;
     border-radius: 10px;
-    color: black;
+    color: #fff;
     margin-left: 8%;
 
 }
 
 #Submit_button:focus{
-    box-shadow: 0 0 0 .2rem #fefae0 !important;
+    box-shadow: none !important;
 }
 #Submit_button:hover{
     transform: scale(1.05);
+    background-position: right;
+
 }
 
 /* Answer */
@@ -248,12 +262,28 @@ span{
 }
 
 .active_question{
-    color: red;
+    color: #38d39f;
 }
 
 
 .hide-div{
     display: none;
+}
+
+#hours{
+    color: #38d39f;
+    font-weight: bold;
+
+}
+#minutes{
+    color: #38d39f;
+    font-weight: bold;
+
+}
+#seconds{
+    color: #38d39f;
+    font-weight: bold;
+
 }
 
 
