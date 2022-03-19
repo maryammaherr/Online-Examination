@@ -187,12 +187,12 @@ span{
 
 #btn-prev{
     width: 100px;
-    padding: 5px;
+    padding: 6px;
     margin-right: 50px;
     background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
     background-size: 200% !important;
     border:none !important;
-    font-size: 15px !important;
+    font-size: 17px !important;
     border-radius: 10px;
     color: #fff;
 }
@@ -207,12 +207,12 @@ span{
 
 #btn-next{
     width: 100px;
-    padding: 5px;
+    padding: 6px;
     margin-right: 50px;
     background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
     background-size: 200% !important;
     border:none !important;
-    font-size: 15px !important;
+    font-size: 17px !important;
     border-radius: 10px;
     color: #fff;
 
@@ -233,11 +233,11 @@ span{
 
 #Submit_button{
     width: 100px;
-    padding: 5px;
+    padding: 6px;
    	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
     background-size: 200% !important;
     border:none !important;
-    font-size: 15px !important;
+    font-size: 17px !important;
     border-radius: 10px;
     color: #fff;
     margin-left: 3% !important;
@@ -271,17 +271,14 @@ span{
 
 #hours{
     color: #38d39f;
-    font-weight: bold;
 
 }
 #minutes{
     color: #38d39f;
-    font-weight: bold;
 
 }
 #seconds{
     color: #38d39f;
-    font-weight: bold;
 
 }
 
