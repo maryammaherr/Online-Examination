@@ -37,8 +37,9 @@ $(document).ready(function () {
       success: function (data) {
         console.log(data);
         json=data;
+        $("#spinners").hide();
         init_body();
-        clock();
+        //clock(data.time);
       },
       error: function (xhr, status, error) {
         console.log(error);
@@ -47,6 +48,7 @@ $(document).ready(function () {
         //toastError("Wrong Credentials");
       },
   });
+
 
   function anchorClicked(idx) {
     //  injectToElement("#target",getComponent(json[idx]));
