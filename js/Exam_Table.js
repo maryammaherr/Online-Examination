@@ -212,29 +212,72 @@ function DENT_AddDataTable(data){
 
 var ERROR_json = [
   {
-    Course_Name: "DENT_1",
+    Course_Name: "Pattern Recognition",
     Date:"22/11/2022",
     Start: "9:00 AM",
     End: "10:00 AM",
   },
   {
-      Course_Name: "DMM",
+      Course_Name: "DIgital Multimedia",
       Date:"23/11/2022",
       Start: "8:00 AM",
       End: "9:00 AM",
     },
     {
-      Course_Name: "MASS_3",
+      Course_Name: "Information Engineering",
       Date:"24/11/2022",
       Start: "10:30 AM",
       End: "11:00 AM",
     },
     {
-      Course_Name: "PH_4",
+      Course_Name: "Information Engineering",
+      Date:"24/11/2022",
+      Start: "10:30 AM",
+      End: "11:00 AM",
+    },
+    {
+      Course_Name: "Information Engineering",
+      Date:"24/11/2022",
+      Start: "10:30 AM",
+      End: "11:00 AM",
+    },
+    {
+      Course_Name: "Netork operation and Admenistration",
       Date:"25/11/2022",
       Start: "9:00 AM",
       End: "10:30 AM",
     },
+    {
+      Course_Name: "Information Engineering",
+      Date:"24/11/2022",
+      Start: "10:30 AM",
+      End: "11:00 AM",
+    },
+    {
+      Course_Name: "Information Engineering",
+      Date:"24/11/2022",
+      Start: "10:30 AM",
+      End: "11:00 AM",
+    },
+    {
+      Course_Name: "Netork operation and Admenistration",
+      Date:"25/11/2022",
+      Start: "9:00 AM",
+      End: "10:30 AM",
+    },
+    {
+      Course_Name: "Netork operation and Admenistration",
+      Date:"25/11/2022",
+      Start: "9:00 AM",
+      End: "10:30 AM",
+    },
+    {
+      Course_Name: "Netork operation and Admenistration",
+      Date:"25/11/2022",
+      Start: "9:00 AM",
+      End: "10:30 AM",
+    },
+    
  
 ];
 

@@ -1,12 +1,10 @@
 *{
-    margin:0px;
-    padding:0px;
+    margin:0px !important;
+    padding:0px !important;
     box-sizing: border-box;
 }
 
 body{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    display: grid;
     height: 100vh;
     color: #4f546c !important;
     font-size: 0.9rem;
@@ -20,6 +18,8 @@ body{
     background: #fafafa;
     border-bottom: 1px solid #ccc;
     box-shadow: 0px 5px 10px #e1e5ee;
+    padding: 30px !important;
+    margin-bottom: 10% !important;
 
 }
 .main-container .header-container .header-content{
@@ -28,25 +28,27 @@ body{
     padding: 20px;  
 }
 
-.main-container .body-container .body-content{
-    margin-top: 140px; 
-}
+
 
 .main-container .body-container .body-content .logo-container img{
     width: 150px;
     height: 150px;
     border-radius: 50%;
     border: 5px solid #38d39f; 
+    margin-left: 100px !important;
 }
 
 
 .main-container .body-container .body-content .ExamPassed button{
-    padding: 10px 20px 10px 20px;
+    padding: 10px 20px 10px 20px !important;
     border: 1px solid #38d39f;
     background: #fff;
     color: #38d39f;
+    font-size: large;
+    font-weight: bold;
    
 }
+
 
 
 
