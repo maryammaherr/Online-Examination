@@ -38,6 +38,7 @@ $(document).ready(function () {
         console.log(data);
         json=data;
         init_body();
+        clock();
       },
       error: function (xhr, status, error) {
         console.log(error);
@@ -373,10 +374,10 @@ $(document).ready(function () {
   /*timer*/
 
 var myTimer;
-function clock() {
+function clock(minutes) {
   myTimer = setInterval(myClock, 1000);
   var c = 3600; //Initially set to 1 hour
-
+  c=minutes*60;
   function myClock() {
     --c;
     var seconds = c % 60; // Seconds that cannot be written in minutes
@@ -390,7 +391,7 @@ function clock() {
     document.getElementById("seconds").innerHTML = seconds;
   }
 }
-clock();
+clock(90);
 });
 
 
