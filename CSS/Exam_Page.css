@@ -45,7 +45,7 @@ body {
     color:#38d39f;
     text-align: center;
     width: 60px;
-    margin-left: 85%;
+    margin-left: 12%;
 }
 .Timer_Icon_button{
     height: 60px;
@@ -181,7 +181,7 @@ span{
  .btns{
         width: 100%;
         margin-top: 4%;
-        margin-bottom: 5%;
+        margin-bottom: 5px;
 
     }
 
@@ -240,8 +240,7 @@ span{
     font-size: 15px !important;
     border-radius: 10px;
     color: #fff;
-    margin-left: 8%;
-
+    margin-left: 3% !important;
 }
 
 #Submit_button:focus{

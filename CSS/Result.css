@@ -48,6 +48,11 @@ body{
     font-weight: bold;
    
 }
+.main-container .body-container .body-content .ExamPassed button:focus{
+    box-shadow: none !important;
+
+}
+
 
 
 
