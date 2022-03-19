@@ -4,7 +4,29 @@ $( document ).ready(function() {
 
 //call api
 //then fill json 
-
+$.ajax({
+  url: "http://localhost:8241/api/Course/StudentCourses",
+  type: "GET",
+  data: {
+    std_id: "fa41f67a-af0c-4e73-bcee-422605a93dec",
+  },
+  headers: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Headers": "*",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
+  },
+  success: function (data) {
+    console.log(data);
+    init_body(data.data);
+  },
+  error: function (xhr, status, error) {
+    console.log(error);
+    console.log(status);
+    console.log(xhr.responseText);
+    //toastError("Wrong Credentials");
+  },
+});
 
 function get_td(content){
   let td = document.createElement("td");
@@ -21,15 +43,19 @@ function get_status_html(flag){
   }
 }
 
-function get_buttonLink(course_id){
-  return `<a
-          href="Exam_Page/${course_id}"><input class="btn btn-primary" type="button" value="Examinate"></input></a>`
+function set_course_id(course_id){
+  sessionStorage.setItem("exam-courseId", course_id);
+}
+
+function get_buttonLink(){
+  return `<a  href="Exam_Page.html"><input class="btn btn-primary" type="button" value="Examinate"></input></a>`
 }
 
 function init_body(table_data){
-
+  console.log(table_data.length)
   $("#table-body").html("");
   for(let i=0;i<table_data.length;i++){
+    console.log("haha")
     //table_data[i][""]
     var start_time=table_data[i]["startTime"];
     var mydate = new Date(start_time);
@@ -47,8 +73,9 @@ function init_body(table_data){
     if(table_data[i]["isExaminated"])
       td6 = get_td( table_data[i]["currentMarks"]+"/"+table_data[i]["totalMarks"]   ); 
     else
-      td6 = get_td(  get_buttonLink( table_data[i]["courseId"]) );
+      td6 = get_td(  get_buttonLink() );
 
+    td6.onclick=function(){set_course_id( table_data[i]["courseId"]);}
     var row = document.createElement('tr');
     row.append(td1,td2,td3,td4,td5,td6);
 
