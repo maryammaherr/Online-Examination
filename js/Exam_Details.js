@@ -92,9 +92,8 @@ $(document).ready(function () {
       }); 
     }
 
-
     $('#debug').on('click', function() {
-      console.log(questions_value+"/" +single_value+"/"+written_value+"/"+multiple_value+"/"+true_false_value);
+      console.log(parseInt(questions_value) +parseInt(single_value)+parseInt(written_value)+parseInt(multiple_value)+parseInt(true_false_value));
     }); 
 
 
