@@ -5,8 +5,8 @@ body{
 
 }
 .main{
-    margin: 120px;
-    margin-top: 200px;
+    margin: 100px;
+    margin-top: 100px;
 }
 
 
@@ -23,9 +23,6 @@ body{
 select {
    cursor: pointer !important;
 }
-option{
-    margin: 20px;
-}
 
 ::-webkit-scrollbar {
   width: 7px;
@@ -41,4 +38,7 @@ option{
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #4f546c; 
+}
+#check{
+  margin-left: 49% !important;
 }

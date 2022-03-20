@@ -5,6 +5,12 @@ $(document).ready(function () {
  var written_value=1;
  var multiple_value=1;
  var true_false_value=1;
+ var Hard_value=1;
+ var Easy_value=1;
+ var Moderate_value=1;
+
+
+
 
     Num_Questions() 
     function Num_Questions(){
@@ -87,8 +93,82 @@ $(document).ready(function () {
       }); 
     }
 
-    $('#debug').on('click', function() {
-      console.log(parseInt(questions_value) +parseInt(single_value)+parseInt(written_value)+parseInt(multiple_value)+parseInt(true_false_value));
-    }); 
+    Hard_questions() 
+    function Hard_questions(){
+        for(var i=1;i<=Questions;i++){
+            var x = document.getElementById("hard");
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i+" "+"Question";
+            x.add(option);
+        }
+
+     //get the value of the selected option
+    $('#hard').on('change', function() {
+        Hard_value=this.value
+        console.log(Hard_value)
+       }); 
+    }
+
+    Easy_questions() 
+    function Easy_questions(){
+        for(var i=1;i<=Questions;i++){
+            var x = document.getElementById("easy");
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i+" "+"Question";
+            x.add(option);
+        }
+
+     //get the value of the selected option
+    $('#easy').on('change', function() {
+        Easy_value=this.value
+        console.log(Easy_value)
+
+       }); 
+    }
+
+    Moderate_questions() 
+    function Moderate_questions(){
+        for(var i=1;i<=Questions;i++){
+            var x = document.getElementById("moderate");
+            var option = document.createElement("option");
+            option.value = i;
+            option.text = i+" "+"Question";
+            x.add(option);
+        }
+
+     //get the value of the selected option
+    $('#moderate').on('change', function() {
+       Moderate_value=this.value
+       console.log(Moderate_value)
+       }); 
+    }
+
+
+
+
+
+
+
+    //validate
+
+    $('#check').on('click', function() {
+      sum=parseInt(single_value)+parseInt(written_value)+parseInt(multiple_value)+parseInt(true_false_value);
+      type_sum = parseInt(Hard_value)+parseInt(Easy_value)+parseInt(Moderate_value);
+      if(sum < questions_value || sum > questions_value){
+      alert("Wrong, make sure that the number of questions is qual to your selected options");
+
+     }
+     else if(type_sum < questions_value || type_sum > questions_value){
+        alert("Wrong, make sure that the number of Type of questions is qual to your selected options");
+      }
+
+      else{
+        alert("Done");
+      }
+    
+
+  }); 
 
   });
