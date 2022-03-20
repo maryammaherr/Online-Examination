@@ -21,7 +21,8 @@ $(document).ready(function () {
       type: 4,
     },
   ];
-  var exam_details=sessionStorage.getItem("exam-details");
+  var exam_details=JSON.parse(sessionStorage.getItem("exam-details"));
+  console.log(exam_details);
   $.ajax({
       url: "http://localhost:8241/api/Exam/Examinate",
       type: "GET",
@@ -39,17 +40,29 @@ $(document).ready(function () {
         json=data;
         $("#spinners").remove();
         init_body();
-        clock(sessionStorage.getItem('exam-duration'));
-        //clock(data.time);
+        clock(exam_details.durationInMinutes);
+        setSubjectName(exam_details.courseName);
+        setStudentName("Abusarie");
+        setDuration(exam_details.durationInMinutes);
       },
       error: function (xhr, status, error) {
         console.log(error);
         console.log(status);
         console.log(xhr.responseText);
-        //toastError("Wrong Credentials");
       },
   });
 
+  function setSubjectName(name){
+      $("#subject-name").html(" "+name);
+  }
+
+  function setStudentName(name){
+    $("#student-name").html(" "+name);
+  }
+
+  function setDuration(dur){
+    $("#duration").html(" "+dur+" min");
+  }
 
   function anchorClicked(idx) {
     //  injectToElement("#target",getComponent(json[idx]));
