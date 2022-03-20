@@ -21,12 +21,12 @@ $(document).ready(function () {
       type: 4,
     },
   ];
-
+  var exam_details=sessionStorage.getItem("exam-details");
   $.ajax({
       url: "http://localhost:8241/api/Exam/Examinate",
       type: "GET",
       data: {
-        course_id: 4,
+        course_id: exam_details.courseId,
       },
       headers: {
         "Content-Type": "application/json",
