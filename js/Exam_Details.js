@@ -18,7 +18,6 @@ $(document).ready(function () {
      //get the value of the selected option
     $('#Question_Number').on('change', function() {
         questions_value=this.value;
-        console.log(questions_value);
       });
         
       }
@@ -35,7 +34,6 @@ $(document).ready(function () {
         //get the value of the selected option
     $('#single_mcq').on('change', function() {
         single_value=this.value;
-        console.log( single_value );
       });  
       }
 
@@ -53,7 +51,6 @@ $(document).ready(function () {
         //get the value of the selected option
     $('#multiple_mcq').on('change', function() {
         multiple_value=this.value;
-        console.log( multiple_value );
       }); 
     }
 
@@ -70,7 +67,6 @@ $(document).ready(function () {
      //get the value of the selected option
     $('#written').on('change', function() {
         written_value=this.value
-        console.log( written_value );
       }); 
     }
 
@@ -88,13 +84,11 @@ $(document).ready(function () {
      //get the value of the selected option
     $('#true_false').on('change', function() {
         true_false_value=this.value
-        console.log( true_false_value );
       }); 
     }
 
     $('#debug').on('click', function() {
       console.log(parseInt(questions_value) +parseInt(single_value)+parseInt(written_value)+parseInt(multiple_value)+parseInt(true_false_value));
     }); 
-
 
   });
