@@ -92,7 +92,11 @@ $(document).ready(function () {
       }); 
     }
 
-    console.log(questions_value+"/" +single_value+"/"+written_value+"/"+multiple_value+"/"+true_false_value);
+
+    $('#debug').on('click', function() {
+      console.log(questions_value+"/" +single_value+"/"+written_value+"/"+multiple_value+"/"+true_false_value);
+
+    }); 
 
 
   });
