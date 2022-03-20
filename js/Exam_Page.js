@@ -37,8 +37,10 @@ $(document).ready(function () {
       success: function (data) {
         console.log(data);
         json=data;
+        $("#spinners").remove();
         init_body();
-        clock();
+        clock(sessionStorage.getItem('exam-duration'));
+        //clock(data.time);
       },
       error: function (xhr, status, error) {
         console.log(error);
@@ -47,6 +49,7 @@ $(document).ready(function () {
         //toastError("Wrong Credentials");
       },
   });
+
 
   function anchorClicked(idx) {
     //  injectToElement("#target",getComponent(json[idx]));
@@ -362,10 +365,8 @@ $(document).ready(function () {
             console.log(error);
             console.log(status);
             console.log(xhr.responseText);
-            //toastError("Wrong Credentials");
           },
       });
-    //console.log();
   }
 
   $("#Submit_button").click(casper);
@@ -391,7 +392,6 @@ function clock(minutes) {
     document.getElementById("seconds").innerHTML = seconds;
   }
 }
-clock(90);
 });
 
 
