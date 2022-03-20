@@ -45,7 +45,7 @@ function get_status_html(flag){
 }
 
 function set_examdetails(examdetails){
-  sessionStorage.setItem("exam-details", examdetails);
+  sessionStorage.setItem("exam-details", JSON.stringify(examdetails));
 }
 
 function get_button(){
@@ -56,8 +56,7 @@ function init_body(table_data){
   console.log(table_data.length)
   $("#table-body").html("");
   for(let i=0;i<table_data.length;i++){
-    console.log("haha")
-    //table_data[i][""]
+
     var start_time=table_data[i]["startTime"];
     var mydate = new Date(start_time);
     mydate=mydate.toLocaleString().split(",");
@@ -74,20 +73,24 @@ function init_body(table_data){
     if(table_data[i]["isExaminated"])
       td6 = get_td( table_data[i]["currentMarks"]+"/"+table_data[i]["totalMarks"]   ); 
     else
+    {
       td6 = get_td(  get_button() );
-
-    td6.onclick=function(){
-      set_examdetails( table_data[i]);
-      if(windowObjectReference == null || windowObjectReference.closed)
-      {
-        windowObjectReference = window.open("Exam_Page.html",
-        "EXAMINATION PAGE", "menubar=1,resizable=0,popup=true,width=4000,height=4000");
+      td6.onclick=function(){
+        set_examdetails( table_data[i]);
+        console.log(table_data[i])
+        if(windowObjectReference == null || windowObjectReference.closed)
+        {
+          windowObjectReference = window.open("Exam_Page.html",
+          "EXAMINATION PAGE", "menubar=1,resizable=0,popup=true,width=4000,height=4000");
+        }
+        else
+        {
+          windowObjectReference.focus();
+        };
       }
-      else
-      {
-        windowObjectReference.focus();
-      };
     }
+      
+    
     var row = document.createElement('tr');
     row.append(td1,td2,td3,td4,td5,td6);
 
