@@ -157,15 +157,15 @@ $(document).ready(function () {
       sum=parseInt(single_value)+parseInt(written_value)+parseInt(multiple_value)+parseInt(true_false_value);
       type_sum = parseInt(Hard_value)+parseInt(Easy_value)+parseInt(Moderate_value);
       if(sum < questions_value || sum > questions_value){
-      alert("Wrong, make sure that the number of questions is qual to your selected options");
+      toastWarning("Make sure that the number of questions is equal to your selected options");
 
      }
      else if(type_sum < questions_value || type_sum > questions_value){
-        alert("Wrong, make sure that the number of Type of questions is qual to your selected options");
+        toastWarning("Make sure that the total number of questions is equal to total of question types you selected");
       }
 
       else{
-        alert("Done");
+        toastSuccess("Done");
       }
     
 
