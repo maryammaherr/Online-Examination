@@ -1,5 +1,6 @@
 $( document ).ready(function() {
 //status -> Done , Upcoming
+var windowObjectReference = null; // global variable
 
 
 //call api
@@ -43,12 +44,12 @@ function get_status_html(flag){
   }
 }
 
-function set_course_id(course_id){
-  sessionStorage.setItem("exam-courseId", course_id);
+function set_examdetails(examdetails){
+  sessionStorage.setItem("exam-details", examdetails);
 }
 
-function get_buttonLink(){
-  return `<a  href="Exam_Page.html"><input class="btn btn-primary" type="button" value="Examinate"></input></a>`
+function get_button(){
+  return `<input class="btn btn-primary" type="button" value="Examinate"></input>`
 }
 
 function init_body(table_data){
@@ -73,9 +74,20 @@ function init_body(table_data){
     if(table_data[i]["isExaminated"])
       td6 = get_td( table_data[i]["currentMarks"]+"/"+table_data[i]["totalMarks"]   ); 
     else
-      td6 = get_td(  get_buttonLink() );
+      td6 = get_td(  get_button() );
 
-    td6.onclick=function(){set_course_id( table_data[i]["courseId"]);}
+    td6.onclick=function(){
+      set_examdetails( table_data[i]);
+      if(windowObjectReference == null || windowObjectReference.closed)
+      {
+        windowObjectReference = window.open("Exam_Page.html",
+        "EXAMINATION PAGE", "menubar=1,resizable=0,popup=true,width=4000,height=4000");
+      }
+      else
+      {
+        windowObjectReference.focus();
+      };
+    }
     var row = document.createElement('tr');
     row.append(td1,td2,td3,td4,td5,td6);
 
