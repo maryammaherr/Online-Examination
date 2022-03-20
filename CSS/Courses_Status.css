@@ -7,9 +7,11 @@ body{
     color: #4f546c !important;
     font-size: 0.9rem;
     background-color: #f9fbff;
-
 }
 
+html,body{
+    height: 100%;
+}
 table{
     height: 200px !important;
     width: 900px !important;

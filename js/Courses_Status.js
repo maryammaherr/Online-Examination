@@ -2,6 +2,9 @@ $( document ).ready(function() {
 //status -> Done , Upcoming
 var windowObjectReference = null; // global variable
 
+$(window).focus(function() {
+  location.reload();
+});
 
 //call api
 //then fill json 
@@ -9,7 +12,7 @@ $.ajax({
   url: "http://localhost:8241/api/Course/StudentCourses",
   type: "GET",
   data: {
-    std_id: "fa41f67a-af0c-4e73-bcee-422605a93dec",
+    std_id: JSON.parse(localStorage.getItem('user-data')).id,
   },
   headers: {
     "Content-Type": "application/json",
@@ -19,6 +22,7 @@ $.ajax({
   },
   success: function (data) {
     console.log(data);
+    data.data = sortByKey(data.data, 'startTime');
     init_body(data.data);
   },
   error: function (xhr, status, error) {
@@ -28,6 +32,15 @@ $.ajax({
     //toastError("Wrong Credentials");
   },
 });
+
+function sortByKey(array, key) {
+  return array.sort(function(a, b) {
+      var x =new Date( a[key]); var y =new Date( b[key]);
+      return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+  });
+  }
+  
+  
 
 function get_td(content){
   let td = document.createElement("td");

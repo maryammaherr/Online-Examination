@@ -30,7 +30,7 @@ function authenticate(){
 		toastWarning("Password is empty!");
 	   else {
 		$.ajax({
-		  url: "https://localhost:44311/api/Authenticate/Login",
+		  url: "http://localhost:8241/api/Authenticate/Login",
 		  type: 'POST',
 		  data: JSON.stringify({
 			"username": username,
@@ -42,15 +42,19 @@ function authenticate(){
 			"Access-Control-Allow-Origin":"*"
 		  },
 		  success: function (data) {
-			  console.log(data.token);
-			  localStorage.setItem('token', data.token);
-			  window.location.replace("../html/main.html");
+			  if(data.data==null){
+				toastError("Wrong Credentials");
+			  }
+			  else{
+				localStorage.setItem('user-data', JSON.stringify( data.data.userDetails )   );
+				window.location.replace("../html/Courses_Status.html");
+			  }
 		  },
 		  error: function(xhr,status,error){
 			console.log(error);
 			console.log(status);
 			console.log(xhr.responseText);
-			toastError("Wrong Credentials");
+			toastError("Something went wrong");
 		  }
 		});
 	  }

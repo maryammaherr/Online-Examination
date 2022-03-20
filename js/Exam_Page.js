@@ -1,4 +1,11 @@
+/*window.onbeforeunload = function() {
+  //$("#warning-msg").html("You are disqualified");
+  //$('#modal-display').click();
+  return ""
+}*/
+
 $(document).ready(function () {
+
   var counter = 0;
   var json = [
     {
@@ -21,8 +28,14 @@ $(document).ready(function () {
       type: 4,
     },
   ];
+
+ 
+
+
+
   var exam_details=JSON.parse(sessionStorage.getItem("exam-details"));
   console.log(exam_details);
+
   $.ajax({
       url: "http://localhost:8241/api/Exam/Examinate",
       type: "GET",
@@ -40,9 +53,10 @@ $(document).ready(function () {
         json=data;
         $("#spinners").remove();
         init_body();
+        $('#Submit_button').prop("disabled", false);
         clock(exam_details.durationInMinutes);
         setSubjectName(exam_details.courseName);
-        setStudentName("Abusarie");
+        setStudentName(JSON.parse(localStorage.getItem('user-data')).firstname);
         setDuration(exam_details.durationInMinutes);
       },
       error: function (xhr, status, error) {
@@ -296,12 +310,16 @@ $(document).ready(function () {
 
   function farcry(Blur_Count) {
     if (Blur_Count > 0) {
-      alert(
-        `Please do not switch the exam window or open any application. You will be disqualified from the exam after ${Blur_Count} times`
-      );
+      $("#warning-msg").html(  `Please do not switch the exam window or open any application. You will be disqualified from the exam after ${Blur_Count} times`  )
+      //alert(`Please do not switch the exam window or open any application. You will be disqualified from the exam after ${Blur_Count} times`);
     } else {
-      alert("Blocked");
+      $("#warning-msg").html("You are disqualified");
+      casper();      //submit answers
+      //alert("Blocked");
     }
+
+    $('#modal-display').click();
+
   }
 
   function guidGenerator() {
@@ -350,19 +368,46 @@ $(document).ready(function () {
         );
       }
     }
+    $("#list-container").html("")
+    //$("#please-wait").html(get_spinners()); //to do later
+    $("#question-area").hide();
+    $('#Submit_button').prop("disabled", true);
 
     return arr;
   }
 
+
+  function get_spinners(){
+    return `
+    <div id="question-area" class="Question_Area">
+    <div id="spinners" class="w-100 d-flex align-items-center justify-content-center ">
+    <div>Please wait...</div>
+    <div class="spinner-grow text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-warning" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow text-success" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  </div>
+  `;
+  }
+
   function casper() {
 
+    
     console.log(get_user_data());
+
+    console.log(JSON.parse(localStorage.getItem('user-data')).id)
         $.ajax({
           url: "http://localhost:8241/api/Exam/Examinate",
           type: "POST",
           data: JSON.stringify({
-            "std_id": 0,
-            "course_id": 4,
+            "std_id": JSON.parse(localStorage.getItem('user-data')).id,
+            "course_id": exam_details.courseId, 
             "answers": get_user_data()
           }),
           headers: {
@@ -373,6 +418,8 @@ $(document).ready(function () {
           },
           success: function (data) {
             console.log(data);
+            sessionStorage.setItem("exam-result",JSON.stringify(data.data));
+            window.location.replace("../html/Result.html");
           },
           error: function (xhr, status, error) {
             console.log(error);
