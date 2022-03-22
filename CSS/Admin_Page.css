@@ -1,7 +1,18 @@
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: grid;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    color: #4f546c !important;
+    font-size: 0.9rem;
+    background-color: #f9fbff !important;
+
+}
 .Adminarea{
     width: 100%;
     height: 90vh;
-    background-color: white;
+    background-color: #f9fbff;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -9,40 +20,39 @@
 }
 
 .manage_schedule{
-    width: 250px;
+    width: 300px;
     height: 350px;
     margin: 30px;
-    border-radius: 5px;
     cursor: pointer;
-    box-shadow: rgb(38, 57, 77) 0px 20px 20px -10px;
+    box-shadow: 0px 5px 10px #e1e5ee;
     text-decoration: none;
-    color: black;
+    color: #4f546c;
     font-size: 23px;
     font-weight: bold;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     padding: 8px;
+    background-color: white;
 
 }
+
 .manage_schedule:hover{
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 10px 10px 0px inset;
-    color: black;
+    transform: scale(1.08);
     text-decoration: none;
+    color: #38d39f;
 
 }
 
 
 .manage_usrs{
-    width: 250px;
+    width: 300px;
     height: 350px;
     margin: 30px;
-    border-radius: 3px;
     cursor: pointer;
-    box-shadow: rgb(38, 57, 77) 0px 20px 20px -10px;
-    border-radius: 5px;
+    box-shadow: 0px 5px 10px #e1e5ee;
     text-decoration: none;
-    color: black;
+    color: #4f546c;
     font-size: 23px;
     font-weight: bold;
     display: flex;
@@ -50,14 +60,13 @@
     justify-content: flex-end;
     padding: 8px;
     margin-right: 150px;
-
-
+    background-color: white;
 
 }
 
 .manage_usrs:hover{
-    box-shadow: rgba(0, 0, 0, 0.06) 0px 10px 10px 0px inset;
-    color: black;
+    transform: scale(1.08);
+    color: #38d39f;
     text-decoration: none;
 
 }
