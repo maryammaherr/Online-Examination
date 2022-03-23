@@ -1,17 +1,20 @@
 body{
     color: #4f546c !important;
+    width: 100% !important;
     font-size: 20px;
-    background-color: #f9fbff;
+    background-color: hsl(220, 100%, 99%);
+    display: grid !important;
+}
 
-}
 .main{
-    margin: 100px;
-    margin-top: 100px;
+  width: 100%;
+  margin-top: 10%;
+  margin-left: 15%;
 }
+
 
 
 .btn-primary{
-    background-color:rgb(17, 0, 255);
     border: none;
     color: white;
     text-align: center;
@@ -22,23 +25,59 @@ body{
 }
 select {
    cursor: pointer !important;
+   display: block !important;
+   margin: 0 auto !important;
+   background-color: rgb(255, 255, 255)!important;
+   font-weight: 500 !important;
+   box-shadow: 0px 5px 10px #e1e5ee !important ;
+
+}
+
+select option{
+  font-size: 20px !important;
+  color: #4f546c;
+  font-weight: 400;
+
+}
+ select #options{
+  height: 50px !important;
+  width: 20px !important;
+  overflow: scroll !important;
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 8px;
   
 }
 ::-webkit-scrollbar-track {
   background: none; 
 }
 ::-webkit-scrollbar-thumb {
-  background: #4f546c; 
+  background: #888; 
   border-radius: 10px;
 
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #4f546c; 
+  background:  #555; 
 }
 #check{
-  margin-left: 49% !important;
+float: right;
+margin-right: 43%;
+width: 100px;
+padding: 6px;
+background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
+background-size: 200% !important;
+border:none !important;
+font-size: 17px !important;
+border-radius: 8px;
+color: #fff;
+}
+
+#check:focus{
+  box-shadow: none !important;
+}
+#check:hover{
+  transform: scale(1.05);
+  background-position: right;
+
 }
