@@ -45,16 +45,35 @@ tbody tr {
 
 td {
     padding: 1rem 2rem;
+    font-size: 18px;
 
 }
 
 tbody tr:hover {
     padding: 1rem 2rem;
     /*transform: scale(1.02);*/
-    font-size: 20px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    font-weight: 500;
 }
 
+#btn{
+   	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
+    background-size: 200% !important;
+    border:none !important;
+    font-size: 17px !important;
+    border-radius: 5px;
+    color: #fff;
+}
+
+
+#btn:focus{
+    box-shadow: none !important;
+}
+#btn:hover{
+    transform: scale(1.05);
+    background-position: right;
+
+}
 
 /*media query*/
 
