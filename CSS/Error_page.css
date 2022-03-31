@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
+*
+{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans',
+     sans-serif;
+}
+body{
+    height: auto;
+    width: 100%;
+}
+.container{
+overflow: hidden;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding-top: 200px;
+height:auto;
+}
+.imagebox{
+    width: 20px;
+    height: auto;
+    display: flex;
+    margin-left: 20px;
+    justify-content: center;
+    margin-top: 0 !important;
+}
+.imagebox img{
+    width: 450px;
+    height: auto;
+    margin-left: 100px;
+}
+.textbox {
+    width: 40%;
+    height: auto;
+    margin-left: 450px ;
+}
+
+.textbox h3{
+    font-size: 50px;
+    color: #333;
+}
+.textbox p{
+    max-width: 70%;
+    font-size: 20px;
+    color: #555;
+}
+a{
+    text-decoration: none;
+}
+button{
+	display: block;
+	width: 50%;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f);
+	background-size: 200%;
+	font-size: 1.2rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 30px;
+    margin-top: 50px;
+	cursor: pointer;
+	transition: .5s;
+}
+button:hover{
+	background-position: right;
+
+}
+/*Responsive*/
+@media only screen and (max-width:900px){
+    .container{
+        display: block;
+        padding-top: 90px;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: auto;
+    }
+    .imagebox{
+        width: 90%;
+        margin: auto;
+    }
+    .imagebox img{
+        width: 40% ;
+        height: auto;
+        margin-bottom: 50px;
+    }
+    .textbox {
+        width: 90%;
+        margin: auto;
+        text-align: center;
+    }
+    .textbox h1{
+        font-size: 20vw;
+
+    }
+    .textbox h3{
+        font-size: 7vw;
+
+
+    }
+    .textbox p{
+        width: 90%;
+        margin: auto;
+        font-size: 4vw;
+
+    }
+    button{
+        margin-left: 25%;
+    }
+}
