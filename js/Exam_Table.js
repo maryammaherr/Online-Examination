@@ -2,31 +2,31 @@ $(document).ready(function () {
   //Information Technology
     var IT_json = [
         {
-          Course_Name: "IE",
+          Course_Name: "Information Engineering",
           Date:"22/11/2022",
           Start: "9:00 AM",
           End: "10:00 AM",
         },
         {
-            Course_Name: "MM",
+            Course_Name: "Multimedia",
             Date:"23/11/2022",
             Start: "8:00 AM",
             End: "9:00 AM",
           },
           {
-            Course_Name: "DMM",
+            Course_Name: "Digital Multimedia",
             Date:"24/11/2022",
             Start: "10:30 AM",
             End: "11:00 AM",
           },
           {
-            Course_Name: "DSP",
+            Course_Name: "Digital Signal Processing",
             Date:"25/11/2022",
             Start: "9:00 AM",
             End: "10:30 AM",
           },
           {
-            Course_Name: "AI",
+            Course_Name: "Artificial Intelliegance",
             Date:"25/11/2022",
             Start: "11:30 AM",
             End: "12:30 PM",
@@ -55,31 +55,31 @@ $(document).ready(function () {
 // Mass Communication
 var MASS_json = [
   {
-    Course_Name: "MASS_1",
+    Course_Name: "Mass Coomunication 1",
     Date:"22/11/2022",
     Start: "9:00 AM",
     End: "10:00 AM",
   },
   {
-      Course_Name: "MASS_2",
+      Course_Name: "Mass Coomunication 2",
       Date:"23/11/2022",
       Start: "8:00 AM",
       End: "9:00 AM",
     },
     {
-      Course_Name: "MASS_3",
+      Course_Name: "Mass Coomunication 3",
       Date:"24/11/2022",
       Start: "10:30 AM",
       End: "11:00 AM",
     },
     {
-      Course_Name: "MASS_4",
+      Course_Name: "Mass Coomunication 4",
       Date:"25/11/2022",
       Start: "9:00 AM",
       End: "10:30 AM",
     },
     {
-      Course_Name: "MASS_5",
+      Course_Name: "Mass Coomunication 5",
       Date:"25/11/2022",
       Start: "11:30 AM",
       End: "12:30 PM",
@@ -107,31 +107,31 @@ function MASS_AddDataTable(data){
 // Pharmacy
 var PH_json = [
   {
-    Course_Name: "PH_1",
+    Course_Name: "Pharmacy 1",
     Date:"22/11/2022",
     Start: "9:00 AM",
     End: "10:00 AM",
   },
   {
-      Course_Name: "PH_2",
+      Course_Name: "Pharmacy 2",
       Date:"23/11/2022",
       Start: "8:00 AM",
       End: "9:00 AM",
     },
     {
-      Course_Name: "PH_3",
+      Course_Name: "Pharmacy 3",
       Date:"24/11/2022",
       Start: "10:30 AM",
       End: "11:00 AM",
     },
     {
-      Course_Name: "PH_4",
+      Course_Name: "Pharmacy 4",
       Date:"25/11/2022",
       Start: "9:00 AM",
       End: "10:30 AM",
     },
     {
-      Course_Name: "PH_5",
+      Course_Name: "Pharmacy 5",
       Date:"25/11/2022",
       Start: "11:30 AM",
       End: "12:30 PM",
@@ -160,31 +160,31 @@ function PH_AddDataTable(data){
 // Dentistry
 var DENT_json = [
   {
-    Course_Name: "DENT_1",
+    Course_Name: "Dentistry 1",
     Date:"22/11/2022",
     Start: "9:00 AM",
     End: "10:00 AM",
   },
   {
-      Course_Name: "DENT_2",
+      Course_Name: "Dentistry 2",
       Date:"23/11/2022",
       Start: "8:00 AM",
       End: "9:00 AM",
     },
     {
-      Course_Name: "DENT_3",
+      Course_Name: "Dentistry 3",
       Date:"24/11/2022",
       Start: "10:30 AM",
       End: "11:00 AM",
     },
     {
-      Course_Name: "DENT_4",
+      Course_Name: "Dentistry 4",
       Date:"25/11/2022",
       Start: "9:00 AM",
       End: "10:30 AM",
     },
     {
-      Course_Name: "DENT_5",
+      Course_Name: "Dentistry 5",
       Date:"25/11/2022",
       Start: "11:30 AM",
       End: "12:30 PM",
@@ -218,7 +218,7 @@ var ERROR_json = [
     End: "10:00 AM",
   },
   {
-      Course_Name: "DIgital Multimedia",
+      Course_Name: "Digital Signal Proccesing",
       Date:"23/11/2022",
       Start: "8:00 AM",
       End: "9:00 AM",
@@ -230,7 +230,7 @@ var ERROR_json = [
       End: "11:00 AM",
     },
     {
-      Course_Name: "Information Engineering",
+      Course_Name: "DIgital Multimedia",
       Date:"24/11/2022",
       Start: "10:30 AM",
       End: "11:00 AM",
@@ -240,36 +240,6 @@ var ERROR_json = [
       Date:"24/11/2022",
       Start: "10:30 AM",
       End: "11:00 AM",
-    },
-    {
-      Course_Name: "Netork operation and Admenistration",
-      Date:"25/11/2022",
-      Start: "9:00 AM",
-      End: "10:30 AM",
-    },
-    {
-      Course_Name: "Information Engineering",
-      Date:"24/11/2022",
-      Start: "10:30 AM",
-      End: "11:00 AM",
-    },
-    {
-      Course_Name: "Information Engineering",
-      Date:"24/11/2022",
-      Start: "10:30 AM",
-      End: "11:00 AM",
-    },
-    {
-      Course_Name: "Netork operation and Admenistration",
-      Date:"25/11/2022",
-      Start: "9:00 AM",
-      End: "10:30 AM",
-    },
-    {
-      Course_Name: "Netork operation and Admenistration",
-      Date:"25/11/2022",
-      Start: "9:00 AM",
-      End: "10:30 AM",
     },
     {
       Course_Name: "Netork operation and Admenistration",

@@ -37,6 +37,8 @@ thead{
 }
 td{
     padding: 1rem 2rem;
+    font-size: 20px;
+    font-weight: 450;
 
 }
 
@@ -60,13 +62,8 @@ td{
 
 }
 
-
-
-li{
-    list-style-type: none;
-    float: left;
-    color: #acadaf;
-    margin-bottom: 10px;
-    margin-left: 20px;
-
+#err{
+    width: 90px;
+    display: block;
+    padding: 8px;
 }
