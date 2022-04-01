@@ -66,4 +66,17 @@ td{
     width: 90px;
     display: block;
     padding: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+#IT_ERROR_DIV{
+    display: none;
+}
+#DENT_ERROR_DIV{
+    display: none;
+}
+#PH_ERROR_DIV{
+    display: none;
 }

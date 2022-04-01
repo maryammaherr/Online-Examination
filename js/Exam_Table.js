@@ -1,301 +1,236 @@
-$(document).ready(function () {
-  //Information Technology
-    var IT_json = [
-        {
-          Course_Name: "Information Engineering",
-          Date:"22/11/2022",
-          Start: "9:00 AM",
-          End: "10:00 AM",
-        },
-        {
-            Course_Name: "Multimedia",
-            Date:"23/11/2022",
-            Start: "8:00 AM",
-            End: "9:00 AM",
-          },
-          {
-            Course_Name: "Digital Multimedia",
-            Date:"24/11/2022",
-            Start: "10:30 AM",
-            End: "11:00 AM",
-          },
-          {
-            Course_Name: "Digital Signal Processing",
-            Date:"25/11/2022",
-            Start: "9:00 AM",
-            End: "10:30 AM",
-          },
-          {
-            Course_Name: "Artificial Intelliegance",
-            Date:"25/11/2022",
-            Start: "11:30 AM",
-            End: "12:30 PM",
-          },
-      ];
+window.addEventListener('load', function(){
+    document.getElementById('IT').addEventListener("click",fill_IT_Table)
+    document.getElementById('DENT').addEventListener("click",fill_DENT_Table)
+    document.getElementById('PH').addEventListener("click",fill_PH_Table)
+    document.getElementById('IT_err').addEventListener("click",fill_IT_Error_Table)
+    document.getElementById('DENT_err').addEventListener("click",fill_DENT_Error_Table)
+    document.getElementById('PH_err').addEventListener("click",fill_PH_Error_Table)
 
 
-      IT_AddDataTable(IT_json)
-      function IT_AddDataTable(data){
-          var table = document.getElementById('IT_table')
-          for(var i=0;i<data.length;i++){
-              var row = `
-              <tr>
-              <td>${data[i].Course_Name}</td>
-              <td>${data[i].Date}</td>
-              <td>${data[i].Start}</td>
-              <td>${data[i].End}</td>
-              </tr>
-              `
-              table.innerHTML+=row
-          }
-
-      }
 
 
-// Mass Communication
-var MASS_json = [
-  {
-    Course_Name: "Mass Coomunication 1",
-    Date:"22/11/2022",
-    Start: "9:00 AM",
-    End: "10:00 AM",
-  },
-  {
-      Course_Name: "Mass Coomunication 2",
-      Date:"23/11/2022",
-      Start: "8:00 AM",
-      End: "9:00 AM",
-    },
+
+ // IT 
+ function fill_IT_Table(){
+    axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/IT').then(resp => {
+
+        //fill table
+    document.getElementById('IT_table').innerHTML=ParseITJson(resp.data)
+    //Hide tables
+    document.getElementById("DENT_DIV").style.display="none";
+    document.getElementById("PH_DIV").style.display="none";
+    document.getElementById("IT_DIV").style.display="block";
+    document.getElementById("IT_ERROR_DIV").style.display="block";
+
+
+  });
+ }
+
+ function ParseITJson(data){
+    let res="";
+    for(let i=0;i<data.length;i++)
     {
-      Course_Name: "Mass Coomunication 3",
-      Date:"24/11/2022",
-      Start: "10:30 AM",
-      End: "11:00 AM",
-    },
-    {
-      Course_Name: "Mass Coomunication 4",
-      Date:"25/11/2022",
-      Start: "9:00 AM",
-      End: "10:30 AM",
-    },
-    {
-      Course_Name: "Mass Coomunication 5",
-      Date:"25/11/2022",
-      Start: "11:30 AM",
-      End: "12:30 PM",
-    },
-];
-
-
-MASS_AddDataTable(MASS_json)
-function MASS_AddDataTable(data){
-    var table = document.getElementById('MASS_table')
-    for(var i=0;i<data.length;i++){
-        var row = `
-        <tr>
-        <td>${data[i].Course_Name}</td>
-        <td>${data[i].Date}</td>
-        <td>${data[i].Start}</td>
-        <td>${data[i].End}</td>
-        </tr>
-        `
-        table.innerHTML+=row
+        res+=IT_AddDataTable(data[i])
     }
+    return res;
+}
+
+ function IT_AddDataTable(obj){
+     return`
+     <tr>
+     <td><span>${obj.Name}</span></td>
+     <td>${obj.Date}</td>
+     <td>${obj.Start}</td>
+     <td>${obj.End}</td>
+     </tr> `
+
+}
+
+
+
+//Dentistery
+function fill_DENT_Table(){
+  axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/Dentistery').then(resp => {
+      //fill table
+  document.getElementById('DENT_table').innerHTML=ParseDENTJson(resp.data)
+
+  //Hide tables
+  document.getElementById("DENT_DIV").style.display="block";
+  document.getElementById("PH_DIV").style.display="none";
+  document.getElementById("IT_DIV").style.display="none";
+  document.getElementById("DENT_ERROR_DIV").style.display="block";
+
+
+});
+}
+
+function ParseDENTJson(data){
+  let res="";
+  for(let i=0;i<data.length;i++)
+  {
+      res+=DENT_AddDataTable(data[i])
+  }
+  return res;
+}
+
+function DENT_AddDataTable(obj){
+   return`
+   <tr>
+   <td><span>${obj.Name}</span></td>
+   <td>${obj.Date}</td>
+   <td>${obj.Start}</td>
+   <td>${obj.End}</td>
+   </tr> `
 
 }
 
 // Pharmacy
-var PH_json = [
-  {
-    Course_Name: "Pharmacy 1",
-    Date:"22/11/2022",
-    Start: "9:00 AM",
-    End: "10:00 AM",
-  },
-  {
-      Course_Name: "Pharmacy 2",
-      Date:"23/11/2022",
-      Start: "8:00 AM",
-      End: "9:00 AM",
-    },
-    {
-      Course_Name: "Pharmacy 3",
-      Date:"24/11/2022",
-      Start: "10:30 AM",
-      End: "11:00 AM",
-    },
-    {
-      Course_Name: "Pharmacy 4",
-      Date:"25/11/2022",
-      Start: "9:00 AM",
-      End: "10:30 AM",
-    },
-    {
-      Course_Name: "Pharmacy 5",
-      Date:"25/11/2022",
-      Start: "11:30 AM",
-      End: "12:30 PM",
-    },
-];
-
-
-PH_AddDataTable(PH_json)
-function PH_AddDataTable(data){
-    var table = document.getElementById('PH_table')
-    for(var i=0;i<data.length;i++){
-        var row = `
-        <tr>
-        <td>${data[i].Course_Name}</td>
-        <td>${data[i].Date}</td>
-        <td>${data[i].Start}</td>
-        <td>${data[i].End}</td>
-        </tr>
-        `
-        table.innerHTML+=row
-    }
-
-}
-
-
-// Dentistry
-var DENT_json = [
-  {
-    Course_Name: "Dentistry 1",
-    Date:"22/11/2022",
-    Start: "9:00 AM",
-    End: "10:00 AM",
-  },
-  {
-      Course_Name: "Dentistry 2",
-      Date:"23/11/2022",
-      Start: "8:00 AM",
-      End: "9:00 AM",
-    },
-    {
-      Course_Name: "Dentistry 3",
-      Date:"24/11/2022",
-      Start: "10:30 AM",
-      End: "11:00 AM",
-    },
-    {
-      Course_Name: "Dentistry 4",
-      Date:"25/11/2022",
-      Start: "9:00 AM",
-      End: "10:30 AM",
-    },
-    {
-      Course_Name: "Dentistry 5",
-      Date:"25/11/2022",
-      Start: "11:30 AM",
-      End: "12:30 PM",
-    },
-];
-
-
-DENT_AddDataTable(DENT_json)
-function DENT_AddDataTable(data){
-    var table = document.getElementById('DENT_table')
-    for(var i=0;i<data.length;i++){
-        var row = `
-        <tr>
-        <td>${data[i].Course_Name}</td>
-        <td>${data[i].Date}</td>
-        <td>${data[i].Start}</td>
-        <td>${data[i].End}</td>
-        </tr>
-        `
-        table.innerHTML+=row
-    }
-
-}
-
-
-var ERROR_json = [
-  {
-    Course_Name: "Pattern Recognition",
-    Date:"22/11/2022",
-    Start: "9:00 AM",
-    End: "10:00 AM",
-  },
-  {
-      Course_Name: "Digital Signal Proccesing",
-      Date:"23/11/2022",
-      Start: "8:00 AM",
-      End: "9:00 AM",
-    },
-    {
-      Course_Name: "Information Engineering",
-      Date:"24/11/2022",
-      Start: "10:30 AM",
-      End: "11:00 AM",
-    },
-    {
-      Course_Name: "DIgital Multimedia",
-      Date:"24/11/2022",
-      Start: "10:30 AM",
-      End: "11:00 AM",
-    },
-    {
-      Course_Name: "Information Engineering",
-      Date:"24/11/2022",
-      Start: "10:30 AM",
-      End: "11:00 AM",
-    },
-    {
-      Course_Name: "Netork operation and Admenistration",
-      Date:"25/11/2022",
-      Start: "9:00 AM",
-      End: "10:30 AM",
-    },
-    
- 
-];
-
-ERROR_AddDataTable(ERROR_json)
-function ERROR_AddDataTable(data){
-    var table = document.getElementById('ERROR_table')
-    for(var i=0;i<data.length;i++){
-        var row = `
-        <div class="error_courses">
-        <ul>
-        <li>${data[i].Course_Name}</li>
-        </ul>
-        <div>
-          `
-          table.innerHTML+=row
-        }
-
-    
-
-}
-
-});
-
-
-function DENT_FUN(){
-  document.getElementById("DENT_DIV").style.display="block";
-  document.getElementById("PH_DIV").style.display="none";
-  document.getElementById("IT_DIV").style.display="none";
-  document.getElementById("MASS_DIV").style.display="none";
-}
-
-function MASS_FUN(){
-  document.getElementById("DENT_DIV").style.display="none";
-  document.getElementById("PH_DIV").style.display="none";
-  document.getElementById("IT_DIV").style.display="none";
-  document.getElementById("MASS_DIV").style.display="block";
-}
-
-function IT_FUN(){
-  document.getElementById("DENT_DIV").style.display="none";
-  document.getElementById("PH_DIV").style.display="none";
-  document.getElementById("IT_DIV").style.display="block";
-  document.getElementById("MASS_DIV").style.display="none";
-}
-
-function PH_FUN(){
+function fill_PH_Table(){
+  axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/Pharmacy').then(resp => {
+      //fill table
+  document.getElementById('PH_table').innerHTML=ParsePHJson(resp.data)
+  //Hide tables
   document.getElementById("DENT_DIV").style.display="none";
   document.getElementById("PH_DIV").style.display="block";
   document.getElementById("IT_DIV").style.display="none";
-  document.getElementById("MASS_DIV").style.display="none";
+  document.getElementById("DENT_ERROR_DIV").style.display="block";
+
+
+});
 }
+
+function ParsePHJson(data){
+  let res="";
+  for(let i=0;i<data.length;i++)
+  {
+      res+=PH_AddDataTable(data[i])
+  }
+  return res;
+}
+
+function PH_AddDataTable(obj){
+   return`
+   <tr>
+   <td><span>${obj.Name}</span></td>
+   <td>${obj.Date}</td>
+   <td>${obj.Start}</td>
+   <td>${obj.End}</td>
+   </tr> `
+
+}
+
+ 
+
+// IT_Error
+function fill_IT_Error_Table(){
+  axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/Error').then(resp => {
+      //fill table
+  document.getElementById('IT_ERROR_table').innerHTML=ParseIT_ERRORJson(resp.data)
+      //Hide tables
+      document.getElementById("DENT_DIV").style.display="none";
+      document.getElementById("PH_DIV").style.display="none";
+      document.getElementById("IT_DIV").style.display="none";
+
+});
+}
+
+function ParseIT_ERRORJson(data){
+  let res="";
+  for(let i=0;i<data.length;i++)
+  {
+      res+=Error_AddDataTable(data[i])
+  }
+  return res;
+}
+
+function Error_AddDataTable(obj){
+   return`
+   <tr>
+   <td><span>${obj.Name}</span></td>
+   <td><span>---</span></td>
+   <td><span>---</span></td>
+   <td><span>---</span></td>
+
+   </tr> `
+
+}
+
+
+// DENT_Error
+function fill_DENT_Error_Table(){
+  axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/Error').then(resp => {
+      //fill table
+  document.getElementById('DENT_ERROR_table').innerHTML=ParseDENT_ERRORJson(resp.data)
+      //Hide tables
+      document.getElementById("DENT_DIV").style.display="none";
+      document.getElementById("PH_DIV").style.display="none";
+      document.getElementById("IT_DIV").style.display="none";
+
+});
+}
+
+function ParseDENT_ERRORJson(data){
+  let res="";
+  for(let i=0;i<data.length;i++)
+  {
+      res+=Error_AddDataTable(data[i])
+  }
+  return res;
+}
+
+function Error_AddDataTable(obj){
+   return`
+   <tr>
+   <td><span>${obj.Name}</span></td>
+   <td><span>---</span></td>
+   <td><span>---</span></td>
+   <td><span>---</span></td>
+
+   </tr> `
+
+}
+
+
+// PH_Error
+function fill_PH_Error_Table(){
+  axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/Error').then(resp => {
+      //fill table
+  document.getElementById('PH_ERROR_table').innerHTML=ParsePH_ERRORJson(resp.data)
+      //Hide tables
+      document.getElementById("DENT_DIV").style.display="none";
+      document.getElementById("PH_DIV").style.display="none";
+      document.getElementById("IT_DIV").style.display="none";
+
+});
+}
+
+function ParsePH_ERRORJson(data){
+  let res="";
+  for(let i=0;i<data.length;i++)
+  {
+      res+=Error_AddDataTable(data[i])
+  }
+  return res;
+}
+
+function Error_AddDataTable(obj){
+   return`
+   <tr>
+   <td><span>${obj.Name}</span></td>
+   <td><span>---</span></td>
+   <td><span>---</span></td>
+   <td><span>---</span></td>
+
+   </tr> `
+
+}
+
+
+
+
+
+
+
+
+
+})
