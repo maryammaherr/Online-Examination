@@ -21,6 +21,9 @@ window.addEventListener('load', function(){
     document.getElementById("PH_DIV").style.display="none";
     document.getElementById("IT_DIV").style.display="block";
     document.getElementById("IT_ERROR_DIV").style.display="block";
+    document.getElementById("PH_ERROR_DIV").style.display="none";
+    document.getElementById("DENT_ERROR_DIV").style.display="none";
+
 
 
   });
@@ -39,8 +42,8 @@ window.addEventListener('load', function(){
      return`
      <tr>
      <td><span>${obj.Name}</span></td>
-     <td>${obj.Date}</td>
-     <td>${obj.Start}</td>
+     <td>${obj.Date.slice(0,10).split("-").reverse().join("/")}</td>
+     <td>${obj.Start.slice(12,19)}</td>
      <td>${obj.End}</td>
      </tr> `
 
@@ -58,6 +61,8 @@ function fill_DENT_Table(){
   document.getElementById("DENT_DIV").style.display="block";
   document.getElementById("PH_DIV").style.display="none";
   document.getElementById("IT_DIV").style.display="none";
+  document.getElementById("IT_ERROR_DIV").style.display="none";
+  document.getElementById("PH_ERROR_DIV").style.display="none";
   document.getElementById("DENT_ERROR_DIV").style.display="block";
 
 
@@ -77,7 +82,7 @@ function DENT_AddDataTable(obj){
    return`
    <tr>
    <td><span>${obj.Name}</span></td>
-   <td>${obj.Date}</td>
+   <td>${obj.Date.slice(0,10).split("-").reverse().join("/")}</td>
    <td>${obj.Start}</td>
    <td>${obj.End}</td>
    </tr> `
@@ -93,7 +98,9 @@ function fill_PH_Table(){
   document.getElementById("DENT_DIV").style.display="none";
   document.getElementById("PH_DIV").style.display="block";
   document.getElementById("IT_DIV").style.display="none";
-  document.getElementById("DENT_ERROR_DIV").style.display="block";
+  document.getElementById("IT_ERROR_DIV").style.display="none";
+  document.getElementById("PH_ERROR_DIV").style.display="block";
+  document.getElementById("DENT_ERROR_DIV").style.display="none";
 
 
 });
@@ -112,7 +119,7 @@ function PH_AddDataTable(obj){
    return`
    <tr>
    <td><span>${obj.Name}</span></td>
-   <td>${obj.Date}</td>
+   <td>${obj.Date.slice(0,10).split("-").reverse().join("/")}</td>
    <td>${obj.Start}</td>
    <td>${obj.End}</td>
    </tr> `
