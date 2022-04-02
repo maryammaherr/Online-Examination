@@ -1,3 +1,46 @@
+window.addEventListener('load', function(){
+
+  fill_Table()
+  function fill_Table(){
+    axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/IT').then(resp => {
+
+        //fill table
+    document.getElementById('table-body').innerHTML=ParseJson(resp.data)
+    //Hide tables
+
+
+
+
+  });
+ }
+
+ function ParseJson(data){
+    let res="";
+    for(let i=0;i<data.length;i++)
+    {
+        res+=AddDataTable(data[i])
+    }
+    return res;
+}
+
+ function AddDataTable(obj){
+     return`
+     <tr>
+     <td>${obj.Name}</td>
+     <td>${obj.id}</td>
+     <td><button type="button" class="btn btn-primary " id="btn" >
+     Upload File </button></td>
+     <td><button type="button" class="btn btn-primary " id="btn" >
+     Add Details </button></td>
+     </tr>
+     `
+
+}
+
+
+})
+
+/*
 $( document ).ready(function() {
 
     var json = [
@@ -47,4 +90,4 @@ $( document ).ready(function() {
     
     });
     
-    
+    */
