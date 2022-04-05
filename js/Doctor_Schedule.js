@@ -1,44 +1,51 @@
 window.addEventListener('load', function(){
 
-  fill_Table()
-  function fill_Table(){
-    axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/IT').then(resp => {
-
-        //fill table
-    document.getElementById('table-body').innerHTML=ParseJson(resp.data)
-    //Hide tables
-
-
-
-
-  });
- }
-
+    axios.get('http://hemajoo-001-site1.etempurl.com/api/Course/ProfessorCourses', {
+      params: {
+        prof_id: 'ecc03208-19aa-480f-9fe7-ada45211ca70',
+      }
+    })
+      .then(function(resp){
+        document.getElementById('table-body').innerHTML=ParseJson(resp.data.data)
+        
+        //ParseJson(resp.data);
  function ParseJson(data){
-    let res="";
-    for(let i=0;i<data.length;i++)
-    {
-        res+=AddDataTable(data[i])
-    }
-    return res;
+  let res="";
+  for(let i=0;i<data.length;i++)
+  {
+      res+=AddDataTable(data[i])
+  }
+  return res;
 }
 
- function AddDataTable(obj){
-     return`
-     <tr>
-     <td>${obj.Name}</td>
-     <td>${obj.id}</td>
-     <td><button type="button" class="btn btn-primary " id="btn" >
-     Upload File </button></td>
-     <td><button type="button" class="btn btn-primary " id="btn" >
-     Add Details </button></td>
-     </tr>
-     `
+function AddDataTable(obj){
+   return`
+   <tr>
+   <td>${obj.name}</td>
+   <td>${obj.id}</td>
+   <td><button type="button" class="btn btn-primary " id="btn" >
+   Upload File </button></td>
+   <td><button type="button" class="btn btn-primary " id="btn" >
+   Add Details </button></td>
+   </tr>
+   `
 
 }
+      })
+      .catch(function(error){
+        console.log(error);
+      })
 
 
-})
+ //fill table
+
+
+
+    });
+
+       
+
+
 
 /*
 $( document ).ready(function() {

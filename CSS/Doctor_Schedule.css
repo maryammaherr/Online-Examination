@@ -49,12 +49,12 @@ td {
 
 }
 
-tbody tr:hover {
+/*tbody tr:hover {
     padding: 1rem 2rem;
-    /*transform: scale(1.02);*/
+    /*transform: scale(1.02);
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     font-weight: 500;
-}
+}*/
 
 #btn{
    	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
