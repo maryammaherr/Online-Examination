@@ -20,7 +20,7 @@ fill_Quetions_Data()
  }
  function ParseJson(data){
     let res="";
-    for(let i=0;i<data.length;i++)
+    for(let i=0;i<1;i++)
     {
         res+=AddData(data[i])
     }
@@ -67,7 +67,7 @@ fill_Single_Data()
  }
  function Parse_single_Json(data){
     let res="";
-    for(let i=0;i<data.length;i++)
+    for(let i=0;i<1;i++)
     {
         res+=Add_single_Data(data[i])
     }
@@ -117,7 +117,7 @@ function fill_Multiple_Data(){
 }
 function Parse_Multiple_Json(data){
    let res="";
-   for(let i=0;i<data.length;i++)
+   for(let i=0;i<1;i++)
    {
        res+=Add_Multiple_Data(data[i])
    }
@@ -164,7 +164,7 @@ function fill_written_Data(){
 }
 function Parse_written_Json(data){
    let res="";
-   for(let i=0;i<data.length;i++)
+   for(let i=0;i<1;i++)
    {
        res+=Add_written_Data(data[i])
    }
@@ -209,7 +209,7 @@ function fill_true_false_Data(){
 }
 function Parse_true_false_Json(data){
    let res="";
-   for(let i=0;i<data.length;i++)
+   for(let i=0;i<1;i++)
    {
        res+=Add_true_false_Data(data[i])
    }
@@ -256,7 +256,7 @@ function fill_Hard_Data(){
 }
 function Parse_Hard_Json(data){
    let res="";
-   for(let i=0;i<data.length;i++)
+   for(let i=0;i<1;i++)
    {
        res+=Add_Hard_Data(data[i])
    }
@@ -304,7 +304,7 @@ function fill_Easy_Data(){
 }
 function Parse_Easy_Json(data){
    let res="";
-   for(let i=0;i<data.length;i++)
+   for(let i=0;i<1;i++)
    {
        res+=Add_Easy_Data(data[i])
    }
@@ -351,7 +351,7 @@ $('#easy').on('change', function() {
  }
  function Parse_Moderate_Json(data){
     let res="";
-    for(let i=0;i<data.length;i++)
+    for(let i=0;i<1;i++)
     {
         res+=Add_Moderate_Data(data[i])
     }
