@@ -2,13 +2,13 @@ window.addEventListener('load', function(){
     document.getElementById('check').addEventListener("click",validate)
 
     var questions_value=1;
-    var single_value=1;
-    var multiple_value=1;
-    var written_value=1;
-    var true_false_value=1;
-    var Hard_value=1;
-    var Easy_value=1;
-    var Moderate_value=1;
+    var single_value=0;
+    var multiple_value=0;
+    var written_value=0;
+    var true_false_value=0;
+    var Hard_value=0;
+    var Easy_value=0;
+    var Moderate_value=0;
 
 // Total Number of questions
 fill_Quetions_Data()
@@ -76,7 +76,7 @@ fill_Single_Data()
 
 function Add_single_Data(obj){
     var Questions = obj.total;
-    for(var i=1;i<=Questions;i++){
+    for(var i=0;i<=Questions;i++){
         var x = document.getElementById("single_mcq");
         var single_option= document.createElement("option");
         single_option.value =i;
@@ -126,7 +126,7 @@ function Parse_Multiple_Json(data){
 
 function Add_Multiple_Data(obj){
    var Questions = obj.total;
-   for(var i=1;i<=Questions;i++){
+   for(var i=0;i<=Questions;i++){
        var x = document.getElementById("multiple_mcq");
        var multiple_option= document.createElement("option");
        multiple_option.value =i;
@@ -173,7 +173,7 @@ function Parse_written_Json(data){
 
 function Add_written_Data(obj){
    var Questions = obj.total;
-   for(var i=1;i<=Questions;i++){
+   for(var i=0 ;i<=Questions;i++){
        var x = document.getElementById("written");
        var written_option= document.createElement("option");
        written_option.value =i;
@@ -218,7 +218,7 @@ function Parse_true_false_Json(data){
 
 function Add_true_false_Data(obj){
    var Questions = obj.total;
-   for(var i=1;i<=Questions;i++){
+   for(var i=0;i<=Questions;i++){
        var x = document.getElementById("true_false");
        var true_false_option= document.createElement("option");
        true_false_option.value =i;
@@ -265,7 +265,7 @@ function Parse_Hard_Json(data){
 
 function Add_Hard_Data(obj){
    var Questions = obj.total;
-   for(var i=1;i<=Questions;i++){
+   for(var i=0;i<=Questions;i++){
        var x = document.getElementById("hard");
        var hard_option= document.createElement("option");
        hard_option.value =i;
@@ -313,7 +313,7 @@ function Parse_Easy_Json(data){
 
 function Add_Easy_Data(obj){
    var Questions = obj.total;
-   for(var i=1;i<=Questions;i++){
+   for(var i=0;i<=Questions;i++){
        var x = document.getElementById("easy");
        var easy_option= document.createElement("option");
        easy_option.value =i;
@@ -360,7 +360,7 @@ $('#easy').on('change', function() {
  
  function Add_Moderate_Data(obj){
     var Questions = obj.total;
-    for(var i=1;i<=Questions;i++){
+    for(var i=0;i<=Questions;i++){
         var x = document.getElementById("moderate");
         var Moderate_option= document.createElement("option");
         Moderate_option.value =i;
