@@ -12,12 +12,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js" integrity="sha512-MNW6IbpNuZZ2VH9ngFhzh6cUt8L/0rSVa60F8L22K1H72ro4Ki3M/816eSDLnhICu7vwH/+/yb8oB3BtBLhMsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-<div class="container">
   <div class="main">
 
+    <div class="row">
+      <div class="col">
+        <button type="button" class="btn btn-outline-info " id="check" onclick="validate()">Submit</button>
+      </div>
+    </div>
 
+<div class="row">
+  <div class="col-5" id="main_col">
   <div class="row mb-4">
-    <div class="col-7">
+    <div class="col-10">
       <label for="Question_Number">Number Of Questions</label>
       <select class="form-control" id="Question_Number">
         <div id="options">
@@ -28,7 +34,7 @@
     </div>
 
   <div class="row mb-4">
-    <div class="col-4">
+    <div class="col-5">
       <label for="single_mcq">Single MCQ</label>
       <select class="form-control" id="single_mcq" onchange="">
         <div id="options">
@@ -36,7 +42,7 @@
         </div>
       </select>
     </div>
-    <div class="col-3">
+    <div class="col-5">
       <label for="multiple_mcq">Multiple MCQ</label>
       <select class="form-control" id="multiple_mcq">
         <div id="options">
@@ -47,7 +53,7 @@
     </div>
 
     <div class="row mb-4">
-      <div class="col-4">
+      <div class="col-5">
         <label for="true_false">True and False</label>
         <select class="form-control" id="true_false">
           <div id="options">
@@ -55,7 +61,7 @@
           </div>
         </select>
       </div>
-      <div class="col-3">
+      <div class="col-5">
         <label for="written">Written</label>
         <select class="form-control" id="written">
           <div id="options">
@@ -66,7 +72,7 @@
       </div>
 
       <div class="row mb-4">
-        <div class="col-4">
+        <div class="col-5">
           <label for="hard">Hard </label>
           <select class="form-control" id="hard">
             <div id="options">
@@ -74,7 +80,7 @@
             </div>
           </select>
         </div>
-        <div class="col-3">
+        <div class="col-5">
           <label for="easy">Easy </label>
           <select class="form-control" id="easy">
             <div id="options">
@@ -84,7 +90,7 @@
         </div>
         </div>
         <div class="row mb-4">
-          <div class="col-4">
+          <div class="col-10">
             <label for="moderate">Moderate</label>
             <select class="form-control" id="moderate">
               <div id="options">
@@ -96,14 +102,16 @@
 
 
 
-      <div class="row">
-        <div class="col">
-          <button type="button" class="btn btn-outline-info " id="check" onclick="validate()">Submit</button>
-        </div>
-      </div>
+
+    </div>
+    <div class="col-5">
+      <div class="img"></div>
     </div>
 
+
   </div>
+  
+</div>
 
 
 

@@ -39,20 +39,7 @@ function AddData(obj){
      //get the value of the selected option
      $('#Question_Number').on('change', function() {
         questions_value=this.value;
-        axios({
-            method: 'post',
-            url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details',
-            data:{
-                questions:questions_value,
-                singleMCQ:single_value,
-                multiMCQ:multiple_value,
-                written:written_value,
-                true_false:true_false_value,
-                hard:Hard_value,
-                easy:Easy_value,
-                moderate:Moderate_value,
-            }
-        })
+
       });
   }
 
@@ -86,20 +73,6 @@ function Add_single_Data(obj){
  //get the value of the selected option
 $('#single_mcq').on('change', function() {
     single_value=this.value;
-        axios({
-            method: 'post',
-            url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details',
-            data:{
-                questions:questions_value,
-                singleMCQ:single_value,
-                multiMCQ:multiple_value,
-                written:written_value,
-                true_false:true_false_value,
-                hard:Hard_value,
-                easy:Easy_value,
-                moderate:Moderate_value, singleMCQ:single_value,
-            }
-        })
 
   });
 
@@ -136,20 +109,7 @@ function Add_Multiple_Data(obj){
 //get the value of the selected option
 $('#multiple_mcq').on('change', function() {
     multiple_value=this.value;
-    axios({
-        method: 'post',
-        url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details',
-        data:{
-            questions:questions_value,
-            singleMCQ:single_value,
-            multiMCQ:multiple_value,
-            written:written_value,
-            true_false:true_false_value,
-            hard:Hard_value,
-            easy:Easy_value,
-            moderate:Moderate_value,
-        }
-    })
+
  });
  }
 
@@ -183,20 +143,7 @@ function Add_written_Data(obj){
 //get the value of the selected option
 $('#written').on('change', function() {
     written_value=this.value;
-    axios({
-        method: 'post',
-        url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details',
-        data:{
-            questions:questions_value,
-            singleMCQ:single_value,
-            multiMCQ:multiple_value,
-            written:written_value,
-            true_false:true_false_value,
-            hard:Hard_value,
-            easy:Easy_value,
-            moderate:Moderate_value,
-        }
-    })
+
  });
  }
 
@@ -228,20 +175,7 @@ function Add_true_false_Data(obj){
 //get the value of the selected option
 $('#true_false').on('change', function() {
     true_false_value=this.value;
-    axios({
-        method: 'post',
-        url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details',
-        data:{
-            questions:questions_value,
-            singleMCQ:single_value,
-            multiMCQ:multiple_value,
-            written:written_value,
-            true_false:true_false_value,
-            hard:Hard_value,
-            easy:Easy_value,
-            moderate:Moderate_value,
-        }
-    })
+
  });
  }
 
@@ -275,20 +209,7 @@ function Add_Hard_Data(obj){
 //get the value of the selected option
 $('#hard').on('change', function() {
     Hard_value=this.value;
-    axios({
-        method: 'post',
-        url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details',
-        data:{
-            questions:questions_value,
-            singleMCQ:single_value,
-            multiMCQ:multiple_value,
-            written:written_value,
-            true_false:true_false_value,
-            hard:Hard_value,
-            easy:Easy_value,
-            moderate:Moderate_value,
-        }
-    })
+
  });
 
  }
@@ -323,20 +244,7 @@ function Add_Easy_Data(obj){
 //get the value of the selected option
 $('#easy').on('change', function() {
     Easy_value=this.value;
-    axios({
-        method: 'post',
-        url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details',
-        data:{
-            questions:questions_value,
-            singleMCQ:single_value,
-            multiMCQ:multiple_value,
-            written:written_value,
-            true_false:true_false_value,
-            hard:Hard_value,
-            easy:Easy_value,
-            moderate:Moderate_value,
-        }
-    })
+ 
  });
 
  }
@@ -370,6 +278,16 @@ $('#easy').on('change', function() {
  //get the value of the selected option
  $('#moderate').on('change', function() {
     Moderate_value=this.value;
+
+  });
+
+  }
+ 
+ 
+
+   //validate
+
+   function validate() {
     axios({
         method: 'post',
         url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details',
@@ -384,15 +302,8 @@ $('#easy').on('change', function() {
             moderate:Moderate_value,
         }
     })
-  });
 
-  }
- 
- 
 
-   //validate
-
-   function validate() {
     sum=parseInt(single_value)+parseInt(written_value)+parseInt(multiple_value)+parseInt(true_false_value);
     type_sum = parseInt(Hard_value)+parseInt(Easy_value)+parseInt(Moderate_value);
     if(sum < questions_value || sum > questions_value){
