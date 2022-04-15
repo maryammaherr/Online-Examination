@@ -1,11 +1,10 @@
 window.addEventListener('load', function(){
     document.getElementById('check').addEventListener("click",validate)
 
+    
     var questions_value=1;
-    var single_value=0;
-    var multiple_value=0;
+    var Mixed_value=0;
     var written_value=0;
-    var true_false_value=0;
     var Hard_value=0;
     var Easy_value=0;
     var Moderate_value=0;
@@ -17,101 +16,71 @@ fill_Quetions_Data()
     axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details').then(resp => {
         document.getElementById('options').innerHTML=ParseJson(resp.data)
     });
+    function ParseJson(data){
+        let res="";
+        for(let i=0;i<1;i++)
+        {
+            res+=AddData(data[i])
+        }
+        return res;
+    }
+    
+    function AddData(obj){
+        var Questions = obj.total;
+        for(var i=1;i<=Questions;i++){
+            var x = document.getElementById("Question_Number");
+            var option = document.createElement("option");
+            option.value =i;
+            option.text = i+" "+"Question";
+            x.add(option);
+        }
+         //get the value of the selected option
+         $('#Question_Number').on('change', function() {
+            questions_value=this.value;
+    
+          });
+      }
+
+
  }
- function ParseJson(data){
-    let res="";
-    for(let i=0;i<1;i++)
-    {
-        res+=AddData(data[i])
-    }
-    return res;
-}
-
-function AddData(obj){
-    var Questions = obj.total;
-    for(var i=1;i<=Questions;i++){
-        var x = document.getElementById("Question_Number");
-        var option = document.createElement("option");
-        option.value =i;
-        option.text = i+" "+"Question";
-        x.add(option);
-    }
-     //get the value of the selected option
-     $('#Question_Number').on('change', function() {
-        questions_value=this.value;
-
-      });
-  }
 
 
 
-// Single mcq questions
-fill_Single_Data()
- function fill_Single_Data(){
+
+//Mixed questions
+fill_Mixed_Data()
+ function fill_Mixed_Data(){
     axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details').then(resp => {
-        document.getElementById('options').innerHTML=Parse_single_Json(resp.data)
+        document.getElementById('options').innerHTML=Parse_Mixed_Json(resp.data)
     });
  }
- function Parse_single_Json(data){
+ function Parse_Mixed_Json(data){
     let res="";
     for(let i=0;i<1;i++)
     {
-        res+=Add_single_Data(data[i])
+        res+=Add_Mixed_Data(data[i])
     }
     return res;
 }
 
-function Add_single_Data(obj){
+function Add_Mixed_Data(obj){
     var Questions = obj.total;
     for(var i=0;i<=Questions;i++){
-        var x = document.getElementById("single_mcq");
-        var single_option= document.createElement("option");
-        single_option.value =i;
-        single_option.text = i+" "+"Question";
-        x.add(single_option);
+        var x = document.getElementById("Mixed");
+        var Mixed_option= document.createElement("option");
+        Mixed_option.value =i;
+        Mixed_option.text = i+" "+"Question";
+        x.add(Mixed_option);
     }
  //get the value of the selected option
-$('#single_mcq').on('change', function() {
-    single_value=this.value;
+$('#Mixed').on('change', function() {
+    Mixed_value=this.value;
 
   });
 
   
   }
 
-
-  
-// multiple mcq questions
-fill_Multiple_Data()
-function fill_Multiple_Data(){
-   axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details').then(resp => {
-       document.getElementById('options').innerHTML=Parse_Multiple_Json(resp.data)
-   });
-}
-function Parse_Multiple_Json(data){
-   let res="";
-   for(let i=0;i<1;i++)
-   {
-       res+=Add_Multiple_Data(data[i])
-   }
-   return res;
-}
-
-function Add_Multiple_Data(obj){
-   var Questions = obj.total;
-   for(var i=0;i<=Questions;i++){
-       var x = document.getElementById("multiple_mcq");
-       var multiple_option= document.createElement("option");
-       multiple_option.value =i;
-       multiple_option.text = i+" "+"Question";
-       x.add(multiple_option);
-   }
-//get the value of the selected option
-$('#multiple_mcq').on('change', function() {
-    multiple_value=this.value;
-
- });
- }
 
 
   
@@ -146,39 +115,6 @@ $('#written').on('change', function() {
 
  });
  }
-
-// true_false mcq questions
-fill_true_false_Data()
-function fill_true_false_Data(){
-   axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details').then(resp => {
-       document.getElementById('options').innerHTML=Parse_true_false_Json(resp.data)
-   });
-}
-function Parse_true_false_Json(data){
-   let res="";
-   for(let i=0;i<1;i++)
-   {
-       res+=Add_true_false_Data(data[i])
-   }
-   return res;
-}
-
-function Add_true_false_Data(obj){
-   var Questions = obj.total;
-   for(var i=0;i<=Questions;i++){
-       var x = document.getElementById("true_false");
-       var true_false_option= document.createElement("option");
-       true_false_option.value =i;
-       true_false_option.text = i+" "+"Question";
-       x.add(true_false_option);
-   }
-//get the value of the selected option
-$('#true_false').on('change', function() {
-    true_false_value=this.value;
-
- });
- }
-
 
 
 //Hard questions
@@ -288,23 +224,21 @@ $('#easy').on('change', function() {
    //validate
 
    function validate() {
+
     axios({
         method: 'post',
         url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details',
         data:{
             questions:questions_value,
-            singleMCQ:single_value,
-            multiMCQ:multiple_value,
+            mixed:Mixed_value,
             written:written_value,
-            true_false:true_false_value,
             hard:Hard_value,
             easy:Easy_value,
             moderate:Moderate_value,
         }
     })
 
-
-    sum=parseInt(single_value)+parseInt(written_value)+parseInt(multiple_value)+parseInt(true_false_value);
+    sum=parseInt(Mixed_value)+parseInt(written_value);
     type_sum = parseInt(Hard_value)+parseInt(Easy_value)+parseInt(Moderate_value);
     if(sum < questions_value || sum > questions_value){
     toastWarning("Make sure that the number of questions is equal to your selected options");

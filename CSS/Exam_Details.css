@@ -18,7 +18,8 @@ body{
 
 #main_col{
   margin-left: 8%;
-  padding: 50px;
+  padding: 60px;
+  padding-top: 100px;
   font-size: 1rem;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;    
 }
@@ -64,15 +65,17 @@ select option{
 #check{
 float: right;
 width: 100px;
-padding: 6px;
+padding: 7px;
 font-weight: 600;
 text-transform: uppercase;
+letter-spacing: 1.2px;
 background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
 background-size: 200% !important;
 border:none !important;
-font-size: 17px !important;
+font-size: 15px !important;
 border-radius: 8px;
 color: #fff;
+margin-top: 50px;
 }
 
 #check:focus{
@@ -88,6 +91,7 @@ color: #fff;
   width: 300px;
   height: 600px;
   margin-left: 35%;
+  margin-top: 10%;
   background-size: 300px;
   background-repeat: no-repeat;
   background-image: url(../images/exam_details\ \(2\).svg);

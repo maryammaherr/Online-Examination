@@ -14,11 +14,7 @@
 <body>
   <div class="main">
 
-    <div class="row">
-      <div class="col">
-        <button type="button" class="btn btn-outline-info " id="check" onclick="validate()">Submit</button>
-      </div>
-    </div>
+
 
 <div class="row">
   <div class="col-5" id="main_col">
@@ -35,16 +31,16 @@
 
   <div class="row mb-4">
     <div class="col-5">
-      <label for="single_mcq">Single MCQ</label>
-      <select class="form-control" id="single_mcq" onchange="">
+      <label for="Mixed">Mixed</label>
+      <select class="form-control" id="Mixed">
         <div id="options">
 
         </div>
       </select>
     </div>
     <div class="col-5">
-      <label for="multiple_mcq">Multiple MCQ</label>
-      <select class="form-control" id="multiple_mcq">
+      <label for="written">Written</label>
+      <select class="form-control" id="written">
         <div id="options">
 
         </div>
@@ -52,24 +48,6 @@
     </div>
     </div>
 
-    <div class="row mb-4">
-      <div class="col-5">
-        <label for="true_false">True and False</label>
-        <select class="form-control" id="true_false">
-          <div id="options">
-
-          </div>
-        </select>
-      </div>
-      <div class="col-5">
-        <label for="written">Written</label>
-        <select class="form-control" id="written">
-          <div id="options">
-
-          </div>
-        </select>
-      </div>
-      </div>
 
       <div class="row mb-4">
         <div class="col-5">
@@ -99,10 +77,11 @@
             </select>
           </div>
         </div>
-
-
-
-
+        <div class="row mt-5">
+          <div class="col">
+            <button type="button" class="btn btn-outline-info " id="check" onclick="validate()">Submit</button>
+          </div>
+        </div>
     </div>
     <div class="col-5">
       <div class="img"></div>
