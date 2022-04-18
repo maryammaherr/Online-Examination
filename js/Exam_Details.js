@@ -8,13 +8,45 @@ window.addEventListener('load', function(){
     var Easy_value=0;
     var Moderate_value=0;
 
+
+
+
+
+    fil_Quetions_Data()
+    function fil_Quetions_Data()
+    {
+       axios.post('http://hemajoo-001-site1.etempurl.com/api/Exam/PostExamDetails', {
+        params: {
+            id: 1,
+          }
+     })
+     .then(function(resp){
+        console.log(resp.data)
+
+       })
+   
+    }
+   
+   
+   
+
+
+
 // Total Number of questions
+
+
 fill_Quetions_Data()
  function fill_Quetions_Data()
  {
-    axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details').then(resp => {
-        document.getElementById('options').innerHTML=ParseJson(resp.data)
-    });
+  
+    axios.get('', {
+    params: {
+        CourseId: '1',
+    }
+  })
+  .then(function(resp){
+    document.getElementById('options').innerHTML=ParseJson(resp.data.data)
+    
     function ParseJson(data){
         let res="";
         for(let i=0;i<1;i++)
@@ -39,7 +71,10 @@ fill_Quetions_Data()
     
           });
       }
-
+    })
+    .catch(function(error){
+        console.log(error);
+      })
 
  }
 

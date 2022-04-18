@@ -41,17 +41,7 @@ td{
     font-weight: 450;
 
 }
-
-#PH_DIV{
-    display: none;
-}
 #IT_DIV{
-    display: none;
-}
-#MASS_DIV{
-    display: none;
-}
-#DENT_DIV{
     display: none;
 }
 
@@ -74,9 +64,4 @@ td{
 #IT_ERROR_DIV{
     display: none;
 }
-#DENT_ERROR_DIV{
-    display: none;
-}
-#PH_ERROR_DIV{
-    display: none;
-}
+

@@ -17,47 +17,14 @@
           Select a Faculty
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#" id="DENT" onclick="fill_DENT_Table()">Dentistry</a>
-          <a class="dropdown-item" href="#" id="IT"  onclick="fill_IT_Table()">Information Technology</a>
-          <a class="dropdown-item" href="#" id="PH"  onclick="fill_PH_Table()">Faculty of Pharmacy and Pharmaceutical Industries</a>
+          <a class="dropdown-item" href="#" id="IT">Information Technology</a>
+          <a class="dropdown-item" href="#" id="DENT">Dentistry</a>
 
         </div>
       </div>
   
           </div>
 
-
- <div id="DENT_DIV">
-        <table>
-            <thead>
-                <tr>
-                    <th> Course Name </th>
-                    <th> Date </th>
-                    <th> Start </th>
-                    <th> End </th>
-  
-                </tr>
-            </thead>
-            <tbody id="DENT_table">
-            </tbody>
-        </table>
-</div>
-
-<div id="PH_DIV">
-        <table>
-            <thead>
-                <tr>
-                    <th> Course Name </th>
-                    <th> Date </th>
-                    <th> Start </th>
-                    <th> End </th>
-  
-                </tr>
-            </thead>
-            <tbody id="PH_table">
-            </tbody>
-        </table>
-</div>
 
 <div id="IT_DIV">
         <table>
@@ -74,22 +41,6 @@
             </tbody>
         </table>
 </div>       
-
- <div id="MASS_DIV">
-        <table>
-            <thead>
-                <tr>
-                    <th> Course Name </th>
-                    <th> Date </th>
-                    <th> Start </th>
-                    <th> End </th>
-  
-                </tr>
-            </thead>
-            <tbody id="MASS_table">
-            </tbody>
-        </table>
-</div>
 
 <div id="IT_ERROR_DIV">
     <table>
@@ -117,76 +68,6 @@
               </td>
               <td>
                 <button type="button" class="btn btn-info" id="IT_err" onclick="fill_IT_Error_Table()">Show</button>
-              </td>
-
-            </tr>
-            
-        </tbody>
-    </table>
-</div>
-
-
-<div id="DENT_ERROR_DIV">
-    <table>
-        <thead>
-            <tr>
-                <th> Course Name </th>
-                <th> Date </th>
-                <th> Start </th>
-                <th> End </th>
-
-            </tr>
-        </thead>
-        <tbody id="DENT_ERROR_table">
-            <tr>
-              <td>
-                  <div class="error_msg">
-                      <h4>
-                          Error, some courses not completed
-                      </h4> 
-                  </div>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-              <td>
-                <button type="button" class="btn btn-info" id="DENT_err" onclick="fill_DENT_Error_Table()">Show</button>
-              </td>
-
-            </tr>
-            
-        </tbody>
-    </table>
-</div>
-
-
-<div id="PH_ERROR_DIV">
-    <table>
-        <thead>
-            <tr>
-                <th> Course Name </th>
-                <th> Date </th>
-                <th> Start </th>
-                <th> End </th>
-
-            </tr>
-        </thead>
-        <tbody id="PH_ERROR_table">
-            <tr>
-              <td>
-                  <div class="error_msg">
-                      <h4>
-                          Error, some courses not completed
-                      </h4> 
-                  </div>
-              </td>
-              <td>
-              </td>
-              <td>
-              </td>
-              <td>
-                <button type="button" class="btn btn-info" id="PH_err" onclick="fill_PH_Error_Table()">Show</button>
               </td>
 
             </tr>
