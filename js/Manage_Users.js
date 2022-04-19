@@ -1,11 +1,9 @@
 window.addEventListener('load', function(){
 
 	document.getElementById('doc').addEventListener("click",fill_Table)
-  //  document.getElementById('stu').addEventListener("click",)
-  //  document.getElementById('demon').addEventListener("click",)
-  window.onload=function(){
+  //document.getElementById('stu').addEventListener("click",)
+  //document.getElementById('demon').addEventListener("click",)
 	document.getElementById('search').addEventListener('keyup',Search_fun)
-
 	/*Search */
 function Search_fun(){
 	let input, filter, table, tr, td, txtValue;
@@ -29,7 +27,7 @@ function Search_fun(){
   }
   
 
-}
+
 
 
 fill_Table();
