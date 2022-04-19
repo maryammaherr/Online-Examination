@@ -37,8 +37,6 @@ function AddDataTable(obj){
       })
 
 
- //fill table
-
 
 
     });

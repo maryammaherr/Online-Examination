@@ -3,19 +3,50 @@ window.addEventListener('load', function(){
 
     
     var questions_value=1;
-    var Mixed_value=0;
-    var written_value=0;
+    var type_value=" Mixed ";
     var Hard_value=0;
     var Easy_value=0;
     var Moderate_value=0;
 
+
+
+
+
+    fil_Quetions_Data()
+    function fil_Quetions_Data()
+    {
+       axios.post('http://hemajoo-001-site1.etempurl.com/api/Exam/PostExamDetails', {
+        params: {
+            id: 1,
+          }
+     })
+     .then(function(resp){
+        console.log(resp.data)
+
+       })
+   
+    }
+   
+   
+   
+
+
+
 // Total Number of questions
+
+
 fill_Quetions_Data()
  function fill_Quetions_Data()
  {
-    axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details').then(resp => {
-        document.getElementById('options').innerHTML=ParseJson(resp.data)
-    });
+  
+    axios.get('', {
+    params: {
+        CourseId: '1',
+    }
+  })
+  .then(function(resp){
+    document.getElementById('options').innerHTML=ParseJson(resp.data.data)
+    
     function ParseJson(data){
         let res="";
         for(let i=0;i<1;i++)
@@ -40,81 +71,58 @@ fill_Quetions_Data()
     
           });
       }
-
+    })
+    .catch(function(error){
+        console.log(error);
+      })
 
  }
 
 
 
 
-//Mixed questions
-fill_Mixed_Data()
- function fill_Mixed_Data(){
-    axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details').then(resp => {
-        document.getElementById('options').innerHTML=Parse_Mixed_Json(resp.data)
-    });
- }
- function Parse_Mixed_Json(data){
-    let res="";
-    for(let i=0;i<1;i++)
-    {
-        res+=Add_Mixed_Data(data[i])
-    }
-    return res;
-}
-
-function Add_Mixed_Data(obj){
-    var Questions = obj.total;
-    for(var i=0;i<=Questions;i++){
-        var x = document.getElementById("Mixed");
-        var Mixed_option= document.createElement("option");
-        Mixed_option.value =i;
-        Mixed_option.text = i+" "+"Question";
-        x.add(Mixed_option);
-    }
- //get the value of the selected option
-$('#Mixed').on('change', function() {
-    Mixed_value=this.value;
-
-  });
-
-  
-  }
 
 
 
-  
-// written questions
-fill_written_Data()
-function fill_written_Data(){
+
+
+  // type questions
+fill_type_Data()
+function fill_type_Data()
+{
    axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details').then(resp => {
-       document.getElementById('options').innerHTML=Parse_written_Json(resp.data)
+       document.getElementById('options').innerHTML=Parse_type_Json(resp.data)
    });
-}
-function Parse_written_Json(data){
-   let res="";
-   for(let i=0;i<1;i++)
-   {
-       res+=Add_written_Data(data[i])
+   function Parse_type_Json(data){
+       let res="";
+       for(let i=0;i<1;i++)
+       {
+           res+=Add_type_Data(data[i])
+       }
+       return res;
    }
-   return res;
+   
+   function Add_type_Data(obj){
+       for(var i=1;i<=2;i++){
+           var x = document.getElementById("type");
+           
+           x.innerHTML=`
+           <option value="Mixed"> Mixed </option>
+           <option value="Written"> Written </option>
+           `  
+       }
+        //get the value of the selected option
+        $('#type').on('change', function() {
+           type_value=this.value;
+   
+         });
+     }
+
+
 }
 
-function Add_written_Data(obj){
-   var Questions = obj.total;
-   for(var i=0 ;i<=Questions;i++){
-       var x = document.getElementById("written");
-       var written_option= document.createElement("option");
-       written_option.value =i;
-       written_option.text = i+" "+"Question";
-       x.add(written_option);
-   }
-//get the value of the selected option
-$('#written').on('change', function() {
-    written_value=this.value;
 
- });
- }
+  
 
 
 //Hard questions
@@ -230,21 +238,15 @@ $('#easy').on('change', function() {
         url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details',
         data:{
             questions:questions_value,
-            mixed:Mixed_value,
-            written:written_value,
+            type:type_value,
             hard:Hard_value,
             easy:Easy_value,
             moderate:Moderate_value,
         }
     })
 
-    sum=parseInt(Mixed_value)+parseInt(written_value);
     type_sum = parseInt(Hard_value)+parseInt(Easy_value)+parseInt(Moderate_value);
-    if(sum < questions_value || sum > questions_value){
-    toastWarning("Make sure that the number of questions is equal to your selected options");
-
-   }
-   else if(type_sum < questions_value || type_sum > questions_value){
+    if(type_sum < questions_value || type_sum > questions_value){
       toastWarning("Make sure that the total number of questions is equal to total of question types you selected");
     }
 
