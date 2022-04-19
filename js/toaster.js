@@ -2,7 +2,7 @@ function toastWarning(msg){
     toastr.warning(msg);
 }
 
-function toastSuccess(title,msg){
+function toastSuccess(msg){
     toastr.success(msg);
 }
 
