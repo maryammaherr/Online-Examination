@@ -13,7 +13,7 @@ function Search_fun(){
 	tr = table.getElementsByTagName("tr");
   
 	for(let i=0; i< tr.length ; i++){
-		td = tr[i].getElementsByTagName("td")[0]; //roooow number
+		td = tr[i].getElementsByTagName("td")[1]; //roooow number
 		if(td){
 			txtValue = td.textContent || td.innerText;
 			if(txtValue.toUpperCase().indexOf(filter) > -1 ){
