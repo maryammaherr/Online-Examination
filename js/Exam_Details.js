@@ -11,78 +11,43 @@ window.addEventListener('load', function(){
 
 
 
-
-    fil_Quetions_Data()
-    function fil_Quetions_Data()
-    {
-       axios.post('http://hemajoo-001-site1.etempurl.com/api/Exam/PostExamDetails', {
-        params: {
-            id: 1,
-          }
-     })
-     .then(function(resp){
-        console.log(resp.data)
-
-       })
    
-    }
-   
-   
-   
-
 
 
 // Total Number of questions
-
-
 fill_Quetions_Data()
- function fill_Quetions_Data()
- {
-  
-    axios.get('', {
-    params: {
-        CourseId: '1',
+function fill_Quetions_Data()
+{
+   axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details').then(resp => {
+       document.getElementById('options').innerHTML=Parse_Json(resp.data)
+   });
+   function Parse_Json(data){
+       let res="";
+       for(let i=0;i<1;i++)
+       {
+           res+=Add_Data(data[i])
+       }
+       return res;
+   }
+   
+   function Add_Data(obj){
+    var Questions = obj.total;
+    for(var i=1;i<=Questions;i++){
+        var x = document.getElementById("Question_Number");
+        var option = document.createElement("option");
+        option.value =i;
+        option.text = i+" "+"Question";
+        x.add(option);
     }
-  })
-  .then(function(resp){
-    document.getElementById('options').innerHTML=ParseJson(resp.data.data)
-    
-    function ParseJson(data){
-        let res="";
-        for(let i=0;i<1;i++)
-        {
-            res+=AddData(data[i])
-        }
-        return res;
-    }
-    
-    function AddData(obj){
-        var Questions = obj.total;
-        for(var i=1;i<=Questions;i++){
-            var x = document.getElementById("Question_Number");
-            var option = document.createElement("option");
-            option.value =i;
-            option.text = i+" "+"Question";
-            x.add(option);
-        }
-         //get the value of the selected option
-         $('#Question_Number').on('change', function() {
-            questions_value=this.value;
-    
-          });
-      }
-    })
-    .catch(function(error){
-        console.log(error);
-      })
+     //get the value of the selected option
+     $('#Question_Number').on('change', function() {
+        questions_value=this.value;
 
- }
+      });
+  }
 
 
-
-
-
-
+}
 
 
 

@@ -1,43 +1,71 @@
 window.addEventListener('load', function(){
+  //logout
+  window.onload=function(){
+    document.getElementById('log_out').addEventListener("click",()=>{
+      window.location.replace='http://127.0.0.1:5501/html/Login.html';
+    });
+    document.getElementById('back').addEventListener("click",Back);
+    document.getElementById('btn_details').addEventListener("click",Upload);
+    document.getElementById('btn_upload').addEventListener("click",Details);
 
-    axios.get('http://hemajoo-001-site1.etempurl.com/api/Course/ProfessorCourses', {
-      params: {
-        prof_id: 'ecc03208-19aa-480f-9fe7-ada45211ca70',
-      }
-    })
-      .then(function(resp){
-        document.getElementById('table-body').innerHTML=ParseJson(resp.data.data)
-        
-        //ParseJson(resp.data);
- function ParseJson(data){
-  let res="";
-  for(let i=0;i<data.length;i++)
-  {
-      res+=AddDataTable(data[i])
-  }
-  return res;
+}
+function Log_Out(){
+  window.location.replace("http://127.0.0.1:5501/html/Login.html")
+}  
+function Back(){
+  window.location.replace("http://127.0.0.1:5501/html/Admin_Page.html")
+}  
+function Upload(){
+  window.location.replace("http://127.0.0.1:5501/html/question-bank.html")
+}  
+function Details(){
+  window.location.replace("http://127.0.0.1:5501/html/Exam_Details.html")
+}
+
+
+
+
+  fillData()
+function fillData(){
+  axios.get('http://hemajoo-001-site1.etempurl.com/api/Course/ProfessorCourses', {
+    params: {
+      prof_id: 'ecc03208-19aa-480f-9fe7-ada45211ca70',
+    }
+  })
+    .then(function(resp){
+      document.getElementById('table-body').innerHTML=ParseJson(resp.data.data)
+      
+      //ParseJson(resp.data);
+function ParseJson(data){
+let res="";
+for(let i=0;i<data.length;i++)
+{
+    res+=AddDataTable(data[i])
+}
+return res;
 }
 
 function AddDataTable(obj){
-   return`
-   <tr>
-   <td>${obj.name}</td>
-   <td>${obj.id}</td>
-   <td><button type="button" class="btn btn-primary " id="btn" >
-   Upload File </button></td>
-   <td><button type="button" class="btn btn-primary " id="btn" >
-   Add Details </button></td>
-   </tr>
-   `
+ return`
+ <tr>
+ <td>${obj.name}</td>
+ <td>${obj.id}</td>
+ <td><button type="button" class="btn btn-primary " id="btn_upload" >
+ Upload File </button></td>
+ <td><button type="button" class="btn btn-primary " id="btn_details" >
+ Add Details </button></td>
+ </tr>
+ `
 
 }
-      })
-      .catch(function(error){
-        console.log(error);
-      })
 
 
-
+    })
+    .catch(function(error){
+      console.log(error);
+    })
+}
+   
 
     });
 

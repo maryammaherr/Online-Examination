@@ -1,9 +1,11 @@
 window.addEventListener('load', function(){
 
 	document.getElementById('doc').addEventListener("click",fill_Table)
-  //document.getElementById('stu').addEventListener("click",)
-  //document.getElementById('demon').addEventListener("click",)
+ //document.getElementById('stu').addEventListener("click",)
+//document.getElementById('demon').addEventListener("click",)
 	document.getElementById('search').addEventListener('keyup',Search_fun)
+
+
 	/*Search */
 function Search_fun(){
 	let input, filter, table, tr, td, txtValue;
@@ -33,7 +35,6 @@ function Search_fun(){
 fill_Table();
  function fill_Table(){
 	 document.getElementById('mainsDiv').style.display="block"
-
     axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/Manage').then(resp => {
         //fill table
     document.getElementById('body').innerHTML=ParseJson(resp.data)
@@ -55,9 +56,9 @@ fill_Table();
 	 <td id="doc_name_row1">${obj.id}</td>
 	 <td id="doc_country_row1">${obj.name}</td>
 	 <td id="doc_country_row1">${obj.country}</td>
-	 <td> <button type="button" class="btn btn-outline-dark"  id="doc_pan_button1"  onclick="doc_pan_row(1)">PAN</button>
+	 <td> <button type="button" class="btn btn-outline-dark"  id="doc_pan_button1"  onclick="doc_pan_row(1)">BAN</button>
 	 </td>
-	 <td> <button type="button" class="btn btn-outline-dark"  id="doc_un_pan_button1" onclick="doc_un_pan_row(1)">UNPAN</button>
+	 <td> <button type="button" class="btn btn-outline-dark"  id="doc_un_pan_button1" onclick="doc_un_pan_row(1)">UNBAN</button>
 	 </td>
 	 </td>
    </tr>
