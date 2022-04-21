@@ -31,9 +31,8 @@ function ParseJson(data){
   
 
   function AddDataTable(obj){
-
-    tr= document.createElement("tr");
-    td = document.createElement("td");
+    var tr= document.createElement("tr");
+    var td = document.createElement("td");
     tr.appendChild(td);
     td.innerHTML = obj.Name;
     tr.appendChild(td);
@@ -54,7 +53,7 @@ function ParseJson(data){
 function fillData(){
   axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/IT', {
     params: {
-      id: 1,
+     id: 1,
     }
   })
     .then(function(resp){
