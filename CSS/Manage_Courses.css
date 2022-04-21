@@ -89,22 +89,22 @@ td {
 
 }
 
-.log_out{
+#log_out{
 float: right;
 font-size: 30px;
 color: #b23b3b;
 }
-.log_out:hover{
+#log_out:hover{
     cursor: pointer;
     transform: scale(1.05);
 }
 
-.back{
+#back{
     float: left;
     font-size: 30px;
     color: #32be8f;
 }
-.back:hover{
+#back:hover{
     cursor: pointer;
     transform: scale(1.05);
 }
