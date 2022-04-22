@@ -2,8 +2,6 @@ body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     display: grid;
     height: 100vh;
-    justify-content: center;
-    align-items: center;
     color: #4f546c !important;
     font-size: 0.9rem;
     background-color: #f9fbff;
@@ -12,15 +10,16 @@ body{
 html,body{
     height: 100%;
 }
+
+
 table{
-    height: 200px !important;
-    width: 900px !important;
-    overflow: scroll;
+    width: 100% !important;
     border-collapse: collapse;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 5px 10px #e1e5ee;
     text-align: center;
-    margin: 50px;
+    margin-right: 180px;
+    margin-top: 50px;
 
 }
 
@@ -63,9 +62,6 @@ td {
 }
 
 
-.btn_details:focus{
-    box-shadow: none !important;
-}
 .btn_details:hover{
     transform: scale(1.05);
     background-position: right;
@@ -73,7 +69,7 @@ td {
 
 }
 .btn_upload{
-background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
+ background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
  background-size: 200% !important;
  border:none !important;
  font-size: 17px !important;
@@ -83,10 +79,6 @@ background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !importan
 
 }
 
-
-.btn_upload:focus{
- box-shadow: none !important;
-}
 .btn_upload:hover{
  transform: scale(1.05);
  background-position: right;
@@ -94,10 +86,13 @@ background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !importan
 
 }
 
+/*
 #log_out{
 float: right;
 font-size: 30px;
 color: #b23b3b;
+margin: 20px;
+padding: 10px;
 }
 #log_out:hover{
     cursor: pointer;
@@ -108,10 +103,94 @@ color: #b23b3b;
     float: left;
     font-size: 30px;
     color: #32be8f;
+    margin: 20px;
+    padding: 10px;
 }
 #back:hover{
     cursor: pointer;
     transform: scale(1.05);
+}
+*/
+
+header{
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  
+}
+
+i{
+    width: 10px !important;
+    border-radius: 50px !important;
+    float: left !important;
+    font-size: 20px !important;
+    margin-bottom: 5px;
+
+}
+.back{
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    right: -18px;
+    bottom: -4px;
+    overflow: hidden;
+    letter-spacing: 1px;
+    opacity: 0;
+    margin-top: 5px !important;
+
+    
+  }
+  .logout{
+    font-size: 16px;
+    font-family: 'Oswald', sans-serif;
+    position: relative;
+    right: -18px;
+    bottom: -4px;
+    overflow: hidden;
+    letter-spacing: 1px;
+    opacity: 0;
+    margin-top: 3px !important;
+
+
+  }
+.button_logout{
+    border-radius: 10px;
+    float: right;
+    padding: 12px;
+    margin: 20px;
+    color: white;
+    width: 50px;
+    background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
+    background-size: 200% !important;
+    overflow: hidden;
+  }
+.button_logout:hover {
+    width: 130px;
+    cursor: pointer;
+    background-position: right;
+
+  }
+.button_logout:hover .logout{
+    opacity: 1;
+}
+.button_back{
+  border-radius: 10px;
+  float: left;
+  padding: 12px;
+  margin: 20px;
+  color: white;
+  width: 50px;
+  background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
+  background-size: 200% !important;
+  overflow: hidden;
+}
+.button_back:hover {
+    width: 100px;
+    cursor: pointer;
+    background-position: right;
+
+  }
+
+.button_back:hover .back{
+    opacity: 1;
 }
 /*media query*/
 

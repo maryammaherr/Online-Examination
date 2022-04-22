@@ -188,7 +188,7 @@ $('#easy').on('change', function() {
  $('#moderate').on('change', function() {
     Moderate_value=this.value;
 
-  });
+  }); 
 
   }
  

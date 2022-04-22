@@ -1,10 +1,11 @@
 window.addEventListener('load', function(){
 
-	document.getElementById('doc').addEventListener("click",fill_Table)
- //document.getElementById('stu').addEventListener("click",)
-//document.getElementById('demon').addEventListener("click",)
-	document.getElementById('search').addEventListener('keyup',Search_fun)
+	document.getElementById('doc').addEventListener("click",fill_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Manage'));
+   //document.getElementById('stu').addEventListener("click",)
+  //document.getElementById('demon').addEventListener("click",)
+	document.getElementById('search').addEventListener('keyup',Search_fun);
 
+var status_value ="unpanned";
 
 	/*Search */
 function Search_fun(){
@@ -33,25 +34,76 @@ function Search_fun(){
 
 
 fill_Table();
- function fill_Table(){
-	 document.getElementById('mainsDiv').style.display="block"
-    axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/Manage').then(resp => {
-        //fill table
-    document.getElementById('body').innerHTML=ParseJson(resp.data)
-  });
- }
+function fill_Table(link){
+	//document.getElementById("mainsDiv").style.display="block";
 
+	axios.get(link, {
+	  params: {
+	   //id: 1,
+	  }
+	 })
+	  .then(function(resp){
+		ParseJson(resp.data);
+  
+	  })
+	  .catch(function(error){
+		console.log(error);
+	  })
+  }
+ 
  function ParseJson(data){
-    let res="";
-    for(let i=0;i<data.length;i++)
-    {
-        res+=AddDataTable(data[i])
-    }
-    return res;
+	let tbody=document.getElementById('body');
+	for(let i=0;i<data.length;i++)
+	{
+		tbody.appendChild(AddDataTable(data[i]))
+	}
+	return tbody;
 }
 
  function AddDataTable(obj){
-     return`
+	var tr  = document.createElement("tr");
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+    var td3 = document.createElement("td");
+    var td4 = document.createElement("td");
+	var td5 = document.createElement("td");
+
+	var pan_button = document.createElement("button");
+    pan_button.innerHTML = "PAN";
+    pan_button.id = obj.id;
+	pan_button.value="panned";
+    pan_button.addEventListener("click",pan_row);
+    pan_button.classList.add("pan");
+
+
+    var unpan_button = document.createElement("button");
+    unpan_button.innerHTML = " UNPAN";
+    unpan_button.id = obj.id;
+	unpan_button.value="unpanned";
+    unpan_button.addEventListener("click",un_pan_row);
+    unpan_button.classList.add("unpan");
+
+	td1.innerHTML = obj.id;
+    tr.appendChild(td1);
+
+    td2.innerHTML = obj.name;
+    tr.appendChild(td2);
+
+	td3.innerHTML = obj.country;
+    tr.appendChild(td3);
+
+    td4.appendChild(pan_button);
+    tr.appendChild(td4);
+
+    td5.appendChild(unpan_button);
+    tr.appendChild(td5);
+
+
+    return tr;
+
+   
+	
+	/*return`
 	 <tr>
 	 <td id="doc_name_row1">${obj.id}</td>
 	 <td id="doc_country_row1">${obj.name}</td>
@@ -62,22 +114,39 @@ fill_Table();
 	 </td>
 	 </td>
    </tr>
-	 `
+	 `*/
 }
 
 
 
 //pan & unpan
 
-function pan_row(no) {
-	document.getElementById("doc_row"+no+"").style.textDecoration="line-through";
-	document.getElementById("doc_pan_button"+no).style.display="none";
-    document.getElementById("doc_un_pan_button"+no).style.display="block";
+function pan_row() {
+	status_value="panned";
+	axios({
+        method: 'post',
+        url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/Manage',
+        data:{
+            status: status_value,
+			country:"aaa",
+			name:"bbxx",
+			
+        }
+    })
+
 }
-function un_pan_row(no) {
-	document.getElementById("doc_row"+no+"").style.textDecoration="none";
-	document.getElementById("doc_pan_button"+no).style.display="block";
-    document.getElementById("doc_un_pan_button"+no).style.display="none";
+function un_pan_row() {
+	status_value="unpanned";
+	axios({
+        method: 'post',
+        url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/Manage',
+        data:{
+            status: status_value,
+			country:"a",
+			name:"bb",
+
+        }
+    })
 }
 
 

@@ -14,5 +14,5 @@ table.table th:last-child {
     width: 100px;
 }
 #mainsDiv{
-    display: none;
+ /*   display:none;*/
 }
