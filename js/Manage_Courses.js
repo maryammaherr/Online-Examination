@@ -31,15 +31,37 @@ function ParseJson(data){
   
 
   function AddDataTable(obj){
-    var tr= document.createElement("tr");
+    var tr  = document.createElement("tr");
     var td1 = document.createElement("td");
     var td2 = document.createElement("td");
+    var td3 = document.createElement("td");
+    var td4 = document.createElement("td");
+
+    var Upload_button = document.createElement("button");
+    Upload_button.innerHTML = "Upload File";
+    Upload_button.id = obj.id;
+    Upload_button.addEventListener("click",Upload)
+    Upload_button.classList.add("btn_upload");
+
+
+    var Details_button = document.createElement("button");
+    Details_button.innerHTML = " Exam Details";
+    Details_button.id = obj.id;
+    Details_button.addEventListener("click",Details)
+    Details_button.classList.add("btn_details");
 
     td1.innerHTML = obj.Name;
     tr.appendChild(td1);
 
     td2.innerHTML = obj.id;
     tr.appendChild(td2);
+
+    td3.appendChild(Upload_button);
+    tr.appendChild(td3);
+
+    td4.appendChild(Details_button);
+    tr.appendChild(td4);
+
     
     return tr;
 
@@ -59,7 +81,7 @@ function ParseJson(data){
 function fillData(){
   axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/IT', {
     params: {
-     id: 1,
+     //id: 1,
     }
    })
     .then(function(resp){
