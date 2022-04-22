@@ -128,8 +128,6 @@ function pan_row() {
         url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/Manage',
         data:{
             status: status_value,
-			country:"aaa",
-			name:"bbxx",
 			
         }
     })
@@ -142,8 +140,6 @@ function un_pan_row() {
         url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/Manage',
         data:{
             status: status_value,
-			country:"a",
-			name:"bb",
 
         }
     })
