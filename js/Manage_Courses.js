@@ -21,22 +21,26 @@ function Details(){
         
       //ParseJson(resp.data);
 function ParseJson(data){
-  let res="";
+  let tbody=document.getElementById('table-body');
   for(let i=0;i<data.length;i++)
   {
-      res+=AddDataTable(data[i])
+      tbody.appendChild(AddDataTable(data[i]))
   }
-  return res;
-  }
+  return tbody;
+}
   
 
   function AddDataTable(obj){
     var tr= document.createElement("tr");
-    var td = document.createElement("td");
-    tr.appendChild(td);
-    td.innerHTML = obj.Name;
-    tr.appendChild(td);
-    td.innerHTML = obj.id;
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+
+    td1.innerHTML = obj.Name;
+    tr.appendChild(td1);
+
+    td2.innerHTML = obj.id;
+    tr.appendChild(td2);
+    
     return tr;
 
 /*
@@ -50,14 +54,16 @@ function ParseJson(data){
    </tr>
    `*/
   }
+
+
 function fillData(){
   axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/IT', {
     params: {
      id: 1,
     }
-  })
+   })
     .then(function(resp){
-      document.getElementById('table-body').innerHTML=ParseJson(resp.data)
+      ParseJson(resp.data);
 
     })
     .catch(function(error){
@@ -69,8 +75,9 @@ function fillData(){
   //logout
   document.getElementById('log_out').addEventListener("click",Log_Out);
   document.getElementById('back').addEventListener("click",Back);
+  
 
-    });
+});
 
        
 
