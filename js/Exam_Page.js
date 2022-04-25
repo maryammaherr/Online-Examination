@@ -29,18 +29,13 @@ $(document).ready(function () {
     },
   ];
 
- 
-
-
-
-  var exam_details=JSON.parse(sessionStorage.getItem("exam-details"));
-  console.log(exam_details);
 
   $.ajax({
       url: "http://localhost:8241/api/Exam/Examinate",
       type: "GET",
       data: {
-        course_id: exam_details.courseId,
+        course_id: getExamDetails().courseId,
+        student_id: getUserData().id
       },
       headers: {
         "Content-Type": "application/json",
@@ -50,14 +45,14 @@ $(document).ready(function () {
       },
       success: function (data) {
         console.log(data);
-        json=data;
+        json=data.data;
         $("#spinners").remove();
-        init_body();
+        init_body(data.data);
         $('#Submit_button').prop("disabled", false);
-        clock(exam_details.durationInMinutes);
-        setSubjectName(exam_details.courseName);
-        setStudentName(JSON.parse(localStorage.getItem('user-data')).firstname);
-        setDuration(exam_details.durationInMinutes);
+        clock(getExamDetails().durationInMinutes);
+        setDuration(getExamDetails().durationInMinutes);
+        setSubjectName(getExamDetails().courseName);
+        setStudentName(getUserData().firstname);   
       },
       error: function (xhr, status, error) {
         console.log(error);
@@ -87,7 +82,8 @@ $(document).ready(function () {
   }
 
   
-  function init_body(){
+  function init_body(json){
+
     for (let i = 0; i < json.length; i++) {
       liA = document.createElement("a");
       liA.setAttribute("href", "#");
@@ -116,6 +112,7 @@ $(document).ready(function () {
   }
 
   function getComponent(obj) {
+    console.log(obj)
     tagger = guidGenerator();
     if (obj.qtype.toUpperCase() == "M") {
       return `
@@ -379,21 +376,21 @@ $(document).ready(function () {
 
   function get_spinners(){
     return `
-    <div id="question-area" class="Question_Area">
-    <div id="spinners" class="w-100 d-flex align-items-center justify-content-center ">
-    <div>Please wait...</div>
-    <div class="spinner-grow text-primary" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-    <div class="spinner-grow text-warning" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-    <div class="spinner-grow text-success" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
-  </div>
-  `;
+        <div id="question-area" class="Question_Area">
+        <div id="spinners" class="w-100 d-flex align-items-center justify-content-center ">
+        <div>Please wait...</div>
+        <div class="spinner-grow text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      </div>
+      `;
   }
 
   function casper() {
@@ -401,25 +398,24 @@ $(document).ready(function () {
     
     console.log(get_user_data());
 
-    console.log(JSON.parse(localStorage.getItem('user-data')).id)
         $.ajax({
           url: "http://localhost:8241/api/Exam/Examinate",
           type: "POST",
           data: JSON.stringify({
-            "std_id": JSON.parse(localStorage.getItem('user-data')).id,
-            "course_id": exam_details.courseId, 
+            "student_id": getUserData().id,
+            "course_id": getExamDetails().courseId, 
+            "total_num_of_questions":json.length,
             "answers": get_user_data()
           }),
           headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Headers": "*",
             "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
           },
-          success: function (data) {
-            console.log(data);
-            sessionStorage.setItem("exam-result",JSON.stringify(data.data));
-            window.location.replace("../html/Result.html");
+          success: function (response) {
+            console.log(response.data);
+            setExamResult(response.data);
+            window.location.href="../html/ResultPage.html";
           },
           error: function (xhr, status, error) {
             console.log(error);
@@ -441,6 +437,10 @@ function clock(minutes) {
   c=minutes*60;
   function myClock() {
     --c;
+
+    if(c==0)
+      casper();
+
     var seconds = c % 60; // Seconds that cannot be written in minutes
     var secondsInMinutes = (c - seconds) / 60; // Gives the seconds that COULD be given in minutes
     var minutes = secondsInMinutes % 60; // Minutes that cannot be written in hours
