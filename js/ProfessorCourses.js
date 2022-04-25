@@ -87,16 +87,16 @@ function fillData(){
 
 
   function Log_Out(){
-    window.location.replace("../html/Login.html")
+    window.location.href=LINKS.LOGIN_PAGE;
   }  
   function Back(){
     window.location.replace("../html/Admin_Page.html")
   }  
   function Upload(){
-    window.location.replace("../html/question-bank.html")
+    window.location.href=LINKS.QUESTION_BANK;
   }  
   function Details(){
-    window.location.replace("../html/Exam_Details.html")
+    window.location.href=LINKS.EXAM_DETAILS_PAGE;
   }  
   
 

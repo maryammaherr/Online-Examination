@@ -1,58 +1,65 @@
 window.addEventListener('load', function(){
 
-	document.getElementById('doc').addEventListener("click",fill_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Manage'));
-   //document.getElementById('stu').addEventListener("click",)
+	document.getElementById('doc').addEventListener("click",()=> 
+	fill_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Manage')
+	);
+   document.getElementById('stu').addEventListener("click",()=> 
+   fill_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Manage')
+   );
+
   //document.getElementById('demon').addEventListener("click",)
 	document.getElementById('search').addEventListener('keyup',Search_fun);
 
-var status_value ="unpanned";
+	var status_value ="unpanned";
 
-	/*Search */
-function Search_fun(){
-	let input, filter, table, tr, td, txtValue;
-	input = document.getElementById("search");
-	filter = input.value.toUpperCase();
-	table = document.getElementById("data_table");
-	tr = table.getElementsByTagName("tr");
-  
-	for(let i=0; i< tr.length ; i++){
-		td = tr[i].getElementsByTagName("td")[1]; //roooow number
-		if(td){
-			txtValue = td.textContent || td.innerText;
-			if(txtValue.toUpperCase().indexOf(filter) > -1 ){
-				tr[i].style.display="";
-			}
-			else{
-			  tr[i].style.display="none";
+		/*Search */
+	function Search_fun(){
+		let input, filter, table, tr, td, txtValue;
+		input = document.getElementById("search");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("data_table");
+		tr = table.getElementsByTagName("tr");
+	
+		for(let i=0; i< tr.length ; i++){
+			td = tr[i].getElementsByTagName("td")[1]; //roooow number
+			if(td){
+				txtValue = td.textContent || td.innerText;
+				if(txtValue.toUpperCase().indexOf(filter) > -1 ){
+					tr[i].style.display="";
+				}
+				else{
+				tr[i].style.display="none";
+				}
 			}
 		}
 	}
-  }
   
 
 
 
 
 fill_Table();
+
+
 function fill_Table(link){
-	//document.getElementById("mainsDiv").style.display="block";
 
 	axios.get(link, {
-	  params: {
+	  /*params: {
 	   //id: 1,
-	  }
-	 })
-	  .then(function(resp){
+	  }*/
+	 }).then(function(resp){
 		ParseJson(resp.data);
   
 	  })
 	  .catch(function(error){
 		console.log(error);
 	  })
+
   }
  
  function ParseJson(data){
 	let tbody=document.getElementById('body');
+	tbody.innerHTML="";
 	for(let i=0;i<data.length;i++)
 	{
 		tbody.appendChild(AddDataTable(data[i]))
@@ -69,18 +76,24 @@ function fill_Table(link){
 	var td5 = document.createElement("td");
 
 	var pan_button = document.createElement("button");
-    pan_button.innerHTML = "PAN";
+    pan_button.innerHTML = "BAN";
     pan_button.id = obj.id;
-	pan_button.value="panned";
-    pan_button.addEventListener("click",pan_row);
+    pan_button.addEventListener("click",()=>{
+		let copyobj=obj;
+		copyobj.status=true;
+		manageBanStatus(obj.id,copyobj);
+	});
     pan_button.classList.add("pan");
 
 
     var unpan_button = document.createElement("button");
-    unpan_button.innerHTML = " UNPAN";
+    unpan_button.innerHTML = " UNBAN";
     unpan_button.id = obj.id;
-	unpan_button.value="unpanned";
-    unpan_button.addEventListener("click",un_pan_row);
+    unpan_button.addEventListener("click",()=>{
+		let copyobj=obj;
+		copyobj.status=false;
+		manageBanStatus(obj.id,copyobj);
+	});
     unpan_button.classList.add("unpan");
 
 	td1.innerHTML = obj.id;
@@ -89,7 +102,7 @@ function fill_Table(link){
     td2.innerHTML = obj.name;
     tr.appendChild(td2);
 
-	td3.innerHTML = obj.country;
+	td3.innerHTML = obj.status?"UNBANNED":"BANNED";
     tr.appendChild(td3);
 
     td4.appendChild(pan_button);
@@ -121,29 +134,23 @@ function fill_Table(link){
 
 //pan & unpan
 
-function pan_row() {
-	status_value="panned";
+function manageBanStatus(id,newobj) {
+	console.log(newobj);
 	axios({
-        method: 'post',
+        method: 'put',
         url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/Manage',
-        data:{
-            status: status_value,
-			
-        }
-    })
-
+		params:{
+			id:id
+		},
+        data:newobj
+    }).then(function(data){
+		console.log(data);
+	})
+	.catch(function(error){
+		console.log(error);
+	  })
 }
-function un_pan_row() {
-	status_value="unpanned";
-	axios({
-        method: 'post',
-        url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/Manage',
-        data:{
-            status: status_value,
 
-        }
-    })
-}
 
 
 })

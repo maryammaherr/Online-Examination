@@ -57,7 +57,7 @@ function doLogin(){
 
 				console.log(getToken());
 				console.log(getUserData());
-				window.location.href = "../html/StudentCourses.html";
+				window.location.href = LINKS.STUDENT_COURSES_PAGE;
 				//window.location.replace("../html/Courses_Status.html");
 			  }
 		  },
