@@ -8,6 +8,7 @@
 const USER_DATA="USERDATA";
 const USER_TOKEN="TOKEN";
 const COURSE_ID="COURSEID";
+const COURSE_NAME="COURSENAME";
 const EXAM_DETAILS="EXAMDETAILS";
 const EXAM_RESULT="EXAMRESULT";
 
@@ -28,6 +29,14 @@ function setCourseId(id){
 
 function getCourseId(){
     return localStorage.getItem(COURSE_ID);
+}
+
+function setCourseName(name){
+    localStorage.setItem(COURSE_NAME, name );
+}
+
+function getCourseName(){
+    return localStorage.getItem(COURSE_NAME);
 }
 
 

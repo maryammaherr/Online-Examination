@@ -3,101 +3,125 @@ window.addEventListener('load', function(){
 
 
 
-
-fillData();
-        
-      //ParseJson(resp.data);
-function ParseJson(data){
-  let tbody=document.getElementById('table-body');
-  for(let i=0;i<data.length;i++)
-  {
-      tbody.appendChild(AddDataTable(data[i]))
-  }
-  return tbody;
-}
+  console.log(getUserData());
+  getProfessorCourses(API_LINKS.GET_PROFESSSOR_COURSES,getUserData().id);
   
-
-function AddDataTable(obj){
-  var tr  = document.createElement("tr");
-  var td1 = document.createElement("td");
-  var td2 = document.createElement("td");
-  var td3 = document.createElement("td");
-  var td4 = document.createElement("td");
-
-  var Upload_button = document.createElement("button");
-  Upload_button.innerHTML = "Upload File";
-  Upload_button.id = obj.id;
-  Upload_button.addEventListener("click",Upload)
-  Upload_button.classList.add("btn_upload");
-
-
-  var Details_button = document.createElement("button");
-  Details_button.innerHTML = " Exam Details";
-  Details_button.id = obj.id;
-  Details_button.addEventListener("click",Details)
-  Details_button.classList.add("btn_details");
-
-  td1.innerHTML = obj.Name;
-  tr.appendChild(td1);
-
-  td2.innerHTML = obj.id;
-  tr.appendChild(td2);
-
-  td3.appendChild(Upload_button);
-  tr.appendChild(td3);
-
-  td4.appendChild(Details_button);
-  tr.appendChild(td4);
-
-  
-  return tr;
-
-/*
-  return`
-  <tr>
-  <td>${obj.Name}</td>
-  <td>${obj.id}</td>
-  <td> </td>
-  <td><button type="button" class="btn btn-primary " id="button_"+${obj.id} >
-  Add Details </button></td>
-  </tr>
-  `*/
-}
-
-
-function fillData(){
-  axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/IT', {
-    params: {
-     //id: 1,
+ 
+  //“refresh page on back button click javascript” Code Answer
+  window.addEventListener( "pageshow", function ( event ) {
+    var historyTraversal = event.persisted || ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+    if ( historyTraversal ) {
+      // Handle page restore.
+      //alert('refresh');
+      window.location.reload();
     }
-   })
-    .then(function(resp){
-      ParseJson(resp.data);
+  });
+  
 
+  function ParseJson(data){
+    let tbody=document.getElementById('table-body');
+    for(let i=0;i<data.length;i++)
+    {
+        tbody.appendChild(AddDataTable(data[i]))
+    }
+    return tbody;
+  }
+    
+
+  function AddDataTable(obj){
+    var tr  = document.createElement("tr");
+    var td1 = document.createElement("td");
+    var td2 = document.createElement("td");
+    var td3 = document.createElement("td");
+    var td4 = document.createElement("td");
+    var td5 = document.createElement("td");
+
+    var Upload_button = document.createElement("button");
+    Upload_button.innerHTML = "Question Bank";
+    //Upload_button.id = obj.courseId*5;
+    Upload_button.classList.add("btn_upload");
+
+
+    var Details_button = document.createElement("button");
+    Details_button.innerHTML = " Exam Details";
+    //Details_button.id = obj.courseId*10;
+    Details_button.classList.add("btn_details");
+
+    Upload_button.addEventListener("click",()=>{
+      setCourseId(obj.courseId)
+      setCourseName(obj.courseName)
+      redirectTo(LINKS.QUESTION_BANK)
     })
-    .catch(function(error){
-      console.log(error);
+    Details_button.addEventListener("click",()=>{
+      setCourseId(obj.courseId)
+      setCourseName(obj.courseName)
+      redirectTo(LINKS.EXAM_DETAILS_PAGE)
     })
-}
-   
+
+    td1.innerHTML = obj.courseName;
+    tr.appendChild(td1);
+
+    td2.innerHTML = obj.courseCode;
+    tr.appendChild(td2);
+
+    td3.appendChild(Upload_button);
+    tr.appendChild(td3);
+
+    td4.appendChild(Details_button);
+    tr.appendChild(td4);
+
+    td5.innerHTML= getConfigurationBadge(obj.isConfigured)
+      
+    tr.appendChild(td5)
+    
+    return tr;
 
 
-  document.getElementById('log_out').addEventListener("click",Log_Out);
-  document.getElementById('back').addEventListener("click",Back);
+  }
+
+  function getConfigurationBadge(status){
+    if(status)
+    return `<a href="#" class="badge badge-success">FINISHED</a>`
+
+    return `<a href="#" class="badge badge-warning">NOT FINISHED</a>`
+  }
+
+  function hideLoading(id){
+    $("#"+id).hide();
+  }
+
+  function getProfessorCourses(link,professor_id){
+    
+    axios.get(link, {
+      params: {
+        professor_id: professor_id,
+      }
+    })
+      .then(function(resp){
+        ParseJson(resp.data.data);
+        hideLoading("please-wait");
+      })
+      .catch(function(error){
+        console.log(error);
+      })
+  }
+    
 
 
-  function Log_Out(){
-    window.location.href=LINKS.LOGIN_PAGE;
-  }  
-  function Back(){
-    window.location.replace("../html/Admin_Page.html")
-  }  
-  function Upload(){
-    window.location.href=LINKS.QUESTION_BANK;
-  }  
-  function Details(){
-    window.location.href=LINKS.EXAM_DETAILS_PAGE;
-  }  
+    document.getElementById('log_out').addEventListener("click",Log_Out);
+    document.getElementById('back').addEventListener("click",Back);
+
+
+    function Log_Out(){
+      window.location.href=LINKS.LOGIN_PAGE;
+    }  
+    function Back(){
+      //window.location.replace("../html/Admin_Page.html")
+    }  
+
+    function redirectTo(link){
+      window.location.href=link;
+    }  
   
 
 });

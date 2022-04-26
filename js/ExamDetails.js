@@ -9,11 +9,6 @@ window.addEventListener('load', function(){
     var Moderate_value=0;
 
 
-
-
-   
-
-
 // Total Number of questions
 fill_Quetions_Data()
 function fill_Quetions_Data()
@@ -51,41 +46,39 @@ function fill_Quetions_Data()
 
 
 
-  // type questions
+// type questions
 fill_type_Data()
 function fill_type_Data()
 {
    axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details').then(resp => {
        document.getElementById('options').innerHTML=Parse_type_Json(resp.data)
    });
-   function Parse_type_Json(data){
-       let res="";
-       for(let i=0;i<1;i++)
-       {
-           res+=Add_type_Data(data[i])
-       }
-       return res;
-   }
    
-   function Add_type_Data(obj){
-       for(var i=1;i<=2;i++){
-           var x = document.getElementById("type");
-           
-           x.innerHTML=`
-           <option value="Mixed"> Mixed </option>
-           <option value="Written"> Written </option>
-           `  
-       }
-        //get the value of the selected option
-        $('#type').on('change', function() {
-           type_value=this.value;
-   
-         });
-     }
-
-
+}
+function Parse_type_Json(data){
+    let res="";
+    for(let i=0;i<1;i++)
+    {
+        res+=Add_type_Data(data[i])
+    }
+    return res;
 }
 
+function Add_type_Data(obj){
+    for(var i=1;i<=2;i++){
+        var x = document.getElementById("type");
+        
+        x.innerHTML=`
+        <option value="Mixed"> Mixed </option>
+        <option value="Written"> Written </option>
+        `  
+    }
+     //get the value of the selected option
+     $('#type').on('change', function() {
+        type_value=this.value;
+
+      });
+}
 
   
 
@@ -194,9 +187,9 @@ $('#easy').on('change', function() {
  
  
 
-   //validate
+//validate
 
-   function validate() {
+function validate() {
 
     axios({
         method: 'post',

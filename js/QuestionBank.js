@@ -58,10 +58,6 @@ $(document).ready(function(){
             } );
     }
 
-    function setCourseName(name){
-          $("#course-name").html(name)
-    }
-
     function uploadQuestionBank(){
         if(!is_ok)
         {
@@ -71,6 +67,9 @@ $(document).ready(function(){
 
         var formData = new FormData();
         formData.append("file", csvToUpload);
+
+        modifyBtnState("btn-submit",true);
+        toastSuccess("Uploading...")
         axios({
             method: 'post',
             url: 'http://localhost:8241/api/QuestionBank/UploadQuestionBank',
@@ -78,19 +77,25 @@ $(document).ready(function(){
                 'Content-Type': 'multipart/form-data'
             },
             params:{
-                course_id:course_id,
+                course_id:getCourseId(),
                 questionBankType:questionbanktype
             },
             data:formData
           }).then(function(response) {
                 toastSuccess(response.data.message);
-                getRecordsCount(course_id)
+                getRecordsCount(getCourseId())
                 console.log(response);
           }).catch(function(error){
               toastError(error)
               console.log(error);
+          }).finally(() => {
+             modifyBtnState("btn-submit",false)
           });
 
+    }
+
+    function modifyBtnState(id,isDisable){
+        $("#"+id).prop('disabled', isDisable);
     }
 
     function deleteQuestionBank(course_id){
@@ -102,7 +107,7 @@ $(document).ready(function(){
                 course_id:course_id
             }
           }).then(function(response) {
-                getRecordsCount(course_id)
+                getRecordsCount(getCourseId())
                 toastWarning(response.data.message);
                 //console.log(response.data.message);
 
@@ -114,7 +119,8 @@ $(document).ready(function(){
     }
 
     function setRecordsCount(val){
-        getbyID("lbl-questionbank-count").innerHTML= val
+        //alert(val);
+        $("#lbl-questionbank-count").text(val) 
     }
     function getRecordsCount(course_id){
         axios({
@@ -136,25 +142,13 @@ $(document).ready(function(){
     }
 
     function onPageLoad(){
-        setCourseName("Computer Networks");
+        console.log(getCourseName());
+        setCourseNameHTML(getCourseName());
         is_ok=false;
         check_radio(-1);
         getbyID('my-awesome-dropzone').dropzone.removeAllFiles();
-        getRecordsCount(course_id);
+        getRecordsCount(getCourseId());
     }
-
-
-    var is_ok=false;
-    var data_table=$("#data-table").html();
-    var course_id=1;
-    var questionbanktype;
-    var csvToUpload;
-
-    onPageLoad();
-
-    //set course id
-    //set course name
-
 
     getbyID('my-awesome-dropzone').dropzone.on("addedfiles", function(files) {
         
@@ -169,8 +163,6 @@ $(document).ready(function(){
             const pojo = new ExcelParser(read.result,file.name);
                 pojo.getJSON()
                 .then( (data) => { 
-                
-
                     csvToUpload  = new Blob([data.csvFile],{type: 'text/csv;charset=utf-8;'});
                     //csvToUpload=data.csvFile;
                     is_ok=true;
@@ -190,7 +182,7 @@ $(document).ready(function(){
 
     $('#btn-clear').click(function(){
         $("#btn-dismiss-clearmodal").click();
-        deleteQuestionBank(course_id);
+        deleteQuestionBank(getCourseId());
         onPageLoad();
     });
 
@@ -198,5 +190,23 @@ $(document).ready(function(){
         uploadQuestionBank();
         onPageLoad();
     });
+
+
+    function setCourseNameHTML(name){
+        $("#course-name").html(name);
+    }
+    //-----------------main----------------------
+
+    var is_ok=false;
+    var data_table=$("#data-table").html();
+    var questionbanktype;
+    var csvToUpload;
+
+    
+    onPageLoad();
+    
+
+    //set course id
+    //set course name
 
 });

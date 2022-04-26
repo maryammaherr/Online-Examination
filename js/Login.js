@@ -57,12 +57,12 @@ function doLogin(){
 
 				console.log(getToken());
 				console.log(getUserData());
-				window.location.href = LINKS.STUDENT_COURSES_PAGE;
-				//window.location.replace("../html/Courses_Status.html");
+				window.location.href = LINKS.PROFESSOR_COURSES;
+				
 			  }
 		  },
 		  error: function(xhr,status,error){
-			toastError("Something went wrong");
+			toastError(error);
 		  }
 		});
 	  }
