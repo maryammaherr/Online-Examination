@@ -100,9 +100,11 @@ window.addEventListener('load', function(){
       .then(function(resp){
         ParseJson(resp.data.data);
         hideLoading("please-wait");
+        toastSuccess(resp.data.message);
       })
       .catch(function(error){
         console.log(error);
+        toastError(error)
       })
   }
     
