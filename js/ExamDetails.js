@@ -13,9 +13,20 @@ window.addEventListener('load', function(){
 fill_Data()
 function fill_Data()
 {
-   axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details').then(resp => {
-       document.getElementById('options').innerHTML=Parse_Json(resp.data)
-   });
+	axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details', {
+	  params: {
+	   id: 1,
+	  }
+	 }).then(function(resp){
+        document.getElementById('options').innerHTML=Parse_Json(resp.data);
+    })
+    .catch(function(error){
+		console.log(error);
+	  })
+
+    }
+
+
    function Parse_Json(data){
        let res="";
        for(let i=0;i<1;i++)
@@ -27,7 +38,7 @@ function fill_Data()
    
    function Add_Data(obj){
     var Questions = obj.total;
-    for(var i=1;i<=Questions;i++){
+    for(var i=0;i<=Questions;i++){
         //questions
         var questions = document.getElementById("Question_Number");
         var option = document.createElement("option");
@@ -90,8 +101,6 @@ function fill_Data()
 
   }
 
-
-}
 
 
 /*
@@ -240,14 +249,22 @@ function validate() {
     axios({
         method: 'post',
         url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details',
+		params:{
+		//	id:id
+		},
         data:{
             questions:questions_value,
             type:type_value,
             hard:Hard_value,
             easy:Easy_value,
             moderate:Moderate_value,
-        }
-    })
+        }    }).then(function(data){
+		console.log(data);
+	})
+	.catch(function(error){
+		console.log(error);
+	  })
+
 
     type_sum = parseInt(Hard_value)+parseInt(Easy_value)+parseInt(Moderate_value);
     if(type_sum < questions_value || type_sum > questions_value){
