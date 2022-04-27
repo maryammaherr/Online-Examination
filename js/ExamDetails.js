@@ -10,8 +10,8 @@ window.addEventListener('load', function(){
 
 
 // Total Number of questions
-fill_Quetions_Data()
-function fill_Quetions_Data()
+fill_Data()
+function fill_Data()
 {
    axios.get('https://62459b7c2cfed1881723c8a7.mockapi.io/exam_Details').then(resp => {
        document.getElementById('options').innerHTML=Parse_Json(resp.data)
@@ -28,24 +28,73 @@ function fill_Quetions_Data()
    function Add_Data(obj){
     var Questions = obj.total;
     for(var i=1;i<=Questions;i++){
-        var x = document.getElementById("Question_Number");
+        //questions
+        var questions = document.getElementById("Question_Number");
         var option = document.createElement("option");
         option.value =i;
         option.text = i+" "+"Question";
-        x.add(option);
+        questions.add(option);
+
+        //type
+        var typeQ = document.getElementById("type");
+        typeQ.innerHTML=`
+        <option value="Mixed"> Mixed </option>
+        <option value="Written"> Written </option>
+        `  
+
+        //hard
+            var hardQ = document.getElementById("hard");
+            var hard_option= document.createElement("option");
+            hard_option.value =i;
+            hard_option.text = i+" "+"Question";
+            hardQ.add(hard_option);
+        
+
+        //easy
+            var easyQ = document.getElementById("easy");
+            var easy_option= document.createElement("option");
+            easy_option.value =i;
+            easy_option.text = i+" "+"Question";
+            easyQ.add(easy_option);
+        
+        //noderate
+            var moderateQ = document.getElementById("moderate");
+            var Moderate_option= document.createElement("option");
+            Moderate_option.value =i;
+            Moderate_option.text = i+" "+"Question";
+            moderateQ.add(Moderate_option);
+        
     }
      //get the value of the selected option
+     //questions
      $('#Question_Number').on('change', function() {
         questions_value=this.value;
-
       });
+     //type
+     $('#type').on('change', function() {
+        type_value=this.value;
+      });
+      //hard
+      $('#hard').on('change', function() {
+        Hard_value=this.value;
+     });
+     //easy
+     $('#easy').on('change', function() {
+        Easy_value=this.value;
+     });
+     //moderate
+     $('#moderate').on('change', function() {
+        Moderate_value=this.value;
+      }); 
+    
+
   }
 
 
 }
 
 
-
+/*
 // type questions
 fill_type_Data()
 function fill_type_Data()
@@ -111,7 +160,6 @@ function Add_Hard_Data(obj){
 //get the value of the selected option
 $('#hard').on('change', function() {
     Hard_value=this.value;
-
  });
 
  }
@@ -146,7 +194,6 @@ function Add_Easy_Data(obj){
 //get the value of the selected option
 $('#easy').on('change', function() {
     Easy_value=this.value;
- 
  });
 
  }
@@ -180,12 +227,11 @@ $('#easy').on('change', function() {
  //get the value of the selected option
  $('#moderate').on('change', function() {
     Moderate_value=this.value;
-
   }); 
 
   }
  
- 
+ */
 
 //validate
 
