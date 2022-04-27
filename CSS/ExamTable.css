@@ -9,6 +9,10 @@ body{
     background-color: #f9fbff;
 
 }
+#dropdownMenuButton {
+    background-color: #00BFA6 !important;
+    color: white;
+}
 
 table{
     height: 200px !important;
@@ -63,5 +67,10 @@ td{
 
 #IT_ERROR_DIV{
     display: none;
+}
+
+#IT_err{
+    background-color: #00BFA6 !important;
+    color: white;
 }
 

@@ -1,7 +1,13 @@
 window.addEventListener('load', function(){
-    document.getElementById('IT').addEventListener("click",fill_IT_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/IT'))
-    document.getElementById('DENT').addEventListener("click",fill_IT_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Dentistery'))
-    document.getElementById('IT_err').addEventListener("click",fill_IT_Error_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Error'))
+    document.getElementById('IT').addEventListener("click",()=>
+    fill_IT_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/IT')
+    );
+    document.getElementById('DENT').addEventListener("click",()=>
+    fill_IT_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Dentistery')
+    );
+    document.getElementById('IT_err').addEventListener("click",()=>
+    fill_IT_Error_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Error')
+    );
 
  // IT 
  function fill_IT_Table(link){

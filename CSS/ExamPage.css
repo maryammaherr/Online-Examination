@@ -26,7 +26,7 @@ body {
     height: auto;
     width: 100%;
     margin-bottom: 25px;
-    color: #4f546c(19, 18, 18);
+    color: #4f546c;
     overflow-wrap: break-word;
     box-shadow: 0px 5px 10px #e1e5ee;
     padding: 20px;
@@ -42,7 +42,7 @@ body {
 
 /* Timer */
 .Timer {
-    color:#38d39f;
+    color:#00BFA6;
     text-align: center;
     width: 60px;
     margin-left: 12%;
@@ -62,7 +62,7 @@ body {
 
 #icon{
     font-size: 30px !important;
-    color:#32be8f;
+    color:#00BFA6;
 }
 #icon i{
     font-size: 25px !important;
@@ -138,12 +138,12 @@ span{
       /* CHANGE THE LI IF IT UN USEDDD */
   
     li a:hover {
-      color: #38d39f;
+      color: #00BFA6;
       transform: scale(1.09);
       text-decoration: none;
     }
     li a:active {
-      color: #38d39f;
+      color: #00BFA6;
       transform: scale(1.09);
       text-decoration: none;
 
@@ -153,7 +153,8 @@ span{
     /* Questions */
     .Question_Area{
         background-color: rgb(255, 255, 255);
-        box-shadow: 0px 5px 10px #e1e5ee;        flex-grow: 1;
+        box-shadow: 0px 5px 10px #e1e5ee;    
+        flex-grow: 1;
         display: flex;
         width: 100%;
         overflow-y: scroll;
@@ -189,7 +190,7 @@ span{
     width: 100px;
     padding: 6px;
     margin-right: 50px;
-    background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
+    background-image: linear-gradient(to right, #00BFA6, #38d39f, #00BFA6) !important;
     background-size: 200% !important;
     border:none !important;
     font-size: 17px !important;
@@ -209,7 +210,7 @@ span{
     width: 100px;
     padding: 6px;
     margin-right: 50px;
-    background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
+    background-image: linear-gradient(to right, #00BFA6, #38d39f, #00BFA6) !important;
     background-size: 200% !important;
     border:none !important;
     font-size: 17px !important;
@@ -234,7 +235,7 @@ span{
 #Submit_button{
     width: 100px;
     padding: 6px;
-   	background-image: linear-gradient(to right, #32be8f, #38d39f, #32be8f) !important;
+   	background-image: linear-gradient(to right, #00BFA6, #38d39f, #00BFA6) !important;
     background-size: 200% !important;
     border:none !important;
     font-size: 17px !important;
@@ -261,7 +262,7 @@ span{
 }
 
 .active_question{
-    color: #38d39f;
+    color: #00BFA6;
 }
 
 
@@ -272,15 +273,15 @@ span{
 
 
 #hours{
-    color: #38d39f;
+    color: #00BFA6;
 
 }
 #minutes{
-    color: #38d39f;
+    color: #00BFA6;
 
 }
 #seconds{
-    color: #38d39f;
+    color: #00BFA6;
 
 }
 
