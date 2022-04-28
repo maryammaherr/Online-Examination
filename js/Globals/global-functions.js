@@ -93,3 +93,8 @@ roles={
     "STUDENT":"../html/StudentCourses.html"
 }
 
+/* logout */
+function Log_Out(){
+    window.location.href=LINKS.LOGIN_PAGE;
+  }  
+

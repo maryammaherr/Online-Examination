@@ -109,7 +109,7 @@ window.addEventListener('load', function(){
   }
     
 
-
+/*
     document.getElementById('log_out').addEventListener("click",Log_Out);
     document.getElementById('back').addEventListener("click",Back);
 
@@ -117,15 +117,12 @@ window.addEventListener('load', function(){
     function Log_Out(){
       window.location.href=LINKS.LOGIN_PAGE;
     }  
-    function Back(){
-      //window.location.replace("../html/Admin_Page.html")
-    }  
 
     function redirectTo(link){
       window.location.href=link;
     }  
   
-
+*/
 });
 
        
