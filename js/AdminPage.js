@@ -7,10 +7,10 @@ window.addEventListener('load', function(){
    
   
     function Manage_Users(){
-      window.location.replace("../html/Manage_Users.html")
+      window.location.href="../html/ManageUsers.html"
     }  
     function Manage_Schedule(){
-      window.location.replace("../html/Exam_Table.html")
+      window.location.href="../html/ExamTable.html"
     }  
 
     
