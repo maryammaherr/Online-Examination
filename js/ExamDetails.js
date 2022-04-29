@@ -1,5 +1,9 @@
 window.addEventListener('load', function(){
     document.getElementById('check').addEventListener("click",validate)
+    document.getElementById('log_out').addEventListener("click",Log_Out)
+    document.getElementById('back').addEventListener("click",Back)
+
+
 
     $("#course-name").html(getCourseName());
 
@@ -119,6 +123,10 @@ function putExamDetails(link){
 		console.log(error);
 	})
 }
+
+function Back(){
+    window.location.href=LINKS.PROFESSOR_COURSES;
+  }  
 
 
 function initDropDownLists(){
