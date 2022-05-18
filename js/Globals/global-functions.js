@@ -95,6 +95,7 @@ roles={
 
 /* logout */
 function Log_Out(){
+    localStorage.removeItem(USER_DATA);
     window.location.href=LINKS.LOGIN_PAGE;
   }  
 
