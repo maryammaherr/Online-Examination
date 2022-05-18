@@ -19,12 +19,16 @@ body{
 }
 
 #main_col{
-  margin-left: 8%;
+  margin-top: 10px !important;
+  margin-left: 7%;
   padding: 60px;
-  padding-top: 90px;
-  font-size: 1rem;
+  padding-top: 50px;
+  font-size: 1.1rem;
   height: 600px;
   box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;    
+}
+#course_name{
+  margin-bottom: 40px;
 }
 
 select {
@@ -113,7 +117,9 @@ i{
   color: #00BFA6;
 
 }
-
+header{
+  padding: 5px;
+}
 
 .button_logout{
   float: right;
@@ -123,9 +129,9 @@ i{
   border-radius: 15px;
   color: #18181a;
   display: inline-block;
-  font-size: 12px;
-  padding-left: 13px;
-  padding-right: 13px;
+  font-size: 13px;
+  padding-left: 20px;
+  padding-right: 20px;
   cursor: pointer;
   background: #fff;
   user-select: none;
@@ -147,6 +153,7 @@ i{
   height: 14px;
   line-height: 30px;
 }
+
 
 .button_logout:after {
   content: "";
@@ -173,8 +180,6 @@ i{
   transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
 }
 
-
-
 .button_back{
 float: left;
 position: relative;
@@ -183,9 +188,9 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 border-radius: 15px;
 color: #18181a;
 display: inline-block;
-font-size: 13px;
-padding-left: 10px;
-padding-right: 10px;
+font-size: 15px;
+padding-left: 20px;
+padding-right: 20px;
 cursor: pointer;
 background: #fff;
 user-select: none;
