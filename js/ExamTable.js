@@ -41,9 +41,6 @@ window.addEventListener('load', function(){
 
 }
 
-
-
-
 // IT_Error
 function fill_IT_Error_Table(err){
 
