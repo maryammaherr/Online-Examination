@@ -1,7 +1,8 @@
 window.addEventListener('load', function(){
   
+  document.getElementById('log_out').addEventListener("click",Log_Out)
 
-
+  
 
   console.log(getUserData());
   getProfessorCourses(API_LINKS.GET_PROFESSSOR_COURSES,getUserData().id);
