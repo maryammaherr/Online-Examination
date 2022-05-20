@@ -13,14 +13,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.js" integrity="sha512-MNW6IbpNuZZ2VH9ngFhzh6cUt8L/0rSVa60F8L22K1H72ro4Ki3M/816eSDLnhICu7vwH/+/yb8oB3BtBLhMsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         
     </head>
-    <body>
 
+    <header>
+        <div id="back" class="button_back"><div><span><i class="bi bi-arrow-left" id="bck"></i></span><span>BACK</span></div></div>
+        <div id="log_out" class="button_logout"><div><span><i class="bi bi-arrow-bar-right" id="out"></i></span><span>LOGOUT</span></div></div>
+        <br><br>
+        <hr>
+
+    </header>
+
+    <body>
+        <div class="main">
 <form id="date_time">
+   
+
     <input class="form-control" id="date" type="datetime-local" placeholder="Select Date">
-    <br>
-    <button type="button" class="btn btn-danger" id="submit" onclick="">
+    <br><br>
+    <button type="button" class="btn" id="submit" onclick="">
     Submit
-      </button>
+    </button>
+ 
+
 </form>
 
 
@@ -35,7 +48,6 @@
         </div>
       </div>
   
-
 
 <div id="IT_DIV">
         <table>
@@ -92,6 +104,7 @@
         </div>
 
 
+    </div>
 
 
 

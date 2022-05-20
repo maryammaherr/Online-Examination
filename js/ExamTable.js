@@ -11,6 +11,8 @@ window.addEventListener('load', function(){
     document.getElementById('submit').addEventListener("click",()=>
     SubmitDate()
     );
+    document.getElementById('log_out').addEventListener("click",Log_Out)
+    document.getElementById('back').addEventListener("click",Back)
 
 
 confg={
@@ -28,6 +30,10 @@ confg={
 
 
    }
+
+   function Back(){
+    window.location.href=LINKS.ADMIN_PAGE;
+  }  
 
 
  // IT 
