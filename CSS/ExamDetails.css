@@ -14,7 +14,6 @@ body{
   width: 95vw;
   height: 90vh;
   background-color: #ffffff;
-  margin-bottom: 10px !important;
 
 }
 
@@ -129,9 +128,9 @@ header{
   border-radius: 15px;
   color: #18181a;
   display: inline-block;
-  font-size: 13px;
-  padding-left: 20px;
-  padding-right: 20px;
+  font-size: 17px;
+  padding-left: 25px;
+  padding-right: 25px;
   cursor: pointer;
   background: #fff;
   user-select: none;
@@ -188,9 +187,9 @@ box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
 border-radius: 15px;
 color: #18181a;
 display: inline-block;
-font-size: 15px;
-padding-left: 20px;
-padding-right: 20px;
+font-size: 17px;
+padding-left: 25px;
+padding-right: 25px;
 cursor: pointer;
 background: #fff;
 user-select: none;
