@@ -1,6 +1,12 @@
 $(document).ready(function(){
+    document.getElementById('log_out').addEventListener("click",Log_Out)
+    document.getElementById('back').addEventListener("click",Back)
     
     
+    function Back(){
+        window.location.href=LINKS.PROFESSOR_COURSES;
+      }  
+
     function getbyID(id){
         return document.getElementById(id)
     }

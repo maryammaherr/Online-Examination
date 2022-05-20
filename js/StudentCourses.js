@@ -1,5 +1,7 @@
 $( document ).ready(function() {
 //status -> Done , Upcoming
+document.getElementById('log_out').addEventListener("click",Log_Out)
+
 var windowObjectReference = null; // global variable
 
 $(window).focus(function() {  //reload page on focus
