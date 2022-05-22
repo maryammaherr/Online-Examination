@@ -1,5 +1,6 @@
 window.addEventListener('load', function(){
   
+    authorizeUser(getUserRole(),ROLES.ADMIN);
     
     document.getElementById('Users').addEventListener("click",Manage_Users);
     document.getElementById('Schedule').addEventListener("click",Manage_Schedule);
@@ -9,10 +10,10 @@ window.addEventListener('load', function(){
    
   
     function Manage_Users(){
-      window.location.href="../html/ManageUsers.html"
+      window.location.href=LINKS.MANAGE_USERS_PAGE
     }  
     function Manage_Schedule(){
-      window.location.href="../html/ExamTable.html"
+      window.location.href=LINKS.Manage_Schedule
     }  
 
     

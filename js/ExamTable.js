@@ -1,4 +1,8 @@
 window.addEventListener('load', function(){
+    
+
+    authorizeUser(getUserRole(),ROLES.ADMIN);
+
     document.getElementById('IT').addEventListener("click",()=>
     fill_IT_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/IT')
     );

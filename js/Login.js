@@ -21,7 +21,6 @@ inputs.forEach(input => {
 
 
 function btnLoginClick(){
-
 	doLogin();
 }
 
@@ -32,7 +31,7 @@ function doLogin(){
 		toastWarning("Username is empty!");
 	else if (password == "") 
 		toastWarning("Password is empty!");
-	   else {
+	else {
 
 		$.ajax({
 		  url: "http://localhost:8241/api/Authenticate/Login",
@@ -51,13 +50,14 @@ function doLogin(){
 				toastError("Wrong Credentials");
 			  }
 			  else{
-				//console.log(response.data);
-				setToken(response.data.token);
+				  
 				setUserData(response.data.userDetails);
-
+				setUserRole(response.data.role[0]);
+				setToken(response.data.token);
+				
 				console.log(getToken());
 				console.log(getUserData());
-				window.location.href = LINKS.PROFESSOR_COURSES;
+				loginRedirect(getUserRole());
 				
 			  }
 		  },
