@@ -26,7 +26,14 @@ body{
     display: flex;
 
 }
-
+.try{
+  width: 340px;
+  height: 380px;
+  margin-top: 0px;
+  margin: 100px;
+  padding:20px;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
 
 .manage_schedule{
     width: 320px;
@@ -51,6 +58,10 @@ body{
     text-decoration: none;
     color: #00BFA6;
 
+}
+
+.try:hover{
+  transform: scale(1.08);
 }
 
 
