@@ -1,11 +1,15 @@
 window.addEventListener('load', function(){
+
+    authorizeUser(getUserRole(),ROLES.PROFESSOR);
+
     document.getElementById('check').addEventListener("click",validate)
     document.getElementById('log_out').addEventListener("click",Log_Out)
     document.getElementById('back').addEventListener("click",Back)
 
 
+    alert(getCourseName());
 
-    $("#course-name").html(getCourseName());
+    $("#course_name").html(getCourseName());
 
     initDropDownLists();
     getExamDetails(API_LINKS.GET_EXAM_DETAILS);

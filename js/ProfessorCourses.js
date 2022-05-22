@@ -2,6 +2,8 @@ window.addEventListener('load', function(){
   
   document.getElementById('log_out').addEventListener("click",Log_Out)
 
+
+  authorizeUser(getUserRole(),ROLES.PROFESSOR);
   
 
   console.log(getUserData());
@@ -51,12 +53,14 @@ window.addEventListener('load', function(){
     Upload_button.addEventListener("click",()=>{
       setCourseId(obj.courseId)
       setCourseName(obj.courseName)
-      redirectTo(LINKS.QUESTION_BANK)
+      //redirectTo(LINKS.QUESTION_BANK)
+      window.location.href=LINKS.QUESTION_BANK
     })
     Details_button.addEventListener("click",()=>{
       setCourseId(obj.courseId)
       setCourseName(obj.courseName)
-      redirectTo(LINKS.EXAM_DETAILS_PAGE)
+     // redirectTo(LINKS.EXAM_DETAILS_PAGE)
+      window.location.href=LINKS.EXAM_DETAILS_PAGE
     })
 
     td1.innerHTML = obj.courseName;
@@ -101,6 +105,7 @@ window.addEventListener('load', function(){
       .then(function(resp){
         ParseJson(resp.data.data);
         hideLoading("please-wait");
+        
         toastSuccess(resp.data.message);
       })
       .catch(function(error){

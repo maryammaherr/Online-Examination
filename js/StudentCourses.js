@@ -1,5 +1,9 @@
 $( document ).ready(function() {
 //status -> Done , Upcoming
+
+authorizeUser(getUserRole(),ROLES.STUDENT);
+
+
 document.getElementById('log_out').addEventListener("click",Log_Out)
 
 var windowObjectReference = null; // global variable
@@ -9,16 +13,16 @@ $(window).focus(function() {  //reload page on focus
 });
 
 
-console.log(getUserData())
+
 
 fetchSchedule();      //call api   //then fill json 
-
 
 setCurrentDate();
 
 
 
 function fetchSchedule(){
+  console.log(getToken());
   $.ajax({
     url: "http://localhost:8241/api/Course/StudentCourses",
     type: "GET",
@@ -30,15 +34,19 @@ function fetchSchedule(){
       "Access-Control-Allow-Headers": "*",
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
+      "Authorization": "Bearer "+ getToken()
     },
     success: function (data) {
   
-      data.data = sortByKey(data.data, 'startTime');
-  
-      init_body(data.data);
+      console.log(data);
   
       if(data.status==true)
+      {
         toastSuccess(`${getUserData().firstname} here is your schedule `);
+        data.data = sortByKey(data.data, 'startTime');
+
+        init_body(data.data);
+      }
       else
         toastError(data.message);
   

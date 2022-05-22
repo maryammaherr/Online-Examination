@@ -9,7 +9,7 @@ const LINKS={
     "EXAM_TABLE_PAGE":BASE_LINK + "ExamTable.html",
     "LOGIN_PAGE":BASE_LINK +"Login.html",
     "MANAGE_USERS_PAGE":BASE_LINK +"ManageUsers.html",
-    "NOT_FOUND_PAGE":BASE_LINK +"NotFound.html",
+    "UNAUTHORIZED_PAGE":BASE_LINK +"Unauthorized.html",
     "PROFESSOR_COURSES":BASE_LINK +"ProfessorCourses.html",
     "FORBIDDEN_PAGE":BASE_LINK +"",
     "QUESTION_BANK":BASE_LINK + "QuestionBank.html",
@@ -28,7 +28,7 @@ const API_LINKS={
 
 }
 
-var ROLES={
+const ROLES={
     'PROFESSOR':'Professor',
     'ADMIN':"Admin",
     'STUDENT':"Student"

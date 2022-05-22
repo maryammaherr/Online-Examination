@@ -1,4 +1,8 @@
 $(document).ready(function(){
+
+
+    authorizeUser(getUserRole(),ROLES.PROFESSOR);
+    
     document.getElementById('log_out').addEventListener("click",Log_Out)
     document.getElementById('back').addEventListener("click",Back)
     
