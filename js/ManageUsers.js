@@ -116,10 +116,11 @@ function fill_Table(link){
     pan_button.innerHTML = "BAN";
     pan_button.id = obj.id;
     pan_button.addEventListener("click",()=>{
-		let copyobj=obj;
-		copyobj.status=true;
-		manageBanStatus(obj.id,copyobj);
-	});
+	    let copyobj=obj;
+    	copyobj.status=true;
+		Banstatus(obj.id,copyobj);
+	}
+	);
     pan_button.classList.add("pan");
 
 
@@ -129,8 +130,9 @@ function fill_Table(link){
     unpan_button.addEventListener("click",()=>{
 		let copyobj=obj;
 		copyobj.status=false;
-		manageBanStatus(obj.id,copyobj);
-	});
+		unBanstatus(obj.id,copyobj);
+	}
+	);
     unpan_button.classList.add("unpan");
 
 	td1.innerHTML = obj.id;
@@ -156,27 +158,64 @@ function fill_Table(link){
 
 
     return tr;
+}
 
-   
-	
-	/*return`
-	 <tr>
-	 <td id="doc_name_row1">${obj.id}</td>
-	 <td id="doc_country_row1">${obj.name}</td>
-	 <td id="doc_country_row1">${obj.country}</td>
-	 <td> <button type="button" class="btn btn-outline-dark"  id="doc_pan_button1"  onclick="doc_pan_row(1)">BAN</button>
-	 </td>
-	 <td> <button type="button" class="btn btn-outline-dark"  id="doc_un_pan_button1" onclick="doc_un_pan_row(1)">UNBAN</button>
-	 </td>
-	 </td>
-   </tr>
-	 `*/
+
+var askBan=false
+function Banstatus(id,newobj){
+    askBan=confirm("Are you sure you want to Ban this user?")
+	console.log(askBan)
+
+
+	if(askBan){
+		axios({
+			method: 'put',
+			url: "http://hemajoo5333-001-site1.gtempurl.com/api/Authenticate/DisableUsername",
+			params:{
+				id:id
+			},
+			data:newobj
+		}).then(function(data){
+			window.location.reload()
+		})
+		.catch(function(error){
+			console.log(error);
+		  })
+   }
+   else{
+	   console.log("notbnd")
+   }
+
+}
+
+asknotBan=false
+function unBanstatus(id,newobj){
+	asknotBan=confirm("Are you sure you want to UnBan this user?")
+	console.log(asknotBan)
+	if(asknotBan){
+		axios({
+			method: 'put',
+			url: "http://hemajoo5333-001-site1.gtempurl.com/api/Authenticate/UnDisableUsername",
+			params:{
+				id:id
+			},
+			data:newobj
+		}).then(function(data){
+			window.location.reload()
+		})
+		.catch(function(error){
+			console.log(error);
+		  })
+   }
+   else{
+	   console.log("bnd")
+   }
 }
 
 
 
 //pan & unpan
-
+/*
 function manageBanStatus(id,newobj) {
 	console.log(newobj);
 	axios({
@@ -193,7 +232,7 @@ function manageBanStatus(id,newobj) {
 		console.log(error);
 	  })
 }
-
+*/
 
 
 })
