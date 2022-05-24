@@ -13,27 +13,67 @@
     <body>
         <div class="container">
             <div class="row" id="buttons">
-                <div class="col-1">
+                <div class="col-md-2">
                     <button type="button" id="doc" class="btn btn-outline-dark"> Doctors</button>
                 </div>
-                <div class="col-1">
+                <div class="col-2">
                     <button type="button" id="stu" class="btn btn-outline-dark">Students</button>
-                </div>
-                <div class="col-1">
-                    <button type="button" id="demon" class="btn btn-outline-dark" >Demonstrator</button>
-
                 </div>
             </div>
             <div class="row" id="mainsDiv"> 
                 <div class="container">
 </div>
+<div class="row" id="radioDiv">
 
-                    <input type="text" class="form-control mb-2" placeholder="Search Name"  aria-describedby="button-search" id="search" onkeyup="Search_fun()">
+  <div class="col-3">
+      Search By:
+    </div>
+
+<div class="col-2">
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="option" id="id" value="id" checked>
+  <label class="form-check-label" for="id">
+    ID
+  </label>
+</div>
+</div>
+
+<div class="col-3">
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="option" id="first_name" value="firstname">
+  <label class="form-check-label" for="first_name">
+    FirstName
+  </label>
+</div>
+</div>
+
+<div class="col-3">
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="option" id="last_name" value="lastname" >
+  <label class="form-check-label" for="last_name">
+   LastName
+  </label>
+</div>
+</div>
+
+<div class="col-1">
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="option" id="user_name" value="username">
+  <label class="form-check-label" for="user_name">
+    UserName
+  </label>
+</div>
+</div>
+</div>
+<br><br>
+                    <input type="text" class="form-control mb-2" placeholder="Search"  aria-describedby="button-search" id="search" onkeyup="Search_fun()">
                   <table class="table" id="data_table">
                         <thead>
                           <tr>
                             <th>ID</th>
-                            <th>Full Name</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>User Name</th>
                             <th>Ban Status</th>
                             <th></th>
                             <th></th>

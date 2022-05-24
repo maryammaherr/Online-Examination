@@ -2,20 +2,48 @@ window.addEventListener('load', function(){
 
 
 
-	authorizeUser(getUserRole(),ROLES.ADMIN);
+//	authorizeUser(getUserRole(),ROLES.ADMIN);
 
-	
 	document.getElementById('doc').addEventListener("click",()=> 
-	fill_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Manage')
+	fill_Table('http://hemajoo5333-001-site1.gtempurl.com/api/Authenticate/GetAllProfessors')
 	);
    document.getElementById('stu').addEventListener("click",()=> 
-   fill_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Manage')
+   fill_Table('http://hemajoo5333-001-site1.gtempurl.com/api/Authenticate/GetAllStudents')
    );
 
-  //document.getElementById('demon').addEventListener("click",)
 	document.getElementById('search').addEventListener('keyup',Search_fun);
 
-	var status_value ="unpanned";
+	document.getElementById('id').addEventListener('click',handleChange);
+	document.getElementById('first_name').addEventListener('click',handleChange);
+	document.getElementById('last_name').addEventListener('click',handleChange);
+	document.getElementById('user_name').addEventListener('click',handleChange);
+
+
+	var num=0;
+	var selected =document.querySelector('input[name="option"]:checked').value;
+
+
+function handleChange() {
+    selected = document.querySelector('input[name="option"]:checked').value;
+
+	 if(selected=="firstname"){
+		num=1;
+	}
+	else if(selected=="lastname"){
+		num=2
+	}
+	else if(selected=="username"){
+		num=3;
+	}
+	else{
+		num=0;
+	}
+
+}
+
+
+
+
 
 		/*Search */
 	function Search_fun(){
@@ -26,7 +54,7 @@ window.addEventListener('load', function(){
 		tr = table.getElementsByTagName("tr");
 	
 		for(let i=0; i< tr.length ; i++){
-			td = tr[i].getElementsByTagName("td")[1]; //roooow number
+			td = tr[i].getElementsByTagName("td")[num]; //col number
 			if(td){
 				txtValue = td.textContent || td.innerText;
 				if(txtValue.toUpperCase().indexOf(filter) > -1 ){
@@ -53,7 +81,7 @@ function fill_Table(link){
 	   //id: 1,
 	  }*/
 	 }).then(function(resp){
-		ParseJson(resp.data);
+		ParseJson(resp.data.data);
   
 	  })
 	  .catch(function(error){
@@ -79,6 +107,10 @@ function fill_Table(link){
     var td3 = document.createElement("td");
     var td4 = document.createElement("td");
 	var td5 = document.createElement("td");
+	var td6 = document.createElement("td");
+	var td7 = document.createElement("td");
+
+
 
 	var pan_button = document.createElement("button");
     pan_button.innerHTML = "BAN";
@@ -104,17 +136,23 @@ function fill_Table(link){
 	td1.innerHTML = obj.id;
     tr.appendChild(td1);
 
-    td2.innerHTML = obj.name;
+    td2.innerHTML = obj.firstname;
     tr.appendChild(td2);
 
-	td3.innerHTML = obj.status?"UNBANNED":"BANNED";
+	td3.innerHTML = obj.lastname;
     tr.appendChild(td3);
 
-    td4.appendChild(pan_button);
+	td4.innerHTML = obj.username;
     tr.appendChild(td4);
 
-    td5.appendChild(unpan_button);
+	td5.innerHTML = obj.isbanned?"BANNED":"UNBANNED";
     tr.appendChild(td5);
+
+    td6.appendChild(pan_button);
+    tr.appendChild(td6);
+
+    td7.appendChild(unpan_button);
+    tr.appendChild(td7);
 
 
     return tr;

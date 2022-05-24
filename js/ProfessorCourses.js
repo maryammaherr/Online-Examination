@@ -3,7 +3,7 @@ window.addEventListener('load', function(){
   document.getElementById('log_out').addEventListener("click",Log_Out)
 
 
-  authorizeUser(getUserRole(),ROLES.PROFESSOR);
+ // authorizeUser(getUserRole(),ROLES.PROFESSOR);
   
 
   console.log(getUserData());

@@ -1,6 +1,6 @@
 window.addEventListener('load', function(){
 
-    authorizeUser(getUserRole(),ROLES.PROFESSOR);
+    //authorizeUser(getUserRole(),ROLES.PROFESSOR);
 
     document.getElementById('check').addEventListener("click",validate)
     document.getElementById('log_out').addEventListener("click",Log_Out)
