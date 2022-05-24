@@ -176,7 +176,7 @@ function Banstatus(id,newobj){
 				id:id
 			},
 			data:newobj
-		}).then(function(data){
+		}).then(function(){
 			window.location.reload()
 		})
 		.catch(function(error){
@@ -201,7 +201,7 @@ function unBanstatus(id,newobj){
 				id:id
 			},
 			data:newobj
-		}).then(function(data){
+		}).then(function(){
 			window.location.reload()
 		})
 		.catch(function(error){
