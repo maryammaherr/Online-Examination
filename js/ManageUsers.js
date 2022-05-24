@@ -160,6 +160,7 @@ function fill_Table(link){
     return tr;
 }
 
+//ban & unban
 
 var askBan=false
 function Banstatus(id,newobj){
@@ -214,25 +215,7 @@ function unBanstatus(id,newobj){
 
 
 
-//pan & unpan
-/*
-function manageBanStatus(id,newobj) {
-	console.log(newobj);
-	axios({
-        method: 'put',
-        url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/Manage',
-		params:{
-			id:id
-		},
-        data:newobj
-    }).then(function(data){
-		console.log(data);
-	})
-	.catch(function(error){
-		console.log(error);
-	  })
-}
-*/
+
 
 
 })
