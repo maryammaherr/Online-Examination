@@ -4,6 +4,9 @@ window.addEventListener('load', function(){
 
 //	authorizeUser(getUserRole(),ROLES.ADMIN);
 
+document.getElementById('log_out').addEventListener("click",Log_Out)
+document.getElementById('back').addEventListener("click",Back)
+
 	document.getElementById('doc').addEventListener("click",()=> 
 	fill_Table('http://hemajoo5333-001-site1.gtempurl.com/api/Authenticate/GetAllProfessors')
 	);
@@ -18,6 +21,10 @@ window.addEventListener('load', function(){
 	document.getElementById('last_name').addEventListener('click',handleChange);
 	document.getElementById('user_name').addEventListener('click',handleChange);
 
+
+	function Back(){
+		window.location.href=LINKS.ADMIN_PAGE;
+	  }  
 
 	var num=0;
 	var selected =document.querySelector('input[name="option"]:checked').value;
@@ -71,10 +78,11 @@ function handleChange() {
 
 
 
-fill_Table();
 
 
 function fill_Table(link){
+	document.getElementById('radioDiv').style.display="flex";
+	document.getElementById('search').style.display="block";
 
 	axios.get(link, {
 	  /*params: {

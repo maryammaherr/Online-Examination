@@ -10,23 +10,33 @@
 
       
     </head>
+
+    <header>
+      <div id="back" class="button_back"><div><span><i class="bi bi-arrow-left" id="bck"></i></span><span>BACK</span></div></div>
+      <div id="log_out" class="button_logout"><div><span><i class="bi bi-arrow-bar-right" id="out"></i></span><span>LOGOUT</span></div></div>
+      <br><br>
+      <hr>
+  </header>
+
     <body>
+      <div class="main">
+
         <div class="container">
             <div class="row" id="buttons">
-                <div class="col-md-2">
-                    <button type="button" id="doc" class="btn btn-outline-dark"> Doctors</button>
+                <div class="col-2">
+                    <button type="button" id="doc" class="btn"> Doctors</button>
                 </div>
                 <div class="col-2">
-                    <button type="button" id="stu" class="btn btn-outline-dark">Students</button>
+                    <button type="button" id="stu" class="btn">Students</button>
                 </div>
             </div>
             <div class="row" id="mainsDiv"> 
-                <div class="container">
-</div>
+                <div class="container d-flex justify-content-center">
+
 <div class="row" id="radioDiv">
 
   <div class="col-3">
-      Search By:
+      <strong>Search By:</strong>
     </div>
 
 <div class="col-2">
@@ -65,9 +75,12 @@
 </div>
 </div>
 </div>
+</div>
+
 <br><br>
-                    <input type="text" class="form-control mb-2" placeholder="Search"  aria-describedby="button-search" id="search" onkeyup="Search_fun()">
-                  <table class="table" id="data_table">
+                  <input type="text" class="form-control mb-2 ml-3" placeholder="Search"  aria-describedby="button-search" id="search" onkeyup="Search_fun()">
+                  <div id="table-div">
+                  <table  id="data_table">
                         <thead>
                           <tr>
                             <th>ID</th>
@@ -82,10 +95,10 @@
                         <tbody id="body">
                         </tbody>
                       </table>
-
+                    </div>
                 </div>
             </div>
-    
+    </div>
                   </div>
                   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
                   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

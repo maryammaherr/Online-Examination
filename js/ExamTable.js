@@ -20,7 +20,7 @@ window.addEventListener('load', function(){
 
 
 confg={
-        enableTime: true,
+       // enableTime: true,
         dateFormat: "Y-m-d H:i",
     }
 
