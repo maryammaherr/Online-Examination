@@ -7,7 +7,7 @@
 $(document).ready(function () {
 
 
-  authorizeUser(getUserRole(),ROLES.STUDENT);
+ // authorizeUser(getUserRole(),ROLES.STUDENT);
 
   var counter = 0;
   var json = [

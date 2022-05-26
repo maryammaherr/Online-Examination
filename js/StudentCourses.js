@@ -1,7 +1,7 @@
 $( document ).ready(function() {
 //status -> Done , Upcoming
 
-authorizeUser(getUserRole(),ROLES.STUDENT);
+//authorizeUser(getUserRole(),ROLES.STUDENT);
 
 
 document.getElementById('log_out').addEventListener("click",Log_Out)

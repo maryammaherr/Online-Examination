@@ -29,16 +29,20 @@ body{
 .try{
   width: 340px;
   height: 380px;
-  margin-top: 0px;
+  margin-top: 30px !important;
   margin: 100px;
   padding:20px;
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
 }
 
 .manage_schedule{
     width: 320px;
     height: 350px;
-    cursor: pointer;
     text-decoration: none;
     color: #4f546c;
     font-size: 25px;
@@ -54,7 +58,6 @@ body{
 }
 
 .manage_schedule:hover{
-    transform: scale(1.08);
     text-decoration: none;
     color: #00BFA6;
 
@@ -62,13 +65,14 @@ body{
 
 .try:hover{
   transform: scale(1.08);
+  cursor: pointer;
+
 }
 
 
 .manage_usrs{
     width: 320px;
     height: 350px;
-    cursor: pointer;
     text-decoration: none;
     color: #4f546c;
     font-size: 25px;
@@ -84,7 +88,6 @@ body{
 }
 
 .manage_usrs:hover{
-    transform: scale(1.08);
     color: #00BFA6;
     text-decoration: none;
 }

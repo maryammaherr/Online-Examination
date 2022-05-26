@@ -52,6 +52,10 @@ body{
    
 }
 
+.complete:focus{
+    outline: none;
+}
+
 
 @media screen and (max-width: 900px){
     .main-container .body-container{

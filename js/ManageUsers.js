@@ -2,20 +2,55 @@ window.addEventListener('load', function(){
 
 
 
-	authorizeUser(getUserRole(),ROLES.ADMIN);
+//	authorizeUser(getUserRole(),ROLES.ADMIN);
 
-	
+document.getElementById('log_out').addEventListener("click",Log_Out)
+document.getElementById('back').addEventListener("click",Back)
+
 	document.getElementById('doc').addEventListener("click",()=> 
-	fill_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Manage')
+	fill_Table('http://hemajoo5333-001-site1.gtempurl.com/api/Authenticate/GetAllProfessors')
 	);
    document.getElementById('stu').addEventListener("click",()=> 
-   fill_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Manage')
+   fill_Table('http://hemajoo5333-001-site1.gtempurl.com/api/Authenticate/GetAllStudents')
    );
 
-  //document.getElementById('demon').addEventListener("click",)
 	document.getElementById('search').addEventListener('keyup',Search_fun);
 
-	var status_value ="unpanned";
+	document.getElementById('id').addEventListener('click',handleChange);
+	document.getElementById('first_name').addEventListener('click',handleChange);
+	document.getElementById('last_name').addEventListener('click',handleChange);
+	document.getElementById('user_name').addEventListener('click',handleChange);
+
+
+	function Back(){
+		window.location.href=LINKS.ADMIN_PAGE;
+	  }  
+
+	var num=0;
+	var selected =document.querySelector('input[name="option"]:checked').value;
+
+
+function handleChange() {
+    selected = document.querySelector('input[name="option"]:checked').value;
+
+	 if(selected=="firstname"){
+		num=1;
+	}
+	else if(selected=="lastname"){
+		num=2
+	}
+	else if(selected=="username"){
+		num=3;
+	}
+	else{
+		num=0;
+	}
+
+}
+
+
+
+
 
 		/*Search */
 	function Search_fun(){
@@ -26,7 +61,7 @@ window.addEventListener('load', function(){
 		tr = table.getElementsByTagName("tr");
 	
 		for(let i=0; i< tr.length ; i++){
-			td = tr[i].getElementsByTagName("td")[1]; //roooow number
+			td = tr[i].getElementsByTagName("td")[num]; //col number
 			if(td){
 				txtValue = td.textContent || td.innerText;
 				if(txtValue.toUpperCase().indexOf(filter) > -1 ){
@@ -43,17 +78,18 @@ window.addEventListener('load', function(){
 
 
 
-fill_Table();
 
 
 function fill_Table(link){
+	document.getElementById('radioDiv').style.display="flex";
+	document.getElementById('search').style.display="block";
 
 	axios.get(link, {
 	  /*params: {
 	   //id: 1,
 	  }*/
 	 }).then(function(resp){
-		ParseJson(resp.data);
+		ParseJson(resp.data.data);
   
 	  })
 	  .catch(function(error){
@@ -79,15 +115,20 @@ function fill_Table(link){
     var td3 = document.createElement("td");
     var td4 = document.createElement("td");
 	var td5 = document.createElement("td");
+	var td6 = document.createElement("td");
+	var td7 = document.createElement("td");
+
+
 
 	var pan_button = document.createElement("button");
     pan_button.innerHTML = "BAN";
     pan_button.id = obj.id;
     pan_button.addEventListener("click",()=>{
-		let copyobj=obj;
-		copyobj.status=true;
-		manageBanStatus(obj.id,copyobj);
-	});
+	    let copyobj=obj;
+    	copyobj.status=true;
+		Banstatus(obj.id,copyobj);
+	}
+	);
     pan_button.classList.add("pan");
 
 
@@ -97,64 +138,91 @@ function fill_Table(link){
     unpan_button.addEventListener("click",()=>{
 		let copyobj=obj;
 		copyobj.status=false;
-		manageBanStatus(obj.id,copyobj);
-	});
+		unBanstatus(obj.id,copyobj);
+	}
+	);
     unpan_button.classList.add("unpan");
 
 	td1.innerHTML = obj.id;
     tr.appendChild(td1);
 
-    td2.innerHTML = obj.name;
+    td2.innerHTML = obj.firstname;
     tr.appendChild(td2);
 
-	td3.innerHTML = obj.status?"UNBANNED":"BANNED";
+	td3.innerHTML = obj.lastname;
     tr.appendChild(td3);
 
-    td4.appendChild(pan_button);
+	td4.innerHTML = obj.username;
     tr.appendChild(td4);
 
-    td5.appendChild(unpan_button);
+	td5.innerHTML = obj.isbanned?"BANNED":"UNBANNED";
     tr.appendChild(td5);
+
+    td6.appendChild(pan_button);
+    tr.appendChild(td6);
+
+    td7.appendChild(unpan_button);
+    tr.appendChild(td7);
 
 
     return tr;
+}
 
-   
-	
-	/*return`
-	 <tr>
-	 <td id="doc_name_row1">${obj.id}</td>
-	 <td id="doc_country_row1">${obj.name}</td>
-	 <td id="doc_country_row1">${obj.country}</td>
-	 <td> <button type="button" class="btn btn-outline-dark"  id="doc_pan_button1"  onclick="doc_pan_row(1)">BAN</button>
-	 </td>
-	 <td> <button type="button" class="btn btn-outline-dark"  id="doc_un_pan_button1" onclick="doc_un_pan_row(1)">UNBAN</button>
-	 </td>
-	 </td>
-   </tr>
-	 `*/
+//ban & unban
+
+var askBan=false
+function Banstatus(id,newobj){
+    askBan=confirm("Are you sure you want to Ban this user?")
+	console.log(askBan)
+
+
+	if(askBan){
+		axios({
+			method: 'put',
+			url: "http://hemajoo5333-001-site1.gtempurl.com/api/Authenticate/DisableUsername",
+			params:{
+				id:id
+			},
+			data:newobj
+		}).then(function(){
+			window.location.reload()
+		})
+		.catch(function(error){
+			console.log(error);
+		  })
+   }
+   else{
+	   console.log("notbnd")
+   }
+
+}
+
+asknotBan=false
+function unBanstatus(id,newobj){
+	asknotBan=confirm("Are you sure you want to UnBan this user?")
+	console.log(asknotBan)
+	if(asknotBan){
+		axios({
+			method: 'put',
+			url: "http://hemajoo5333-001-site1.gtempurl.com/api/Authenticate/UnDisableUsername",
+			params:{
+				id:id
+			},
+			data:newobj
+		}).then(function(){
+			window.location.reload()
+		})
+		.catch(function(error){
+			console.log(error);
+		  })
+   }
+   else{
+	   console.log("bnd")
+   }
 }
 
 
 
-//pan & unpan
-
-function manageBanStatus(id,newobj) {
-	console.log(newobj);
-	axios({
-        method: 'put',
-        url: 'https://62459b7c2cfed1881723c8a7.mockapi.io/Manage',
-		params:{
-			id:id
-		},
-        data:newobj
-    }).then(function(data){
-		console.log(data);
-	})
-	.catch(function(error){
-		console.log(error);
-	  })
-}
 
 
 
