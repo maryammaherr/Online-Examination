@@ -1,5 +1,6 @@
 window.addEventListener('load', function(){
     
+    
 
     //authorizeUser(getUserRole(),ROLES.ADMIN);
 
@@ -31,9 +32,10 @@ window.addEventListener('load', function(){
 
    function SubmitDate(){
        
-    document.getElementById("dropdown").style.display="block";
-    document.getElementById("date_time").style.display="none";
+    //document.getElementById("dropdown").style.display="block";
+    //document.getElementById("date_time").style.display="none";
     console.log(date);
+    this.alert(document.getElementById('date').value)
 
 
    }
