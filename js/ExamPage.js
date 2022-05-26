@@ -45,6 +45,7 @@ $(document).ready(function () {
         "Access-Control-Allow-Headers": "*",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
+        "Authorization": "Bearer "+ getToken()
       },
       success: function (data) {
         console.log(data);
@@ -305,7 +306,7 @@ $(document).ready(function () {
 
   window.onblur = () => {
     Blur_Count--;
-    //farcry(Blur_Count);
+    farcry(Blur_Count);
   };
 
   function farcry(Blur_Count) {
