@@ -6,31 +6,34 @@ window.addEventListener('load', function(){
     document.getElementById('IT').addEventListener("click",()=>
     fill_IT_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/IT')
     );
+    
     document.getElementById('DENT').addEventListener("click",()=>
     fill_IT_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Dentistery')
     );
+
     document.getElementById('IT_err').addEventListener("click",()=>
     fill_IT_Error_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Error')
     );
+
     document.getElementById('submit').addEventListener("click",()=>
     SubmitDate()
     );
+
     document.getElementById('log_out').addEventListener("click",Log_Out)
     document.getElementById('back').addEventListener("click",Back)
 
 
-confg={
-       // enableTime: true,
-        dateFormat: "Y-m-d H:i",
-    }
 
-    flatpickr("input[type=datetime-local]", confg);
+
+    var date=flatpickr("input[type=datetime-local]")
+    
 
 
    function SubmitDate(){
        
     document.getElementById("dropdown").style.display="block";
     document.getElementById("date_time").style.display="none";
+    console.log(date);
 
 
    }
