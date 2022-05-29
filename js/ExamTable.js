@@ -5,17 +5,19 @@ window.addEventListener('load', function(){
     //authorizeUser(getUserRole(),ROLES.ADMIN);
 
     document.getElementById('IT').addEventListener("click",()=>
-    fill_IT_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/IT')
+    fill_IT_Table('http://hemajoo5333-001-site1.gtempurl.com/api/Schedule/GetFacultySchedule')
     );
     
     document.getElementById('DENT').addEventListener("click",()=>
-    fill_IT_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Dentistery')
+    fill_IT_Table('http://hemajoo5333-001-site1.gtempurl.com/api/Schedule/GetFacultySchedule')
     );
 
+    //error table
     document.getElementById('IT_err').addEventListener("click",()=>
     fill_IT_Error_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Error')
     );
 
+    
     document.getElementById('submit').addEventListener("click",()=>
     SubmitDate()
     );
@@ -26,7 +28,7 @@ window.addEventListener('load', function(){
 
 
 
-    var date=flatpickr("input[type=datetime-local]")
+    flatpickr("input[type=datetime-local]")
     
 
 
@@ -34,11 +36,27 @@ window.addEventListener('load', function(){
        
     //document.getElementById("dropdown").style.display="block";
     //document.getElementById("date_time").style.display="none";
-    console.log(date);
-    this.alert(document.getElementById('date').value)
+    //this.alert(document.getElementById('date').value)
+    date=document.getElementById('date').value;
+   
+    axios({
+        method: 'post',
+        url:  "http://hemajoo5333-001-site1.gtempurl.com/api/Schedule/CreateSchedule",
+		params:{
+            startdate:date
+		},
 
+    })
+    .then(function(resp){
+
+		console.log(resp);
+	})
+	.catch(function(error){
+		console.log(error);
+	})
 
    }
+
 
    function Back(){
     window.location.href=LINKS.ADMIN_PAGE;
