@@ -38,6 +38,10 @@ body{
     cursor: pointer;
     color: white;
 }
+.btn:focus{
+  outline: none !important;
+
+}
 #search{
     width: 100%;
     display: none;

@@ -6,13 +6,22 @@
 
 /*
     document.getElementById('IT').addEventListener("click",()=>
+<<<<<<< HEAD
     fillTable('https://62459b7c2cfed1881723c8a7.mockapi.io/IT')
     );
     
     document.getElementById('DENT').addEventListener("click",()=>
     fillTable('https://62459b7c2cfed1881723c8a7.mockapi.io/Dentistery')
+=======
+    fill_IT_Table('http://hemajoo5333-001-site1.gtempurl.com/api/Schedule/GetFacultySchedule')
+    );
+    
+    document.getElementById('DENT').addEventListener("click",()=>
+    fill_IT_Table('http://hemajoo5333-001-site1.gtempurl.com/api/Schedule/GetFacultySchedule')
+>>>>>>> ab8a4d72e8b496201c6d2e99a618c66f683ed97c
     );
 
+    //error table
     document.getElementById('IT_err').addEventListener("click",()=>
     fill_IT_Error_Table('https://62459b7c2cfed1881723c8a7.mockapi.io/Error')
     );
@@ -23,6 +32,7 @@
     getTableData();
    
 
+    
     document.getElementById('submit').addEventListener("click",()=>
         SubmitDate()
     );
@@ -33,7 +43,7 @@
 
 
 
-    var date=flatpickr("input[type=datetime-local]")
+    flatpickr("input[type=datetime-local]")
     
 
 
