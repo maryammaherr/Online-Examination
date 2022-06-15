@@ -24,7 +24,9 @@ const API_LINKS={
     "GET_PROFESSSOR_COURSES":API_BASE+"api/Course/ProfessorCourses",
     "GET_EXAM_DETAILS":API_BASE+'api/Exam/GetExamDetails',
     "PUT_EXAM_DETAILS":API_BASE+'api/Exam/PutExamDetails',
-    "POST_EXAM_DETAILS":API_BASE+'api/Exam/PostExamDetails'
+    "POST_EXAM_DETAILS":API_BASE+'api/Exam/PostExamDetails',
+    "POST_EXAMTABLE_DATE":API_BASE+"api/Schedule/CreateSchedule",
+    "GET_SCHEDULE_ADMIN":API_BASE+"api/Schedule/GetFacultySchedule"
 
 }
 

@@ -23,7 +23,13 @@ function getExamDetails(link)
 	axios.get(link, {
 	  params: {
         course_id: getCourseId(),
-	  }
+	  },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": "Bearer "+ getToken()
+      }
 	 }).then(function(resp){
 
         console.log(resp);

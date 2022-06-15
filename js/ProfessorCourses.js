@@ -100,6 +100,12 @@ window.addEventListener('load', function(){
     axios.get(link, {
       params: {
         professor_id: professor_id,
+      },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": "Bearer "+ getToken()
       }
     })
       .then(function(resp){

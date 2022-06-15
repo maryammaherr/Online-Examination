@@ -415,6 +415,7 @@ $(document).ready(function () {
             "Content-Type": "application/json",
             "Access-Control-Allow-Headers": "*",
             "Access-Control-Allow-Origin": "*",
+            "Authorization": "Bearer "+ getToken()
           },
           success: function (response) {
             console.log(response.data);
