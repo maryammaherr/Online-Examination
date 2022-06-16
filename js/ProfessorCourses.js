@@ -3,7 +3,7 @@ window.addEventListener('load', function(){
   document.getElementById('log_out').addEventListener("click",Log_Out)
 
 
- // authorizeUser(getUserRole(),ROLES.PROFESSOR);
+    authorizeUser(getUserRole(),ROLES.PROFESSOR);
   
 
   console.log(getUserData());
@@ -23,6 +23,7 @@ window.addEventListener('load', function(){
 
   function ParseJson(data){
     let tbody=document.getElementById('table-body');
+    console.log(data)//////////////////////***************** */
     for(let i=0;i<data.length;i++)
     {
         tbody.appendChild(AddDataTable(data[i]))
@@ -37,19 +38,20 @@ window.addEventListener('load', function(){
     var td2 = document.createElement("td");
     var td3 = document.createElement("td");
     var td4 = document.createElement("td");
-    var td5 = document.createElement("td");
+
 
     var Upload_button = document.createElement("button");
     Upload_button.innerHTML = "Question Bank";
-    //Upload_button.id = obj.courseId*5;
-    Upload_button.classList.add("btn_upload");
+    var btn_class=obj.isQuestionBankConfigured? "btn_green" :"btn_blue" 
+    Upload_button.classList.add(btn_class);
 
 
     var Details_button = document.createElement("button");
     Details_button.innerHTML = " Exam Details";
-    //Details_button.id = obj.courseId*10;
-    Details_button.classList.add("btn_details");
-
+ 
+    var btn_class2=obj.isExamdetailsConfigured? "btn_green" :"btn_blue" 
+    Details_button.classList.add(btn_class2);
+    
     Upload_button.addEventListener("click",()=>{
       setCourseId(obj.courseId)
       setCourseName(obj.courseName)
@@ -75,9 +77,8 @@ window.addEventListener('load', function(){
     td4.appendChild(Details_button);
     tr.appendChild(td4);
 
-    td5.innerHTML= getConfigurationBadge(obj.isConfigured)
-      
-    tr.appendChild(td5)
+    //td5.innerHTML= getConfigurationBadge(obj.isConfigured)
+    //tr.appendChild(td5)
     
     return tr;
 

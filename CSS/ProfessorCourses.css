@@ -60,24 +60,28 @@ td {
     font-weight: 500;
 }*/
 
-.btn_details{
-   	background-image: linear-gradient(to right, #00BFA6, #38d39f, #00BFA6) !important;
-    background-size: 200% !important;
-    border:none !important;
-    font-size: 17px !important;
-    border-radius: 5px;
-    color: #fff;
-    padding: 6px;
-}
 
 
-.btn_details:hover{
+
+.btn_blue:hover{
     transform: scale(1.05);
     background-position: right;
     cursor: pointer;
 
 }
-.btn_upload{
+
+.btn_blue{
+  background-image: linear-gradient(to right, #c65151, #ce5454, #b21c1c) !important;
+ background-size: 200% !important;
+ border:none !important;
+ font-size: 17px !important;
+ border-radius: 5px;
+ color: #fff;
+ padding: 6px;
+}
+
+
+.btn_green{
  background-image: linear-gradient(to right, #00BFA6, #38d39f, #00BFA6) !important;
  background-size: 200% !important;
  border:none !important;
@@ -88,7 +92,7 @@ td {
 
 }
 
-.btn_upload:hover{
+.btn_green:hover{
  transform: scale(1.05);
  background-position: right;
  cursor: pointer;

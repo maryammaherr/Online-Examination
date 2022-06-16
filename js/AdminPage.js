@@ -1,6 +1,6 @@
 window.addEventListener('load', function(){
   
-   // authorizeUser(getUserRole(),ROLES.ADMIN);
+    authorizeUser(getUserRole(),ROLES.ADMIN);
     
     document.getElementById('Users').addEventListener("click",Manage_Users);
     document.getElementById('Schedule').addEventListener("click",Manage_Schedule);
