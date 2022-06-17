@@ -2,12 +2,13 @@
   //$("#warning-msg").html("You are disqualified");
   //$('#modal-display').click();
   return ""
-}*/
+}
+*/
 
 $(document).ready(function () {
 
 
- // authorizeUser(getUserRole(),ROLES.STUDENT);
+  authorizeUser(getUserRole(),ROLES.STUDENT);
 
   var counter = 0;
   var json = [
@@ -32,7 +33,7 @@ $(document).ready(function () {
     },
   ];
 
-
+  var spinnersdiv="";
   $.ajax({
       url: "http://localhost:8241/api/Exam/Examinate",
       type: "GET",
@@ -48,7 +49,15 @@ $(document).ready(function () {
         "Authorization": "Bearer "+ getToken()
       },
       success: function (data) {
+        
+
         console.log(data);
+
+        if(data.status==false)
+        {
+          toastError(data.message);
+        }
+
         json=data.data;
         $("#spinners").remove();
         init_body(data.data);
@@ -57,6 +66,8 @@ $(document).ready(function () {
         setDuration(getExamDetails().durationInMinutes);
         setSubjectName(getExamDetails().courseName);
         setStudentName(getUserData().firstname);   
+
+
       },
       error: function (xhr, status, error) {
         console.log(error);
@@ -64,6 +75,21 @@ $(document).ready(function () {
         console.log(xhr.responseText);
       },
   });
+
+  function get_spinners(){
+    return `
+        <div>Please wait...</div>
+        <div class="spinner-grow text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      `;
+  }
 
   function setSubjectName(name){
       $("#subject-name").html(" "+name);
@@ -78,7 +104,7 @@ $(document).ready(function () {
   }
 
   function anchorClicked(idx) {
-    //  injectToElement("#target",getComponent(json[idx]));
+    //injectToElement("#target",getComponent(json[idx]));
     $('div[id^="q-"]').addClass("hide-div");
     $(`#q-${idx}`).removeClass("hide-div");
     $("a").removeClass("active_question");
@@ -371,40 +397,23 @@ $(document).ready(function () {
       }
     }
     $("#list-container").html("")
-    //$("#please-wait").html(get_spinners()); //to do later
+
+    $("#spinners").show();
     $("#question-area").hide();
-    $('#Submit_button').prop("disabled", true);
+    //$("#please-wait").html(get_spinners()); //to do later
+    //$('#Submit_button').prop("disabled", true);
 
     return arr;
+    
   }
 
 
-  function get_spinners(){
-    return `
-        <div id="question-area" class="Question_Area">
-        <div id="spinners" class="w-100 d-flex align-items-center justify-content-center ">
-        <div>Please wait...</div>
-        <div class="spinner-grow text-primary" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-grow text-warning" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-        <div class="spinner-grow text-success" role="status">
-          <span class="sr-only">Loading...</span>
-        </div>
-      </div>
-      </div>
-      `;
-  }
+  
 
   function casper() {
 
-    
-    console.log(get_user_data());
-
         $.ajax({
-          url: "http://localhost:8241/api/Exam/Examinate",
+          url: API_LINKS.POST_EXAM_ANSWERS,
           type: "POST",
           data: JSON.stringify({
             "student_id": getUserData().id,
@@ -419,22 +428,37 @@ $(document).ready(function () {
             "Authorization": "Bearer "+ getToken()
           },
           success: function (response) {
-            console.log(response.data);
+
+            //console.log(response.data);
             setExamResult(response.data);
-            window.location.href="../html/ResultPage.html";
+            window.location.href=LINKS.RESULT_PAGE;
+
           },
           error: function (xhr, status, error) {
+          
             console.log(error);
             console.log(status);
             console.log(xhr.responseText);
           },
-      });
+        });
+
   }
 
-  $("#Submit_button").click(casper);
+  //$("#Submit_button").click(casper);
+
+  var enableSubmit = function(ele) {
+    $(ele).removeAttr("disabled");
+  }
+
+  $("#Submit_button").click(function() {
+      casper();
+      var that = this;
+      $(this).attr("disabled", true);
+      setTimeout(function() { enableSubmit(that) }, 100000);
+  });
 
 
-  /*timer*/
+/* ||| timer ||| */
 
 var myTimer;
 function clock(minutes) {
@@ -463,9 +487,8 @@ function clock(minutes) {
 
 
 /*
-  1 -> mcq
-  2 -> multi mcq
-  3 -> written
-  4 -> t f
-  
-  */
+        1 -> mcq
+        2 -> multi mcq
+        3 -> written
+        4 -> t f
+*/

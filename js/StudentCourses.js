@@ -69,8 +69,6 @@ function setCurrentDate(){
       //console.log(data.datetime);
       DATE_TIME_NOW= new Date(data.datetime) ;
       //console.log(DATE_TIME_NOW);
-
-      
       
     },
 
@@ -91,16 +89,19 @@ function get_td(content){
 }
 
 function get_status_html(flag){
-  if(flag){
+  if(flag == true){
     return `<span class="badge badge-pill badge-success p-2">Done</span>`
   }
-  else{
+  else if(flag ==false){
     return `<span class="badge badge-pill badge-warning p-2">Upcoming</span>`
+  }
+  else{
+    return `<span class="badge badge-pill badge-danger p-2">Missed</span>`
   }
 }
 
 function get_button(){
-  return `<input class="btn btn-primary" type="button" value="Examinate"></input>`
+  return `<input data-toggle="modal" data-target="#exampleModalCenter2" class="btn btn-primary" type="button" value="Examinate"></input>`
 }
 
 
@@ -135,6 +136,11 @@ function init_body(table_data){
     var td3 = get_td(  time   );
     var td4 = get_td(  table_data[i]["durationInMinutes"]+" minutes"   ); 
     var td5 = get_td(  get_status_html(table_data[i]["isExaminated"])   ); 
+
+    setCurrentDate();
+    if(dates.compare( addMinutes(table_data[i]["durationInMinutes"]+3,new Date(table_data[i]["startTime"])),DATE_TIME_NOW) == -1   &&  table_data[i]["isExaminated"]==false ) 
+        td5.innerHTML=get_status_html(-1)
+        
     var td6;
     
     if(table_data[i]["isExaminated"])
@@ -149,16 +155,27 @@ function init_body(table_data){
       td6 = get_td(  get_button() );
       td6.onclick=function(){
 
-        setCurrentDate();
+        document.getElementById("btn-go-examinate").onclick=function(){
+          setCurrentDate();
+        let Upcomingdate=new Date(table_data[i]["startTime"]);
 
-        console.log(dates.compare( DATE_TIME_NOW, new Date(table_data[i]["startTime"]) ));
+        console.log(dates.compare( DATE_TIME_NOW, Upcomingdate ));
 
         //if date didn't come don't continue
-        if(dates.compare( DATE_TIME_NOW, new Date(table_data[i]["startTime"]) ) == -1) 
+        if(dates.compare( DATE_TIME_NOW, Upcomingdate ) == -1) 
         {
           toastWarning("You can't have this exam yet!")
           return;
         }
+        
+        
+        if(dates.compare( addMinutes(table_data[i]["durationInMinutes"]+3,Upcomingdate),DATE_TIME_NOW) == -1) 
+        {
+          toastWarning("The exam ended!")
+          
+          return;
+        }
+
         
         
 
@@ -166,16 +183,17 @@ function init_body(table_data){
         setCourseId(table_data[i]["courseId"]);
         setExamDetails( table_data[i]);
 
-        console.log(table_data[i])
+        //console.log(table_data[i])
         if(windowObjectReference == null || windowObjectReference.closed)
         {
-          windowObjectReference = window.open("ExamPage.html",
+          windowObjectReference = window.open(LINKS.EXAM_PAGE,
           "EXAMINATION PAGE", "menubar=1,resizable=0,popup=true,width=4000,height=4000");
         }
         else
         {
           windowObjectReference.focus();
         };
+        }
       }
     }
       
@@ -240,6 +258,13 @@ var dates = {
           NaN
       );
   }
+}
+
+
+function addMinutes(numOfMinutes, date = new Date()) {
+  date.setMinutes(date.getMinutes() + numOfMinutes);
+
+  return date;
 }
 
 });

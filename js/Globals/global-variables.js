@@ -22,6 +22,7 @@ const API_BASE="http://localhost:8241/";
 
 const API_LINKS={
     "GET_PROFESSSOR_COURSES":API_BASE+"api/Course/ProfessorCourses",
+    "POST_EXAM_ANSWERS":API_BASE+"api/Exam/Examinate",
     "GET_EXAM_DETAILS":API_BASE+'api/Exam/GetExamDetails',
     "PUT_EXAM_DETAILS":API_BASE+'api/Exam/PutExamDetails',
     "POST_EXAM_DETAILS":API_BASE+'api/Exam/PostExamDetails',
