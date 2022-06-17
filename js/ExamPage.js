@@ -12,25 +12,7 @@ $(document).ready(function () {
 
   var counter = 0;
   var json = [
-    {
-      q: "this is a mcq qqqqsamskaldsksdjclksdnhcjlkndscj kdsncljndsldiojcoidsjcidsjoci",
-      answer: { a: "s", b: "er", c: "sgggg", d: "sffffh" },
-      type: 1,
-    },
-    {
-      q: "this is a m mm mcq",
-      answer: { a: "gos", b: "uuiii", c: "sgggg", d: "oplooo" },
-      type: 2,
-    },
-    {
-      q: "this is a written",
-      type: 3,
-    },
-    {
-      q: "this is a tf ",
-      answer: { a: "aaa", b: "bbbbbbbbbbb", c: "sgggg", d: "ssssssdf" },
-      type: 4,
-    },
+
   ];
 
   var spinnersdiv="";
@@ -70,6 +52,7 @@ $(document).ready(function () {
 
       },
       error: function (xhr, status, error) {
+        toastError(error);
         console.log(error);
         console.log(status);
         console.log(xhr.responseText);
@@ -435,7 +418,7 @@ $(document).ready(function () {
 
           },
           error: function (xhr, status, error) {
-          
+            toastError(error)
             console.log(error);
             console.log(status);
             console.log(xhr.responseText);

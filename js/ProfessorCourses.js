@@ -3,7 +3,7 @@ window.addEventListener('load', function(){
   document.getElementById('log_out').addEventListener("click",Log_Out)
 
 
-    authorizeUser(getUserRole(),ROLES.PROFESSOR);
+  authorizeUser(getUserRole(),ROLES.PROFESSOR);
   
 
   console.log(getUserData());
@@ -23,7 +23,7 @@ window.addEventListener('load', function(){
 
   function ParseJson(data){
     let tbody=document.getElementById('table-body');
-    console.log(data)//////////////////////***************** */
+
     for(let i=0;i<data.length;i++)
     {
         tbody.appendChild(AddDataTable(data[i]))

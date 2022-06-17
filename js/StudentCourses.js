@@ -22,7 +22,7 @@ setCurrentDate();
 
 
 function fetchSchedule(){
-  console.log(getToken());
+ 
   $.ajax({
     url: "http://localhost:8241/api/Course/StudentCourses",
     type: "GET",
@@ -38,7 +38,6 @@ function fetchSchedule(){
     },
     success: function (data) {
   
-      console.log(data);
   
       if(data.status==true)
       {
@@ -169,7 +168,7 @@ function init_body(table_data){
         }
         
         
-        if(dates.compare( addMinutes(table_data[i]["durationInMinutes"]+3,Upcomingdate),DATE_TIME_NOW) == -1) 
+        if(dates.compare( addMinutes(table_data[i]["durationInMinutes"],Upcomingdate),DATE_TIME_NOW) == -1) 
         {
           toastWarning("The exam ended!")
           

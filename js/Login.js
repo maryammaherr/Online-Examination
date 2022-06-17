@@ -55,8 +55,6 @@ function doLogin(){
 				setUserRole(response.data.role[0]);
 				setToken(response.data.token);
 				
-				console.log(getToken());
-				console.log(getUserData());
 				loginRedirect(getUserRole());
 				
 			  }

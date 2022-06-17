@@ -7,7 +7,7 @@ window.addEventListener('load', function(){
     document.getElementById('back').addEventListener("click",Back)
 
 
-    alert(getCourseName());
+    //alert(getCourseName());
 
     $("#course_name").html(getCourseName());
 

@@ -2,10 +2,10 @@ window.addEventListener('load', function(){
 
 
 
-//	authorizeUser(getUserRole(),ROLES.ADMIN);
+	authorizeUser(getUserRole(),ROLES.ADMIN);
 
-document.getElementById('log_out').addEventListener("click",Log_Out)
-document.getElementById('back').addEventListener("click",Back)
+	document.getElementById('log_out').addEventListener("click",Log_Out)
+	document.getElementById('back').addEventListener("click",Back)
 
 	document.getElementById('doc').addEventListener("click",()=> 
 	fill_Table('http://hemajoo5333-001-site1.gtempurl.com/api/Authenticate/GetAllProfessors')
@@ -88,6 +88,12 @@ function fill_Table(link){
 	  /*params: {
 	   //id: 1,
 	  }*/
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Origin": "*",
+        "Authorization": "Bearer "+ getToken()
+      }
 	 }).then(function(resp){
 		ParseJson(resp.data.data);
   
@@ -182,6 +188,12 @@ function Banstatus(id,newobj){
 			url: "http://hemajoo5333-001-site1.gtempurl.com/api/Authenticate/DisableUsername",
 			params:{
 				id:id
+			},
+			headers: {
+			  "Content-Type": "application/json",
+			  "Access-Control-Allow-Headers": "*",
+			  "Access-Control-Allow-Origin": "*",
+			  "Authorization": "Bearer "+ getToken()
 			},
 			data:newobj
 		}).then(function(){
